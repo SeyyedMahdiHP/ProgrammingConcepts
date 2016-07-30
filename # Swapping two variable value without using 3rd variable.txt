@@ -1,0 +1,9 @@
+﻿# Swapping two variable value without using 3rd variable
+a = a + b
+b = a - b // b = a
+a = a - b
+یا
+a = a xor b
+b = a xor b // b = a
+a = a xor b
+#http://www.geeksforgeeks.org/swap-two-numbers-without-using-temporary-variable/
