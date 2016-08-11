@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://book.pythontips.com/en/latest/decorators.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. Decorators — Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./7. Decorators — Python Tips 0.1 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="http://book.pythontips.com/en/latest/index.html">
+        <link rel="next" title="8. Global &amp; Return" href="http://book.pythontips.com/en/latest/global_&amp;_return.html">
+        <link rel="prev" title="6. Ternary Operators" href="http://book.pythontips.com/en/latest/ternary_operators.html"> 
+
+  
+  <script type="text/javascript" async="" src="./7. Decorators — Python Tips 0.1 documentation_files/ga.js"></script><script src="./7. Decorators — Python Tips 0.1 documentation_files/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://book.pythontips.com/en/latest/decorators.html">
+
+<link rel="stylesheet" href="./7. Decorators — Python Tips 0.1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'decorators'
+</script>
+
+<script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://book.pythontips.com/en/latest/index.html" class="icon icon-home"> Python Tips
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://book.pythontips.com/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/args_and_kwargs.html">1. *args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/debugging.html">2. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/generators.html">3. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/map_filter.html">4. Map, Filter and Reduce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/set_-_data_structure.html">5. <code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/ternary_operators.html">6. Ternary Operators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://book.pythontips.com/en/latest/decorators.html"><span class="toctree-expand"></span>7. Decorators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#everything-in-python-is-an-object">7.1. Everything in Python is an object:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#defining-functions-within-functions">7.2. Defining functions within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#returning-functions-from-within-functions">7.3. Returning functions from within functions:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#giving-a-function-as-an-argument-to-another-function">7.4. Giving a function as an argument to another function:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#writing-your-first-decorator"><span class="toctree-expand"></span>7.5. Writing your first decorator:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#use-cases">7.5.1. Use-cases:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#authorization">7.5.2. Authorization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#logging">7.5.3. Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#decorators-with-arguments"><span class="toctree-expand"></span>7.6. Decorators with Arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#nesting-a-decorator-within-a-function">7.6.1. Nesting a Decorator Within a Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html#decorator-classes">7.6.2. Decorator Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/global_&amp;_return.html">8. Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/mutation.html">9. Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/__slots__magic.html">10. __slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/virtual_environment.html">11. Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/collections.html">12. Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/enumerate.html">13. Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/object_introspection.html">14. Object introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/comprehensions.html">15. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/exceptions.html">16. Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/lambdas.html">17. Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/one_liners.html">18. One-Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/for_-_else.html">19. For - Else</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/python_c_extension.html">20. Python C extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/open_function.html">21. <code class="docutils literal"><span class="pre">open</span></code> Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/targeting_python_2_3.html">22. Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/coroutines.html">23. Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/function_caching.html">24. Function caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/context_managers.html">25. Context managers</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div class="wy-menu rst-pro"><div class="rst-pro-about"><a href="http://docs.readthedocs.org/en/latest/sponsors.html#sponsorship-information"><i class="fa fa-info-circle"></i></a></div><a class="rst-pro-image-wrapper" href="http://readthedocs.org/sustainability/click/13/E0cNAoWGEJ0D/" target="_blank"><img class="rst-pro-image" src="./7. Decorators — Python Tips 0.1 documentation_files/saved_resource"></a><span><a class="rst-pro-link" href="http://readthedocs.org/sustainability/click/13/E0cNAoWGEJ0D/" target="_blank">Rackspace</a> sponsors hosting of Read the Docs. Thanks so much for supporting the community!</span></div><div class="rst-pro-wrapper"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://book.pythontips.com/en/latest/index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://book.pythontips.com/en/latest/index.html">Docs</a> »</li>
+      
+    <li>7. Decorators</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/yasoob/intermediatePython/blob/master/decorators.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="decorators">
+<h1>7. Decorators<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#decorators" title="Permalink to this headline">¶</a></h1>
+<p>Decorators are a significant part of Python. In simple words: they are
+functions which modify the functionality of another function. They help
+to make our code shorter and more Pythonic. Most of the beginners do not
+know where to use them so I am going to share some areas where
+decorators can make your code more concise.</p>
+<p>First, let’s discuss how to write your own decorator.</p>
+<p>It is perhaps one of the most difficult concepts to grasp. We will take
+it one step at a time so that you can fully understand it.</p>
+<div class="section" id="everything-in-python-is-an-object">
+<h2>7.1. Everything in Python is an object:<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#everything-in-python-is-an-object" title="Permalink to this headline">¶</a></h2>
+<p>First of all let’s understand functions in Python:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"yasoob"</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">"hi "</span> <span class="o">+</span> <span class="n">name</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">hi</span><span class="p">())</span>
+<span class="c1"># output: 'hi yasoob'</span>
+
+<span class="c1"># We can even assign a function to a variable like</span>
+<span class="n">greet</span> <span class="o">=</span> <span class="n">hi</span>
+<span class="c1"># We are not using parentheses here because we are not calling the function hi</span>
+<span class="c1"># instead we are just putting it into the greet variable. Let's try to run this</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+<span class="c1"># output: 'hi yasoob'</span>
+
+<span class="c1"># Let's see what happens if we delete the old hi function!</span>
+<span class="k">del</span> <span class="n">hi</span>
+<span class="k">print</span><span class="p">(</span><span class="n">hi</span><span class="p">())</span>
+<span class="c1">#outputs: NameError</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+<span class="c1">#outputs: 'hi yasoob'</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-functions-within-functions">
+<h2>7.2. Defining functions within functions:<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#defining-functions-within-functions" title="Permalink to this headline">¶</a></h2>
+<p>So those are the basics when it comes to functions. Let’s take your
+knowledge one step further. In Python we can define functions inside
+other functions:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"yasoob"</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"now you are inside the hi() function"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">"now you are in the greet() function"</span>
+
+    <span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">"now you are in the welcome() function"</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">greet</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">welcome</span><span class="p">())</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"now you are back in the hi() function"</span><span class="p">)</span>
+
+<span class="n">hi</span><span class="p">()</span>
+<span class="c1">#output:now you are inside the hi() function</span>
+<span class="c1">#       now you are in the greet() function</span>
+<span class="c1">#       now you are in the welcome() function</span>
+<span class="c1">#       now you are back in the hi() function</span>
+
+<span class="c1"># This shows that whenever you call hi(), greet() and welcome()</span>
+<span class="c1"># are also called. However the greet() and welcome() functions</span>
+<span class="c1"># are not available outside the hi() function e.g:</span>
+
+<span class="n">greet</span><span class="p">()</span>
+<span class="c1">#outputs: NameError: name 'greet' is not defined</span>
+</pre></div>
+</div>
+<p>So now we know that we can define functions in other functions. In
+other words: we can make nested functions. Now you need to learn one
+more thing, that functions can return functions too.</p>
+</div>
+<div class="section" id="returning-functions-from-within-functions">
+<h2>7.3. Returning functions from within functions:<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#returning-functions-from-within-functions" title="Permalink to this headline">¶</a></h2>
+<p>It is not necessary to execute a function within another function, we
+can return it as an output as well:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"yasoob"</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">greet</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">"now you are in the greet() function"</span>
+
+    <span class="k">def</span> <span class="nf">welcome</span><span class="p">():</span>
+        <span class="k">return</span> <span class="s2">"now you are in the welcome() function"</span>
+
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"yasoob"</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">greet</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">welcome</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">hi</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#outputs: &lt;function greet at 0x7f2143c01500&gt;</span>
+
+<span class="c1">#This clearly shows that `a` now points to the greet() function in hi()</span>
+<span class="c1">#Now try this</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">())</span>
+<span class="c1">#outputs: now you are in the greet() function</span>
+</pre></div>
+</div>
+<p>Just take a look at the code again. In the <code class="docutils literal"><span class="pre">if/else</span></code> clause we are
+returning <code class="docutils literal"><span class="pre">greet</span></code> and <code class="docutils literal"><span class="pre">welcome</span></code>, not <code class="docutils literal"><span class="pre">greet()</span></code> and <code class="docutils literal"><span class="pre">welcome()</span></code>.
+Why is that? It’s because when you put a pair of parentheses after it, the
+function gets executed; whereas if you don’t put parenthesis after it,
+then it can be passed around and can be assigned to other variables
+without executing it. Did you get it? Let me explain it in a little bit
+more detail. When we write <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">hi()</span></code>, <code class="docutils literal"><span class="pre">hi()</span></code> gets executed and
+because the name is yasoob by default, the function <code class="docutils literal"><span class="pre">greet</span></code> is returned.
+If we change the statement to <code class="docutils literal"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">hi(name</span> <span class="pre">=</span> <span class="pre">"ali")</span></code> then the <code class="docutils literal"><span class="pre">welcome</span></code>
+function will be returned. We can also do print <code class="docutils literal"><span class="pre">hi()()</span></code> which outputs
+<em>now you are in the greet() function</em>.</p>
+</div>
+<div class="section" id="giving-a-function-as-an-argument-to-another-function">
+<h2>7.4. Giving a function as an argument to another function:<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#giving-a-function-as-an-argument-to-another-function" title="Permalink to this headline">¶</a></h2>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hi</span><span class="p">():</span>
+    <span class="k">return</span> <span class="s2">"hi yasoob!"</span>
+
+<span class="k">def</span> <span class="nf">doSomethingBeforeHi</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"I am doing some boring work before executing hi()"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+
+<span class="n">doSomethingBeforeHi</span><span class="p">(</span><span class="n">hi</span><span class="p">)</span>
+<span class="c1">#outputs:I am doing some boring work before executing hi()</span>
+<span class="c1">#        hi yasoob!</span>
+</pre></div>
+</div>
+<p>Now you have all the required knowledge to learn what decorators really
+are. Decorators let you execute code before and after a function.</p>
+</div>
+<div class="section" id="writing-your-first-decorator">
+<h2>7.5. Writing your first decorator:<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#writing-your-first-decorator" title="Permalink to this headline">¶</a></h2>
+<p>In the last example we actually made a decorator! Let’s modify the
+previous decorator and make a little bit more usable program:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">wrapTheFunction</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">"I am doing some boring work before executing a_func()"</span><span class="p">)</span>
+
+        <span class="n">a_func</span><span class="p">()</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="s2">"I am doing some boring work after executing a_func()"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrapTheFunction</span>
+
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"I am the function which needs some decoration to remove my foul smell"</span><span class="p">)</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c1">#outputs: "I am the function which needs some decoration to remove my foul smell"</span>
+
+<span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
+<span class="c1">#now a_function_requiring_decoration is wrapped by wrapTheFunction()</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c1">#outputs:I am doing some boring work before executing a_func()</span>
+<span class="c1">#        I am the function which needs some decoration to remove my foul smell</span>
+<span class="c1">#        I am doing some boring work after executing a_func()</span>
+</pre></div>
+</div>
+<p>Did you get it? We just applied the previously learned principles. This
+is exactly what the decorators do in Python! They wrap a function and
+modify its behaviour in one way or the another. Now you might be
+wondering that we did not use the @ anywhere in our code? That is just a
+short way of making up a decorated function. Here is how we could have
+run the previous code sample using @.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="nd">@a_new_decorator</span>
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="sd">"""Hey you! Decorate me!"""</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"I am the function which needs some decoration to "</span>
+          <span class="s2">"remove my foul smell"</span><span class="p">)</span>
+
+<span class="n">a_function_requiring_decoration</span><span class="p">()</span>
+<span class="c1">#outputs: I am doing some boring work before executing a_func()</span>
+<span class="c1">#         I am the function which needs some decoration to remove my foul smell</span>
+<span class="c1">#         I am doing some boring work after executing a_func()</span>
+
+<span class="c1">#the @a_new_decorator is just a short way of saying:</span>
+<span class="n">a_function_requiring_decoration</span> <span class="o">=</span> <span class="n">a_new_decorator</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>I hope you now have a basic understanding of how decorators work in
+Python. Now there is one problem with our code. If we run:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+<span class="c1"># Output: wrapTheFunction</span>
+</pre></div>
+</div>
+<p>That’s not what we expected! Its name is
+“a_function_requiring_decoration”. Well our function was replaced by
+wrapTheFunction. It overrode the name and docstring of our function.
+Luckily Python provides us a simple function to solve this problem and
+that is <code class="docutils literal"><span class="pre">functools.wraps</span></code>. Let’s modify our previous example to use
+<code class="docutils literal"><span class="pre">functools.wraps</span></code>:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">a_new_decorator</span><span class="p">(</span><span class="n">a_func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">a_func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapTheFunction</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">"I am doing some boring work before executing a_func()"</span><span class="p">)</span>
+        <span class="n">a_func</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">"I am doing some boring work after executing a_func()"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapTheFunction</span>
+
+<span class="nd">@a_new_decorator</span>
+<span class="k">def</span> <span class="nf">a_function_requiring_decoration</span><span class="p">():</span>
+    <span class="sd">"""Hey yo! Decorate me!"""</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">"I am the function which needs some decoration to "</span>
+          <span class="s2">"remove my foul smell"</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a_function_requiring_decoration</span><span class="o">.</span><span class="n">__name__</span><span class="p">)</span>
+<span class="c1"># Output: a_function_requiring_decoration</span>
+</pre></div>
+</div>
+<p>Now that is much better. Let’s move on and learn some use-cases of
+decorators.</p>
+<p><strong>Blueprint:</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="k">def</span> <span class="nf">decorator_name</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">can_run</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">"Function will not run"</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span>
+
+<span class="nd">@decorator_name</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">():</span>
+    <span class="k">return</span><span class="p">(</span><span class="s2">"Function is running"</span><span class="p">)</span>
+
+<span class="n">can_run</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="c1"># Output: Function is running</span>
+
+<span class="n">can_run</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="p">())</span>
+<span class="c1"># Output: Function will not run</span>
+</pre></div>
+</div>
+<p>Note: <code class="docutils literal"><span class="pre">@wraps</span></code> takes a function to be decorated and adds the
+functionality of copying over the function name, docstring, arguments
+list, etc. This allows to access the pre-decorated function’s properties
+in the decorator.</p>
+<div class="section" id="use-cases">
+<h3>7.5.1. Use-cases:<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#use-cases" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s take a look at the areas where decorators really shine and
+their usage makes something really easy to manage.</p>
+</div>
+<div class="section" id="authorization">
+<h3>7.5.2. Authorization<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#authorization" title="Permalink to this headline">¶</a></h3>
+<p>Decorators can help to check whether someone is authorized to use an
+endpoint in a web application. They are extensively used in Flask web
+framework and Django. Here is an example to employ decorator based
+authentication:</p>
+<p><strong>Example :</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">requires_auth</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">auth</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">authorization</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">auth</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">check_auth</span><span class="p">(</span><span class="n">auth</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">auth</span><span class="o">.</span><span class="n">password</span><span class="p">):</span>
+            <span class="n">authenticate</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">decorated</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="logging">
+<h3>7.5.3. Logging<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#logging" title="Permalink to this headline">¶</a></h3>
+<p>Logging is another area where the decorators shine. Here is an example:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">logit</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">with_logging</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s2">" was called"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">with_logging</span>
+
+<span class="nd">@logit</span>
+<span class="k">def</span> <span class="nf">addition_func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+   <span class="sd">"""Do some math."""</span>
+   <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">addition_func</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># Output: addition_func was called</span>
+</pre></div>
+</div>
+<p>I am sure you are already thinking about some clever uses of decorators.</p>
+</div>
+</div>
+<div class="section" id="decorators-with-arguments">
+<h2>7.6. Decorators with Arguments<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#decorators-with-arguments" title="Permalink to this headline">¶</a></h2>
+<p>Come to think of it, isn’t <code class="docutils literal"><span class="pre">@wraps</span></code> also a decorator?  But, it takes an
+argument like any normal function can do.  So, why can’t we do that too?</p>
+<p>This is because when you use the <code class="docutils literal"><span class="pre">@my_decorator</span></code> syntax, you are
+applying a wrapper function with a single function as a parameter
+Remember, everything in Python is an object, and this includes
+functions!  With that in mind, we can write a function that returns
+a wrapper function.</p>
+<div class="section" id="nesting-a-decorator-within-a-function">
+<h3>7.6.1. Nesting a Decorator Within a Function<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#nesting-a-decorator-within-a-function" title="Permalink to this headline">¶</a></h3>
+<p>Let’s go back to our logging example, and create a wrapper which lets
+us specify a logfile to output to.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+
+<span class="k">def</span> <span class="nf">logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s1">'out.log'</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">logging_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapped_function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">log_string</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s2">" was called"</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+            <span class="c1"># Open the logfile and append</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">logfile</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+                <span class="c1"># Now we log to the specified logfile</span>
+                <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_string</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">wrapped_function</span>
+    <span class="k">return</span> <span class="n">logging_decorator</span>
+
+<span class="nd">@logit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunc1</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">myfunc1</span><span class="p">()</span>
+<span class="c1"># Output: myfunc1 was called</span>
+<span class="c1"># A file called out.log now exists, with the above string</span>
+
+<span class="nd">@logit</span><span class="p">(</span><span class="n">logfile</span><span class="o">=</span><span class="s1">'func2.log'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">myfunc2</span><span class="p">():</span>
+    <span class="k">pass</span>
+
+<span class="n">myfunc2</span><span class="p">()</span>
+<span class="c1"># Output: myfunc2 was called</span>
+<span class="c1"># A file called func2.log now exists, with the above string</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="decorator-classes">
+<h3>7.6.2. Decorator Classes<a class="headerlink" href="http://book.pythontips.com/en/latest/decorators.html#decorator-classes" title="Permalink to this headline">¶</a></h3>
+<p>Now we have our logit decorator in production, but when some parts
+of our application are considered critical, failure might be
+something that needs more immediate attention.  Let’s say sometimes
+you want to just log to a file.  Other times you want an email sent,
+so the problem is brought to your attention, and still keep a log
+for your own records.  This is a case for using inheritence, but
+so far we’ve only seen functions being used to build decorators.</p>
+<p>Luckily, classes can also be used to build decorators.  So, let’s
+rebuild logit as a class instead of a function.</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">logit</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="o">=</span><span class="s1">'out.log'</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span>
+
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+        <span class="n">log_string</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">__name__</span> <span class="o">+</span> <span class="s2">" was called"</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">log_string</span><span class="p">)</span>
+        <span class="c1"># Open the logfile and append</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">opened_file</span><span class="p">:</span>
+            <span class="c1"># Now we log to the specified logfile</span>
+            <span class="n">opened_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log_string</span> <span class="o">+</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+        <span class="c1"># Now, send a notification</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">notify</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># logit only logs, no more</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This implementation has an additional advantage of being much cleaner than
+the nested function approach, and wrapping a function still will use
+the same syntax as before:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="nd">@logit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">myfunc1</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Now, let’s subclass logit to add email functionality (though this topic
+will not be covered here).</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">email_logit</span><span class="p">(</span><span class="n">logit</span><span class="p">):</span>
+    <span class="sd">'''</span>
+<span class="sd">    A logit implementation for sending emails to admins</span>
+<span class="sd">    when the function is called.</span>
+<span class="sd">    '''</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">email</span><span class="o">=</span><span class="s1">'admin@myproject.com'</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">email_logit</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">notify</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Send an email to self.email</span>
+        <span class="c1"># Will not be implemented here</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+<p>From here, <code class="docutils literal"><span class="pre">@email_logit</span></code> works just like <code class="docutils literal"><span class="pre">@logit</span></code> but sends an email
+to the admin in addition to logging.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://book.pythontips.com/en/latest/global_&amp;_return.html" class="btn btn-neutral float-right" title="8. Global &amp; Return" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://book.pythontips.com/en/latest/ternary_operators.html" class="btn btn-neutral" title="6. Ternary Operators" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2015, Muhammad Yasoob Ullah Khalid.
+      
+        <span class="commit">
+          Revision <code>00d74159</code>.
+        </span>
+      
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://book.pythontips.com/en/latest/decorators.html">latest</a></dd>
+         </strong> 
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/blob/master/decorators.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/edit/master/decorators.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/intermediatepythongithubio/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="./7. Decorators — Python Tips 0.1 documentation_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>

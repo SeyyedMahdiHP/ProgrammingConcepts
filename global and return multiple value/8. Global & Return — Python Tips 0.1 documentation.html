@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://book.pythontips.com/en/latest/global_&_return.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8. Global &amp; Return — Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./8. Global &amp; Return — Python Tips 0.1 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="http://book.pythontips.com/en/latest/index.html">
+        <link rel="next" title="9. Mutation" href="http://book.pythontips.com/en/latest/mutation.html">
+        <link rel="prev" title="7. Decorators" href="http://book.pythontips.com/en/latest/decorators.html"> 
+
+  
+  <script type="text/javascript" async="" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/ga.js"></script><script src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://book.pythontips.com/en/latest/global_&amp;_return.html">
+
+<link rel="stylesheet" href="./8. Global &amp; Return — Python Tips 0.1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'global_&_return'
+</script>
+
+<script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://book.pythontips.com/en/latest/index.html" class="icon icon-home"> Python Tips
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://book.pythontips.com/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/args_and_kwargs.html">1. *args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/debugging.html">2. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/generators.html">3. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/map_filter.html">4. Map, Filter and Reduce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/set_-_data_structure.html">5. <code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/ternary_operators.html">6. Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html">7. Decorators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://book.pythontips.com/en/latest/global_&amp;_return.html"><span class="toctree-expand"></span>8. Global &amp; Return</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/global_&amp;_return.html#multiple-return-values">8.1. Multiple return values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/mutation.html">9. Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/__slots__magic.html">10. __slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/virtual_environment.html">11. Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/collections.html">12. Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/enumerate.html">13. Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/object_introspection.html">14. Object introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/comprehensions.html">15. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/exceptions.html">16. Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/lambdas.html">17. Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/one_liners.html">18. One-Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/for_-_else.html">19. For - Else</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/python_c_extension.html">20. Python C extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/open_function.html">21. <code class="docutils literal"><span class="pre">open</span></code> Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/targeting_python_2_3.html">22. Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/coroutines.html">23. Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/function_caching.html">24. Function caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/context_managers.html">25. Context managers</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div class="wy-menu rst-pro"><div class="rst-pro-about"><a href="http://docs.readthedocs.org/en/latest/sponsors.html#sponsorship-information"><i class="fa fa-info-circle"></i></a></div><span>Open Source (including Read the Docs) is underfunded. This <a class="rst-pro-link" href="http://readthedocs.org/sustainability/click/12/hCGykLMX8T2i/" target="_blank">report</a> from the Ford Foundation is a must-read. </span></div><div class="rst-pro-wrapper"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://book.pythontips.com/en/latest/index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://book.pythontips.com/en/latest/index.html">Docs</a> »</li>
+      
+    <li>8. Global &amp; Return</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/yasoob/intermediatePython/blob/master/global_&amp;_return.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="global-return">
+<h1>8. Global &amp; Return<a class="headerlink" href="http://book.pythontips.com/en/latest/global_&amp;_return.html#global-return" title="Permalink to this headline">¶</a></h1>
+<p>You might have encountered some functions written in python which have a
+<code class="docutils literal"><span class="pre">return</span></code> keyword in the end of the function. Do you know what it does? It
+is similar to return in other languages. Lets examine this little
+function:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">value1</span> <span class="o">+</span> <span class="n">value2</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># Output: 8</span>
+</pre></div>
+</div>
+<p>The function above takes two values as input and then output their
+addition. We could have also done:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="n">value2</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">result</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">value1</span> <span class="o">+</span> <span class="n">value2</span>
+
+<span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="c1"># Output: 8</span>
+</pre></div>
+</div>
+<p>So first lets talk about the first bit of code which involves the
+<code class="docutils literal"><span class="pre">return</span></code> keyword. What that function is doing is that it is assigning
+the value to the variable which is calling that function which in our
+case is <code class="docutils literal"><span class="pre">result</span></code>. In most cases and you won’t need to use the
+<code class="docutils literal"><span class="pre">global</span></code> keyword. However lets examine the other bit of code as well
+which includes the <code class="docutils literal"><span class="pre">global</span></code> keyword. So what that function is doing is
+that it is making a global variable <code class="docutils literal"><span class="pre">result</span></code>. What does global mean
+here? Global variable means that we can access that variable outside the
+scope of the function as well. Let me demonstrate it with an example:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span># first without the global variable
+def add(value1, value2):
+    result = value1 + value2
+
+add(2, 4)
+print(result)
+
+# Oh crap, we encountered an exception. Why is it so?
+# the python interpreter is telling us that we do not
+# have any variable with the name of result. It is so
+# because the result variable is only accessible inside
+# the function in which it is created if it is not global.
+Traceback (most recent call last):
+  File "", line 1, in
+    result
+NameError: name 'result' is not defined
+
+# Now lets run the same code but after making the result
+# variable global
+def add(value1, value2):
+    global result
+    result = value1 + value2
+
+add(2, 4)
+result
+6
+</pre></div>
+</div>
+<p>So hopefully there are no errors in the second run as expected. In
+practical programming you should try to stay away from <code class="docutils literal"><span class="pre">global</span></code>
+keyword as it only makes life difficult by introducing unwanted variables
+to the global scope.</p>
+<div class="section" id="multiple-return-values">
+<h2>8.1. Multiple return values<a class="headerlink" href="http://book.pythontips.com/en/latest/global_&amp;_return.html#multiple-return-values" title="Permalink to this headline">¶</a></h2>
+<p>So what if you want to return two variables from a function instead of one? There are a couple of approaches which new programmers take. The most famous approach is to use <code class="docutils literal"><span class="pre">global</span></code> keyword. Let’s take a look at a useless example:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profile</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">name</span>
+    <span class="k">global</span> <span class="n">age</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"Danny"</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="n">profile</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="c1"># Output: Danny</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">age</span><span class="p">)</span>
+<span class="c1"># Output: 30</span>
+</pre></div>
+</div>
+<p><a href="http://book.pythontips.com/en/latest/global_&amp;_return.html#id1"><span class="problematic" id="id2">**</span></a>Note:<a href="http://book.pythontips.com/en/latest/global_&amp;_return.html#id3"><span class="problematic" id="id4">**</span></a>Don’t try to use the above mentioned method. I repeat, don’t try to use the above mentioned method!</p>
+<p>Some try to solve this problem by <em>returning</em> a <code class="docutils literal"><span class="pre">tuple</span></code>, <code class="docutils literal"><span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">dict</span></code> with the required values after the function terminates. It is one way to do it and works like a charm:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profile</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"Danny"</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>
+
+<span class="n">profile_data</span> <span class="o">=</span> <span class="n">profile</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">profile_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># Output: Danny</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">profile_data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># Output: 30</span>
+</pre></div>
+</div>
+<p>Or by more common convention:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">profile</span><span class="p">():</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">"Danny"</span>
+    <span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+    <span class="k">return</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span>
+
+<span class="n">profile_name</span><span class="p">,</span> <span class="n">profile_age</span> <span class="o">=</span> <span class="n">profile</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">profile_name</span><span class="p">)</span>
+<span class="c1"># Output: Danny</span>
+<span class="k">print</span><span class="p">(</span><span class="n">profile_age</span><span class="p">)</span>
+<span class="c1"># Output: 30</span>
+</pre></div>
+</div>
+<p>This is a better way to do it along with returning <code class="docutils literal"><span class="pre">lists</span></code> and <code class="docutils literal"><span class="pre">dicts</span></code>. Don’t use <code class="docutils literal"><span class="pre">global</span></code> keyword unless you know what you are doing. <code class="docutils literal"><span class="pre">global</span></code> might be a better option in a few cases but is not in most of them.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://book.pythontips.com/en/latest/mutation.html" class="btn btn-neutral float-right" title="9. Mutation" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://book.pythontips.com/en/latest/decorators.html" class="btn btn-neutral" title="7. Decorators" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2015, Muhammad Yasoob Ullah Khalid.
+      
+        <span class="commit">
+          Revision <code>00d74159</code>.
+        </span>
+      
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://book.pythontips.com/en/latest/global_&amp;_return.html">latest</a></dd>
+         </strong> 
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/blob/master/global_&amp;_return.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/edit/master/global_&amp;_return.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/intermediatepythongithubio/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="./8. Global &amp; Return — Python Tips 0.1 documentation_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>

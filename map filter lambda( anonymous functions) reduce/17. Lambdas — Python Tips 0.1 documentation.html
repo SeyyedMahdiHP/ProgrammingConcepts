@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://book.pythontips.com/en/latest/lambdas.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>17. Lambdas — Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./17. Lambdas — Python Tips 0.1 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="http://book.pythontips.com/en/latest/index.html">
+        <link rel="next" title="18. One-Liners" href="http://book.pythontips.com/en/latest/one_liners.html">
+        <link rel="prev" title="16. Exceptions" href="http://book.pythontips.com/en/latest/exceptions.html"> 
+
+  
+  <script type="text/javascript" async="" src="./17. Lambdas — Python Tips 0.1 documentation_files/ga.js"></script><script src="./17. Lambdas — Python Tips 0.1 documentation_files/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://book.pythontips.com/en/latest/lambdas.html">
+
+<link rel="stylesheet" href="./17. Lambdas — Python Tips 0.1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'lambdas'
+</script>
+
+<script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://book.pythontips.com/en/latest/index.html" class="icon icon-home"> Python Tips
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://book.pythontips.com/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/args_and_kwargs.html">1. *args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/debugging.html">2. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/generators.html">3. Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/map_filter.html">4. Map, Filter and Reduce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/set_-_data_structure.html">5. <code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/ternary_operators.html">6. Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/global_&amp;_return.html">8. Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/mutation.html">9. Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/__slots__magic.html">10. __slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/virtual_environment.html">11. Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/collections.html">12. Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/enumerate.html">13. Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/object_introspection.html">14. Object introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/comprehensions.html">15. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/exceptions.html">16. Exceptions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://book.pythontips.com/en/latest/lambdas.html">17. Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/one_liners.html">18. One-Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/for_-_else.html">19. For - Else</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/python_c_extension.html">20. Python C extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/open_function.html">21. <code class="docutils literal"><span class="pre">open</span></code> Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/targeting_python_2_3.html">22. Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/coroutines.html">23. Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/function_caching.html">24. Function caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/context_managers.html">25. Context managers</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div class="wy-menu rst-pro"><div class="rst-pro-about"><a href="http://docs.readthedocs.org/en/latest/sponsors.html#sponsorship-information"><i class="fa fa-info-circle"></i></a></div><span>Open Source (including Read the Docs) is underfunded. This <a class="rst-pro-link" href="http://readthedocs.org/sustainability/click/12/5fpccHfwqUxZ/" target="_blank">report</a> from the Ford Foundation is a must-read. </span></div><div class="rst-pro-wrapper"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://book.pythontips.com/en/latest/index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://book.pythontips.com/en/latest/index.html">Docs</a> »</li>
+      
+    <li>17. Lambdas</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/yasoob/intermediatePython/blob/master/lambdas.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lambdas">
+<h1>17. Lambdas<a class="headerlink" href="http://book.pythontips.com/en/latest/lambdas.html#lambdas" title="Permalink to this headline">¶</a></h1>
+<p>Lambdas are one line functions. They are also known as anonymous
+functions in some other languages. You might want to use lambdas when
+you don’t want to use a function twice in a program. They are just like
+normal functions and even behave like them.</p>
+<p><strong>Blueprint</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">argument</span><span class="p">:</span> <span class="n">manipulate</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">add</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="c1"># Output: 8</span>
+</pre></div>
+</div>
+<p>Here are a few useful use cases for lambdas and just a few way in which
+they are used in the wild:</p>
+<p><strong>List sorting</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">a</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># Output: [(13, -3), (4, 1), (1, 2), (9, 10)]</span>
+</pre></div>
+</div>
+<p><strong>Parallel sorting of lists</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">list1</span><span class="p">,</span> <span class="n">list2</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://book.pythontips.com/en/latest/one_liners.html" class="btn btn-neutral float-right" title="18. One-Liners" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://book.pythontips.com/en/latest/exceptions.html" class="btn btn-neutral" title="16. Exceptions" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2015, Muhammad Yasoob Ullah Khalid.
+      
+        <span class="commit">
+          Revision <code>00d74159</code>.
+        </span>
+      
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://book.pythontips.com/en/latest/lambdas.html">latest</a></dd>
+         </strong> 
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/blob/master/lambdas.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/edit/master/lambdas.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/intermediatepythongithubio/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="./17. Lambdas — Python Tips 0.1 documentation_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>

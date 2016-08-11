@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>What is the EAFP principle in Python? - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="What is the EAFP principle in Python?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="What is meant by &quot;using the EAFP principle&quot; in Python? Could you provide any examples?">
+    <meta property="og:url" content="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python">
+    <link rel="canonical" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python">
+
+    
+    
+    <script type="text/javascript" async="" src="http://engine.adzerk.net/ados?t=1469047455557&amp;request={%22Placements%22:[{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk55057665%22,%22AT%22:4,%22Z%22:[43]},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk894223971%22,%22ATA%22:[5,17,2221],%22Z%22:[45]}],%22Keywords%22:%22python%2Cx-user-registered%22,%22Referrer%22:%22https%3A%2F%2Fwww.google.com%2F%22,%22IsAsync%22:true}"></script><script async="" src="http://edge.quantserve.com/quant.js"></script><script async="" src="http://b.scorecardresearch.com/beacon.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/ados.js"></script><script src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/jquery.min.js"></script>
+    <script src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;What is the EAFP principle in Python?&#39;" href="http://stackoverflow.com/feeds/question/11360858">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:2,shownCommentCount:2,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:11360858});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '11360858');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1469047454,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":false,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8c7e4cd0f7077e632e0913ceb0f37a59","rep":1,"isRegistered":true,"userType":3,"userId":3427552,"accountId":3693636,"gravatar":"<div class=\"gravatar-wrapper-32\"><img src=\"https://www.gravatar.com/avatar/4775b85b9de5e76fa0268c5e2d472de3?s=32&amp;d=identicon&amp;r=PG&amp;f=1\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/3427552/mahdi","canSeeDeletedPosts":false}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true},"tags":{},"flags":{},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"26bf8833b81c","js/moderator.en.js":"31a85f525416","js/full-anon.en.js":"9a67ca5d15d1","js/full.en.js":"4e061cf87fc1","js/wmd.en.js":"ffbc24b4b2af","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"37073667dd45","js/help.en.js":"b50417081cc4","js/tageditor.en.js":"1d50aaf81026","js/tageditornew.en.js":"37966c44a143","js/inline-tag-editing.en.js":"5b6dc450b268","js/revisions.en.js":"47de10a8358f","js/review.en.js":"21b0f7b2329a","js/tagsuggestions.en.js":"78eee7c19ab2","js/post-validation.en.js":"0702f2ff4fbc","js/explore-qlist.en.js":"e71f14781288","js/events.en.js":"16f26b8aa20a","js/keyboard-shortcuts.en.js":"74025615fae8","js/external-editor.en.js":"61aa71fa7016","js/external-editor.en.js":"61aa71fa7016","js/snippet-javascript.en.js":"efbc2ca8ecb9","js/snippet-javascript-codemirror.en.js":"f27d7eb9c4c1"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+<script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/full.en.js"></script><script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/snippet-javascript.en.js"></script><script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/post-validation.en.js"></script><script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/prettify-full.en.js"></script><script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/external-editor.en.js"></script><script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/wmd.en.js"></script><script type="text/javascript" src="http://static.adzerk.net/Extensions/adFeedback.js"></script><link rel="stylesheet" href="http://static.adzerk.net/Extensions/adFeedback.css"><style type="text/css"> .wmd-snippet-button span { background-position: 0 0; } .wmd-snippet-button:hover span { background-position: 0 -40px; }</style></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    
+        <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://stackoverflow.com/users/logout" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:8 })">log out</a>
+    </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+        </ul>
+    </div>
+    <div class="header" id="your-communities-header">
+        <h3>
+                <a href="http://stackexchange.com/users/3693636/?tab=accounts">your communities</a>
+        </h3>
+            
+            <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" id="edit-pinned-sites">edit</a>
+            <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" id="cancel-pinned-sites" style="display: none;">cancel</a>
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <ul class="my-sites">
+                    <li>
+                        
+
+
+
+    <a href="http://askubuntu.com/" class="site-link js-gps-track" data-id="89" data-gps-track="
+            site.switch({ target_site:89, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-askubuntu" title="Ask Ubuntu"></div>
+        Ask Ubuntu
+            <span class="rep-score">11</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://security.stackexchange.com/" class="site-link js-gps-track" data-id="162" data-gps-track="
+            site.switch({ target_site:162, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-security" title="Information Security"></div>
+        Information Security
+            <span class="rep-score">11</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://meta.stackexchange.com/" class="site-link js-gps-track" data-id="4" data-gps-track="
+            site.switch({ target_site:4, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+        Meta Stack Exchange
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://stackoverflow.com/" class="site-link js-gps-track" data-id="1" data-gps-track="
+            site.switch({ target_site:1, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://superuser.com/" class="site-link js-gps-track" data-id="3" data-gps-track="
+            site.switch({ target_site:3, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-superuser" title="Super User"></div>
+        Super User
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+            </ul>
+                <div class="pinned-site-editor-container" style="display: none;">
+                    <input id="js-site-search-txt" type="text" class="site-filter-input" value="" placeholder="Add a Stack Exchange community">
+                    <input type="submit" id="pin-site-btn" value="Add" disabled="disabled">
+                    <ul class="js-found-sites found-sites"></ul>
+                    <ul class="pinned-site-list sortable" data-custom-list="False">
+                    </ul>
+                    <input type="submit" value="Save" id="save-pinned-sites-btn" disabled="disabled">
+                    <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" id="reset-pinned-sites">reset to default list</a>
+                </div>
+    </div>
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 158 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+    <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <a href="http://stackoverflow.com/users/3427552/mahdi" class="profile-me js-gps-track" data-gps-track="profile_summary.click()">
+                    
+                    <div class="gravatar-wrapper-24" title="Mahdi"><img src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/4775b85b9de5e76fa0268c5e2d472de3" alt="" width="24" height="24" class="avatar-me js-avatar-me"></div>
+
+                    <div class="links-container topbar-flair">
+
+                        <span class="reputation" title="your reputation: 1">
+                            1
+                        </span>
+<span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>                    </div>
+                </a>
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+
+
+
+
+    <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                    <li>
+                        <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                            About Us
+                            <span class="item-summary">
+                                Learn more about Stack Overflow the company
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                            Business
+                            <span class="item-summary">
+                                Learn more about hiring developers or posting ads with us
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab">Jobs</a></li>
+                                                <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python" class="question-hyperlink">What is the EAFP principle in Python?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="11360858" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk55057665",4).setZone(43); });
+            </script>
+                <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="11360858">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">44</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" title="Click to mark as favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>15</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>What is meant by "using the EAFP principle" in Python? Could you provide any examples?</p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/python" class="post-tag js-gps-track" title="show questions tagged &#39;python&#39;" rel="tag">python</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/11360858/3427552" title="short permalink to this question" class="short-link" id="link-post-11360858">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/11360858/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>        
+    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2012-07-06 10:55:04Z" class="relativetime">Jul 6 '12 at 10:55</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1148836/unpaid-oracles"><div class="gravatar-wrapper-32"><img src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/1dfafa91fb6d9bd9abc2e19859300443" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1148836/unpaid-oracles">Unpaid Oracles</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">391</span><span title="4 silver badges"><span class="badge2"></span><span class="badgecount">4</span></span><span title="8 bronze badges"><span class="badge3"></span><span class="badgecount">8</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11360858" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-14965610" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">EAFP is discouraged in some languages. The underlying reason is usually that handling exceptions is slow and expensive in those languages. This leads to memes like "Exceptions are for exceptional circumstances" etc. - which is rubbish</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/174728/john-la-rooy" title="148,194 reputation" class="comment-user">John La Rooy</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#comment14965610_11360858"><span title="2012-07-06 11:07:38Z" class="relativetime-clean">Jul 6 '12 at 11:07</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-60778991" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Not according to Guido: <a href="https://mail.python.org/pipermail/python-dev/2014-March/133118.html" rel="nofollow">mail.python.org/pipermail/python-dev/2014-March/133118.html</a></span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/5241481/judah-meek" title="106 reputation" class="comment-user">Judah Meek</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#comment60778991_11360858"><span title="2016-04-13 06:51:29Z" class="relativetime-clean">Apr 13 at 6:51</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-11360858" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="11360880"></a>
+<div id="answer-11360880" class="answer accepted-answer" data-answerid="11360880" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="11360880">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">65</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>From the <a href="http://docs.python.org//glossary.html#term-eafp">glossary</a>:</p>
+
+<blockquote>
+  <p>Easier to ask for forgiveness than permission. This common Python coding style assumes the existence of valid keys or attributes and catches exceptions if the assumption proves false. This clean and fast style is characterized by the presence of many <code>try</code> and <code>except</code> statements. The technique contrasts with the <a href="http://docs.python.org//glossary.html#term-lbyl">LBYL style</a> common to many other languages such as C.</p>
+</blockquote>
+
+<p>An example would be an attempt to access a dictionary key.</p>
+
+<p>EAFP:</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">try</span><span class="pun">:</span><span class="pln">
+    x </span><span class="pun">=</span><span class="pln"> my_dict</span><span class="pun">[</span><span class="str">"key"</span><span class="pun">]</span><span class="pln">
+</span><span class="kwd">except</span><span class="pln"> </span><span class="typ">KeyError</span><span class="pun">:</span><span class="pln">
+    </span><span class="com"># handle missing key</span></code></pre>
+
+<p>LBYL:</p>
+
+<pre class="lang-py prettyprint prettyprinted"><code><span class="kwd">if</span><span class="pln"> </span><span class="str">"key"</span><span class="pln"> </span><span class="kwd">in</span><span class="pln"> my_dict</span><span class="pun">:</span><span class="pln">
+    x </span><span class="pun">=</span><span class="pln"> my_dict</span><span class="pun">[</span><span class="str">"key"</span><span class="pun">]</span><span class="pln">
+</span><span class="kwd">else</span><span class="pun">:</span><span class="pln">
+    </span><span class="com"># handle missing key</span></code></pre>
+
+<p>The LBYL version has to search the key inside the dictionary twice, and might also be considered slightly less readable.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/11360880/3427552" title="short permalink to this answer" class="short-link" id="link-post-11360880">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/11360880/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2012-07-06 10:56:31Z" class="relativetime">Jul 6 '12 at 10:56</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/279627/sven-marnach"><div class="gravatar-wrapper-32"><img src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/2dceea858ad8f1577bec6ddaa0485d15" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/279627/sven-marnach">Sven Marnach</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 209,606" dir="ltr">210k</span><span title="35 gold badges"><span class="badge1"></span><span class="badgecount">35</span></span><span title="544 silver badges"><span class="badge2"></span><span class="badgecount">544</span></span><span title="579 bronze badges"><span class="badge3"></span><span class="badgecount">579</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-11360880" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-14965732" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">short with nice examples.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1148836/unpaid-oracles" title="391 reputation" class="comment-user owner">Unpaid Oracles</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#comment14965732_11360880"><span title="2012-07-06 11:12:09Z" class="relativetime-clean">Jul 6 '12 at 11:12</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-14967288" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">4</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">An enhancement would be that another advantage is the avoidance of race conditions... eg, just try opening a file and if you get it, you got it. Instead of seeing <i>if you can get it</i>, then trying to get it afterwards and realise that in the miniscule amount of time between the check and access attemp, you can longer get it.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/1252759/jon-clements" title="69,338 reputation" class="comment-user">Jon Clements<span class="mod-flair" title="moderator">♦</span></a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#comment14967288_11360880"><span title="2012-07-06 12:17:05Z" class="relativetime-clean">Jul 6 '12 at 12:17</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-15152219" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Python also provides for a way of avoiding both of those, if the handler is just assigning a default value to <code>x</code> when the key doesn't exist: <code>x = mydict.get('key')</code> will return <code>None</code> if <code>'key'</code> is not in <code>my_dict</code>; you could also do <code>.get('key', &lt;something&gt;)</code>, and then x will be assigned that something if the key isn't in the dictionary. <code>dict.setdefault()</code> and <code>collections.defaultdict</code> are nice things for avoiding excess code as well.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/138772/jab" title="13,611 reputation" class="comment-user">JAB</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#comment15152219_11360880"><span title="2012-07-13 17:29:38Z" class="relativetime-clean">Jul 13 '12 at 17:29</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-11360880" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/11360858/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="11360858">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.com/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: false,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="left: 0px;"><span style="background-position: 0px 0px;"></span></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="left: 25px;"><span style="background-position: -20px 0px;"></span></li><li class="wmd-spacer wmd-spacer1" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="left: 75px;"><span style="background-position: -40px 0px;"></span></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="left: 100px;"><span style="background-position: -60px 0px;"></span></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="left: 125px;"><span style="background-position: -80px 0px;"></span></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="left: 150px;"><span style="background-position: -100px 0px;"></span></li><li class="wmd-button wmd-snippet-button" style="left:175px" id="wmd-snippet-button" title="JavaScript/HTML/CSS snippet Ctrl-M"><span style="background-image: url(&quot;/content/Shared/balsamiq/wmd-mockup-button.png&quot;);"></span></li><li class="wmd-spacer wmd-spacer2" id="wmd-spacer2" style="left: 220px;"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="left: 225px;"><span style="background-position: -120px 0px;"></span></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="left: 250px;"><span style="background-position: -140px 0px;"></span></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="left: 275px;"><span style="background-position: -160px 0px;"></span></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="left: 300px;"><span style="background-position: -180px 0px;"></span></li><li class="wmd-spacer wmd-spacer3" id="wmd-spacer3" style="left: 346px;"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="left: 350px;"><span style="background-position: -200px -20px;"></span></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Y" style="left: 375px;"><span style="background-position: -220px -20px;"></span></li><li class="wmd-button wmd-help-button active-help" id="wmd-help-button" title="Markdown Editing Help" style="right: 0px;"><span style="background-position: -240px 0px;"></span></li><div id="mdhelp" class="mdhelp" style="right: -13px; width: 660px; top: 41px;">
+    <ul id="mdhelp-tabs" class="mdhelp-tabs">
+        <li data-tab="mdhelp-links" data-buttons="link">Links</li>
+        <li data-tab="mdhelp-images" data-buttons="image">Images</li>
+        <li data-tab="mdhelp-styles" data-buttons="bold,italic,heading">Styling/Headers</li>
+        <li data-tab="mdhelp-lists" data-buttons="olist,ulist">Lists</li>
+        <li data-tab="mdhelp-blockquotes" data-buttons="quote">Blockquotes</li>
+        <li data-tab="mdhelp-code" data-buttons="code">Code</li>
+        <li data-tab="mdhelp-html"> HTML </li>
+        <li style="float:right"><a href="http://stackoverflow.com/editing-help" target="_blank">advanced help »</a></li>
+    </ul>
+    
+    <div class="mdhelp-tab" id="mdhelp-links">
+            <p>
+                In most cases, a plain URL will be recognized as such and automatically linked:
+            </p>
+            <pre>Visit http://area51.stackexchange.com/ regularly!
+Use angle brackets to force linking: Have you seen &lt;http://superuser.com&gt;?
+</pre>
+            <p>
+                To create fancier links, use Markdown:
+            </p>
+                <pre>Here's [a link](http://www.example.com/)! And a reference-style link to [a panda][1].
+References don't have to be [numbers][question].
+
+ [1]: http://notfound.stackexchange.com/
+ [question]: http://english.stackexchange.com/questions/11481
+</pre>
+                <p>You can add tooltips to links:</p>
+<pre>Click [here](http://diy.stackexchange.com<span class="spaces">&nbsp;</span>"this text appears when you mouse over")!
+This works with [reference links][blog] as well.
+
+ [blog]: http://blog.stackoverflow.com/<span class="spaces">&nbsp;</span>"click here for updates"
+</pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-images">
+        <p>Images are exactly like links, but they have an exclamation point in front of them:</p>
+        <pre>![a busy cat](http://sstatic.net/Sites/stackoverflow/img/error-lolcat-problemz.jpg)
+![two muppets][1]
+
+ [1]: http://i.imgur.com/I5DFV.jpg "tooltip"
+</pre>
+        <p>
+            The word in square brackets is the alt text, which gets displayed if the browser
+ can't show the image. Be sure to include meaningful alt text for screen-reading
+ software.
+        </p>
+   
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-styles">
+        <div class="col1">
+            <p>Be sure to use text styling sparingly; only where it helps readability.</p>
+                <pre>*This is italicized*, and so
+is _this_.
+
+**This is bold**, just like __this__.
+
+You can ***combine*** them
+if you ___really have to___.
+</pre>
+        
+        </div>
+        <div class="col2">
+            <p>
+                To break your text into sections, you can use headers:
+            </p>
+                <pre>A Large Header
+==============
+
+Smaller Subheader
+-----------------
+</pre>
+            <p>
+                Use hash marks if you need several levels of headers:</p>
+    <pre># Header 1 #
+## Header 2 ##
+### Header 3 ###
+</pre>
+
+            
+        </div>
+
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-lists">
+        <p>Both bulleted and numbered lists are possible:</p>
+        <div class="col1">
+<pre>-<span class="spaces">&nbsp;</span>Use a minus sign for a bullet
++<span class="spaces">&nbsp;</span>Or plus sign
+*<span class="spaces">&nbsp;</span>Or an asterisk
+
+1.<span class="spaces">&nbsp;</span>Numbered lists are easy
+2.<span class="spaces">&nbsp;</span>Markdown keeps track of
+ the numbers for you
+7.<span class="spaces">&nbsp;</span>So this will be item 3.
+</pre>
+        </div>
+        <div class="col2">
+<pre>1.<span class="spaces">&nbsp;</span>Lists in a list item:
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Indented four spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*<span class="spaces">&nbsp;</span>indented eight spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Four spaces again.
+2.<span class="spaces">&nbsp;&nbsp;</span>You can have multiple
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>paragraphs in a list items.
+<span class="spaces">&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Just be sure to indent.
+</pre>        
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-blockquotes">
+        <div class="col1">
+            <pre>&gt; Create a blockquote by
+&gt; prepending “&gt;” to each line.
+&gt;
+&gt; Other formatting also works here, e.g.
+&gt;
+&gt; 1. Lists or
+&gt; 2. Headings:
+&gt;
+&gt; ## Quoted Heading ##
+</pre>
+        </div>
+        <div class="col2">
+                <p>
+                    You can even put blockquotes in blockquotes:
+                </p>
+                <pre>&gt; A standard blockquote is indented
+&gt; &gt; A nested blockquote is indented more
+&gt; &gt; &gt; &gt; You can nest to any depth.
+</pre>
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-code">
+        <p>
+            To create code blocks or other preformatted text, indent by four spaces:
+        </p>
+        <pre><span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>This will be displayed in a monospaced font. The first four spaces
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>will be stripped off, but all other whitespace will be preserved.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Markdown and HTML are turned off in code blocks:
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;i&gt;This is not italic&lt;/i&gt;, and [this is not a link](http://example.com)
+</pre>
+        <p>
+            To create not a block, but an inline code span, use backticks:
+        </p>
+        <pre>The `$` character is just a shortcut for `window.jQuery`.
+</pre>
+        <p>
+            If you want to have a preformatted block within a list, indent by eight spaces:
+        </p>
+        <pre>1. This is normal text.
+2. So is this, but now follows a code block:
+<span class="spaces">&nbsp;</span>
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Skip a line and indent eight spaces.
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>That's four spaces for the list
+<span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>and four to trigger the code block.
+</pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-html">
+        <p>
+            If you need to do something that Markdown can't handle, use HTML. Note that <a href="http://meta.stackexchange.com/questions/1777/what-html-tags-are-allowed" target="_blank">we only support a very strict subset of HTML!</a>
+        </p>
+        <pre>Strikethrough humor is &lt;strike&gt;funny&lt;/strike&gt;.
+</pre>
+        <p>
+            Markdown is smart enough not to mangle your span-level HTML:
+        </p>
+        <pre>&lt;b&gt;Markdown works *fine* in here.&lt;/b&gt;
+</pre>
+        <p>
+            Block-level HTML elements have a few restrictions:
+        </p>
+        <ol>
+            <li>They must be separated from surrounding text by blank lines.</li>
+            <li>The begin and end tags of the outermost block element must not be indented.</li>
+            <li>Markdown can't be used within HTML blocks.</li>
+        </ol>
+        <br>
+        <pre>&lt;pre&gt;
+ You can &lt;em&gt;not&lt;/em&gt; use Markdown in here.
+&lt;/pre&gt;
+</pre>
+    </div>
+
+    <div class="cbt"></div>
+</div></ul></div>
+            <div style="clear: both; height: 28px;"></div><textarea id="wmd-input" class="wmd-input processed" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        <div class="grippie" style="margin-right: 0px;"></div></div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="8c7e4cd0f7077e632e0913ceb0f37a59">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" class="btn-clear discard-answer dno">discard</a>
+								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/python" class="post-tag" title="show questions tagged &#39;python&#39;" rel="tag">python</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+
+
+
+<script>
+    window.showNewUser = false;
+
+</script>
+
+<div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+    <h4>Hello World!</h4>
+    <div>
+        <p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free.</p><p>Got a question about the site itself? <a href="http://meta.stackoverflow.com/">meta</a> is the place to talk about things like what questions are appropriate, what tags we should use, etc.</p>
+        <p class="ar">
+                <a href="http://stackoverflow.com/tour?mnu=1">about »</a>&nbsp;&nbsp;&nbsp;
+            <a href="http://stackoverflow.com/help?mnu=1">help »</a>
+                &nbsp; <a href="http://meta.stackoverflow.com/">meta »</a>
+        </p>
+    </div>
+</div>
+    <script>
+    if (showNewUser) {
+        document.getElementById('newuser-box').style.display = '';
+    }
+    </script>						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2012-07-06 10:55:04Z"><b>4 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>5856 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python?lastactivity" class="lastactivity-link" title="2012-07-06 11:04:12Z">4 years ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Hot Meta Posts
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">20</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/328204/should-we-edit-signatures-out-of-answers-on-sponsored-tags?cb=1" class="question-hyperlink">Should we edit signatures out of answers on sponsored tags?</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">25</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/328135/how-best-to-encourage-the-op-to-add-missing-information-to-the-question?cb=1" class="question-hyperlink">How best to encourage the OP to add missing information to the question</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">23</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/328270/burninate-heisenbug?cb=1" class="question-hyperlink">Burninate [heisenbug]</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">21</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/328183/how-can-i-access-documentation?cb=1" class="question-hyperlink">How can I access Documentation?</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk894223971",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk894223971"><div id="careersadsdoublehigh" style="display:none;"></div><img height="0px" width="0px" border="0" style="position: absolute; display: none !important;" src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE0LCJhdCI6NSwiYnQiOjAsImNtIjo5MjEsImNoIjoxMTc4LCJjayI6e30sImNyIjoyNjg4LCJkaSI6IjlmMTFjNzZmMTZmNDQ4OGVhMDM0M2Y4NGY2NTAxNTU5IiwiZG0iOjEsImZjIjoyNDg1LCJmbCI6MjY2MywiaXAiOiI4NS4xOTguOC4xMzUiLCJrdyI6InB5dGhvbix4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6NjE3MzcsInJ0IjoxLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vIiwic3QiOjgyNzcsInVrIjoidWUxLTQwMzM2NWRhYzRjMzQ0MzFiZDJlZjdiZmM5MWJjNDAzIiwiem4iOjQ1LCJ0cyI6MTQ2OTA0NzQ2MDQ3NywiYmYiOnRydWUsInBuIjoiYWR6ZXJrODk0MjIzOTcxIiwiZnEiOjB9&amp;s=zqim03cvSOIXerKAqIISCsaH9Wo"></div>
+            <div id="hireme"></div>
+        <script>
+;"use strict";(function(n){var r=["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com"],t,i;(r[0]==="*"||r.indexOf(location.hostname)!==-1)&&(t=window,t.clc_opts=n,n.autoload&&(t.clc_init=t.clc_init||[],t.clc_init.push(function(){return t.clc.load()})),i=document.createElement("script"),i.async=!0,i.src=n.lib,document.body.appendChild(i))}).call(null, {"az":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com"],"h":"clc.stackoverflow.com","u":"//clc.stackoverflow.com/p.js","lib":"//cdn.sstatic.net/clc/clc.min.js?v=25713ebe3e2c"});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/510357?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted large">143</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/510357/python-read-a-single-character-from-the-user?noredirect=1&amp;lq=1" class="question-hyperlink">Python read a single character from the user</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/11786157?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">33</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/11786157/if-list-index-exists-do-x?noredirect=1&amp;lq=1" class="question-hyperlink">If list index exists, do X</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/11660605?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">8</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/11660605/python-overwriting-folder-if-it-already-exists?noredirect=1&amp;lq=1" class="question-hyperlink">Python - Overwriting Folder If It Already Exists</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/31719068?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">19</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/31719068/how-to-handle-an-exhausted-iterator?noredirect=1&amp;lq=1" class="question-hyperlink">How to handle an exhausted iterator?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/16124850?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">3</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/16124850/python-django-check-if-an-attribute-exists-or-has-been-set?noredirect=1&amp;lq=1" class="question-hyperlink">Python Django check if an attribute exists or has been set</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/22391034?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/22391034/check-if-a-filename-is-valid?noredirect=1&amp;lq=1" class="question-hyperlink">Check if a filename is valid</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/22128399?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/22128399/python-try-except-vs-if-else-to-check-dict-keys?noredirect=1&amp;lq=1" class="question-hyperlink">Python: try-except vs if-else to check dict keys</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/25916842?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">2</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/25916842/why-does-python-throw-an-error-when-a-substring-is-not-found?noredirect=1&amp;lq=1" class="question-hyperlink">Why does Python throw an error when a substring is not found?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/30327423?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/30327423/python-pil-attributeerror-nonetype-object-has-no-attribute-save?noredirect=1&amp;lq=1" class="question-hyperlink">Python PIL - AttributeError: 'NoneType' object has no attribute 'save'</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/24579256?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/24579256/counting-number-of-model-instances?noredirect=1&amp;lq=1" class="question-hyperlink">Counting number of model instances</a>
+</div>					<div class="spacer more">
+				<a href="http://stackoverflow.com/questions/linked/11360858?lq=1">see more linked questions…</a>
+			</div>
+	</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/3061?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">702</div></a><a href="http://stackoverflow.com/questions/3061/calling-a-function-of-a-module-from-a-string-with-the-functions-name-in-python?rq=1" class="question-hyperlink">Calling a function of a module from a string with the function's name in Python</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/81584?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes extra-large">1032</div></a><a href="http://stackoverflow.com/questions/81584/what-ide-to-use-for-python?rq=1" class="question-hyperlink">What IDE to use for Python?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/82831?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes extra-large">2526</div></a><a href="http://stackoverflow.com/questions/82831/how-to-check-whether-a-file-exists-using-python?rq=1" class="question-hyperlink">How to check whether a file exists using Python?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/89228?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">2167</div></a><a href="http://stackoverflow.com/questions/89228/calling-an-external-command-in-python?rq=1" class="question-hyperlink">Calling an external command in Python</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/100003?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">3028</div></a><a href="http://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python?rq=1" class="question-hyperlink">What is a metaclass in Python?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/101268?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes extra-large">1422</div></a><a href="http://stackoverflow.com/questions/101268/hidden-features-of-python?rq=1" class="question-hyperlink">Hidden features of Python</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/231767?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">5124</div></a><a href="http://stackoverflow.com/questions/231767/what-does-the-yield-keyword-do-in-python?rq=1" class="question-hyperlink">What does the yield keyword do in Python?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/394809?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">2447</div></a><a href="http://stackoverflow.com/questions/394809/does-python-have-a-ternary-conditional-operator?rq=1" class="question-hyperlink">Does Python have a ternary conditional operator?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/1132941?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">1421</div></a><a href="http://stackoverflow.com/questions/1132941/least-astonishment-in-python-the-mutable-default-argument?rq=1" class="question-hyperlink">“Least Astonishment” in Python: The Mutable Default Argument</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/1436703?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted extra-large">1264</div></a><a href="http://stackoverflow.com/questions/1436703/difference-between-str-and-repr-in-python?rq=1" class="question-hyperlink">Difference between __str__ and __repr__ in Python</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-photo" title="Photography Stack Exchange"></div><a href="http://photo.stackexchange.com/questions/80291/took-my-first-ever-4k-picture-why-is-it-so-disappointing" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:61 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Took my first ever 4k picture; Why is it so disappointing?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/297180/shell-script-if-multiple-conditions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Shell script: if multiple conditions
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/94709/how-to-remove-rivets" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to remove rivets?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/47914/currency-that-can-stand-extreme-temperatures" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Currency that can stand extreme temperatures
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/47803/fantasy-medieval-setting-materials-to-build-when-wood-and-stone-arent-an-opti" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Fantasy/Medieval setting - materials to build when wood and stone aren't an option?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/338299/is-there-any-equivalent-for-this-persian-expression-something-is-like-an-unopen" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there any equivalent for this Persian expression "something is like an unopened watermelon"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/47904/why-should-humans-risk-a-robot-apocalypse-to-modify-asimovs-laws" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why should humans risk a robot apocalypse to modify Asimov's laws?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-politics" title="Politics Stack Exchange"></div><a href="http://politics.stackexchange.com/questions/11773/does-nato-membership-require-democracy" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:475 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does NATO membership require democracy?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/85994/count-of-as-and-bs-must-be-equal-did-you-get-it-computer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Count of "a"s and "b"s must be equal. Did you get it , computer?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/1103053/buy-old-windows-version-now-and-still-get-the-upgrade-for-free" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Buy old Windows version now and still get the upgrade for free?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/84414/how-do-i-handle-a-player-asking-insistently-about-game-secrets-between-sessions" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do I handle a player asking insistently about game secrets between sessions?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/47950/is-multigenerational-memory-feasible" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is multigenerational memory feasible
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/47748/can-plants-survive-without-animals" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can plants survive without animals?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/37902/a-5-letter-english-word" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A 5 letter English word
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/269077/how-many-photons-are-needed-to-make-a-light-wave" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How many photons are needed to make a light wave?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/73064/is-it-okay-to-modify-the-latex-template-for-article-submission-with-additional-p" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it okay to modify the LaTeX template for article submission with additional packages?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/337212/what-is-a-word-for-making-something-seem-not-as-bad-as-it-actually-is" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is a word for making something seem not as bad as it actually is?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/338209/colons-after-a-single-word-e-g-example" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Colons after a single word (e.g. "Example:")
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/30179/is-there-any-emergency-situation-in-which-jet-engines-would-not-be-shut-down-bef" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is there any emergency situation in which jet engines would not be shut down before passenger evacuation of a transport aircraft?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/800769/how-to-get-text-from-range-of-dates-using-grep-sed-in-large-text-file" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to get text from range of dates using grep/sed in large text file?
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/132291/tls-version-and-http-supported-in-production" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    TLS version and HTTP supported in production
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-salesforce" title="Salesforce Stack Exchange"></div><a href="http://salesforce.stackexchange.com/questions/132325/syntax-error-with-visualforce-expression-evaluation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:459 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Syntax error with Visualforce expression evaluation
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-stats" title="Cross Validated"></div><a href="http://stats.stackexchange.com/questions/224714/sampling-from-an-inverse-gamma-distribution" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:65 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Sampling from an Inverse Gamma distribution
+                </a>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="http://codegolf.stackexchange.com/questions/85746/polar-bear-polar-bear-what-do-you-hear" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Polar Bear, Polar Bear, what do you hear?
+                </a>
+
+            </li>
+    </ul>
+
+        <a href="http://stackoverflow.com/questions/11360858/what-is-the-eafp-principle-in-python#" class="show-more js-show-more js-gps-track" data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/11360858" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/11360858/ivc/8f75');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/11360858/ivc/8f75" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">lang-py</div></div>
+
+    <script>
+        $('#wmd-input').one("keypress", function() {
+            $.ajax({
+                url: '/accounts/email-settings-form',
+                cache: false,
+                success: function(data) {
+                    $('#submit-button').parent().prepend(data);
+                }
+            });
+        });
+
+    </script>
+
+        </div>
+    </div><script async="" src="./What is the LBYL look before you leap vs Easy to Ask for forgiveness than permission EAFP principle in Python_ - Stack Overflow_files/clc.min.js"></script>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.7.20.3790
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+                ados_setKeywords('python,x-user-registered');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            
+            ga('create', 'UA-5620270-1', {'userId': '3693636' });
+            ga('set', 'dimension1', '3693636');             ga('set', 'dimension2', '|python|');             ga('send', 'pageview');
+        
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<img src="http://clc.stackoverflow.com/to.gif" style="display: none !important;"></body></html>

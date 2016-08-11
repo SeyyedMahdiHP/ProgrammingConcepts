@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://book.pythontips.com/en/latest/map_filter.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Map, Filter and Reduce — Python Tips 0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+
+  
+    <link rel="stylesheet" href="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/sphinx_rtd_theme.css" type="text/css">
+  
+
+  
+    <link rel="top" title="Python Tips 0.1 documentation" href="http://book.pythontips.com/en/latest/index.html">
+        <link rel="next" title="5. set Data Structure" href="http://book.pythontips.com/en/latest/set_-_data_structure.html">
+        <link rel="prev" title="3. Generators" href="http://book.pythontips.com/en/latest/generators.html"> 
+
+  
+  <script type="text/javascript" async="" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/ga.js"></script><script src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/modernizr.min.js"></script>
+
+
+<!-- RTD Extra Head -->
+
+<!-- 
+Always link to the latest version, as canonical.
+http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://book.pythontips.com/en/latest/map_filter.html">
+
+<link rel="stylesheet" href="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/readthedocs-doc-embed.css" type="text/css">
+
+<script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/readthedocs-data.js"></script>
+
+<!-- Add page-specific data, which must exist in the page js, not global -->
+<script type="text/javascript">
+READTHEDOCS_DATA['page'] = 'map_filter'
+</script>
+
+<script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/readthedocs-dynamic-include.js"></script>
+
+<!-- end RTD <extrahead> --></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="http://book.pythontips.com/en/latest/index.html" class="icon icon-home"> Python Tips
+          
+
+          
+          </a>
+
+          
+            
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://book.pythontips.com/en/latest/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/args_and_kwargs.html">1. *args and **kwargs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/debugging.html">2. Debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/generators.html">3. Generators</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://book.pythontips.com/en/latest/map_filter.html"><span class="toctree-expand"></span>4. Map, Filter and Reduce</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/map_filter.html#map">4.1. Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/map_filter.html#filter">4.2. Filter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://book.pythontips.com/en/latest/map_filter.html#reduce">4.3. Reduce</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/set_-_data_structure.html">5. <code class="docutils literal"><span class="pre">set</span></code> Data Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/ternary_operators.html">6. Ternary Operators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/decorators.html">7. Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/global_&amp;_return.html">8. Global &amp; Return</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/mutation.html">9. Mutation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/__slots__magic.html">10. __slots__ Magic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/virtual_environment.html">11. Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/collections.html">12. Collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/enumerate.html">13. Enumerate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/object_introspection.html">14. Object introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/comprehensions.html">15. Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/exceptions.html">16. Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/lambdas.html">17. Lambdas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/one_liners.html">18. One-Liners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/for_-_else.html">19. For - Else</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/python_c_extension.html">20. Python C extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/open_function.html">21. <code class="docutils literal"><span class="pre">open</span></code> Function</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/targeting_python_2_3.html">22. Targeting Python 2+3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/coroutines.html">23. Coroutines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/function_caching.html">24. Function caching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://book.pythontips.com/en/latest/context_managers.html">25. Context managers</a></li>
+</ul>
+
+            
+          
+        </div>
+      <div class="wy-menu rst-pro"><div class="rst-pro-about"><a href="http://docs.readthedocs.org/en/latest/sponsors.html#sponsorship-information"><i class="fa fa-info-circle"></i></a></div><a class="rst-pro-image-wrapper" href="http://readthedocs.org/sustainability/click/13/bPFjLpEnz3Kj/" target="_blank"><img class="rst-pro-image" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/saved_resource"></a><span><a class="rst-pro-link" href="http://readthedocs.org/sustainability/click/13/bPFjLpEnz3Kj/" target="_blank">Rackspace</a> sponsors hosting of Read the Docs. Thanks so much for supporting the community!</span></div><div class="rst-pro-wrapper"></div></div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://book.pythontips.com/en/latest/index.html">Python Tips</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://book.pythontips.com/en/latest/index.html">Docs</a> »</li>
+      
+    <li>4. Map, Filter and Reduce</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/yasoob/intermediatePython/blob/master/map_filter.rst" class="fa fa-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="map-filter-and-reduce">
+<h1>4. Map, Filter and Reduce<a class="headerlink" href="http://book.pythontips.com/en/latest/map_filter.html#map-filter-and-reduce" title="Permalink to this headline">¶</a></h1>
+<p>These are three functions which facilitate a functional approach to
+programming. We will discuss them one by one and understand their use
+cases.</p>
+<div class="section" id="map">
+<h2>4.1. Map<a class="headerlink" href="http://book.pythontips.com/en/latest/map_filter.html#map" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Map</span></code> applies a function to all the items in an input_list. Here is
+the blueprint:</p>
+<p><strong>Blueprint</strong></p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="nb">map</span><span class="p">(</span><span class="n">function_to_apply</span><span class="p">,</span> <span class="n">list_of_inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Most of the times we want to pass all the list elements to a function
+one-by-one and then collect the output. For instance:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">squared</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">squared</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">Map</span></code> allows us to implement this in a much simpler and nicer way.
+Here you go:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">squared</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">items</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Most of the times we use lambdas with <code class="docutils literal"><span class="pre">map</span></code> so I did the same. Instead
+of a list of inputs we can even have a list of functions!</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">funcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">multiply</span><span class="p">,</span> <span class="n">add</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">funcs</span><span class="p">))</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="c1"># Output:</span>
+<span class="c1"># [0, 0]</span>
+<span class="c1"># [1, 2]</span>
+<span class="c1"># [4, 4]</span>
+<span class="c1"># [9, 6]</span>
+<span class="c1"># [16, 8]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter">
+<h2>4.2. Filter<a class="headerlink" href="http://book.pythontips.com/en/latest/map_filter.html#filter" title="Permalink to this headline">¶</a></h2>
+<p>As the name suggests, <code class="docutils literal"><span class="pre">filter</span></code> creates a list of elements for which a
+function returns true. Here is a short and concise example:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="n">number_list</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">less_than_zero</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">number_list</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="n">less_than_zero</span><span class="p">)</span>
+
+<span class="c1"># Output: [-5, -4, -3, -2, -1]</span>
+</pre></div>
+</div>
+<p>The filter resembles a for loop but it is a builtin function and faster.</p>
+<p><strong>Note:</strong> If map &amp; filter do not appear beautiful to you then you can
+read about <code class="docutils literal"><span class="pre">list/dict/tuple</span></code> comprehensions.</p>
+</div>
+<div class="section" id="reduce">
+<h2>4.3. Reduce<a class="headerlink" href="http://book.pythontips.com/en/latest/map_filter.html#reduce" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">Reduce</span></code> is a really useful function for performing some computation on
+a list and returning the result. For example, if you wanted to compute
+the product of a list of integers.</p>
+<p>So the normal way you might go about doing this task in python is using
+a basic for loop:</p>
+<p>Now let’s try it with reduce:</p>
+<div class="code python highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+<span class="n">product</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># Output: 24</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://book.pythontips.com/en/latest/set_-_data_structure.html" class="btn btn-neutral float-right" title="5. set Data Structure" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://book.pythontips.com/en/latest/generators.html" class="btn btn-neutral" title="3. Generators" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2015, Muhammad Yasoob Ullah Khalid.
+      
+        <span class="commit">
+          Revision <code>00d74159</code>.
+        </span>
+      
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+      
+      
+      <dl>
+        <dt>Versions</dt>
+        
+         <strong> 
+        <dd><a href="http://book.pythontips.com/en/latest/map_filter.html">latest</a></dd>
+         </strong> 
+        
+      </dl>
+      
+      
+
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/pdf/latest/">PDF</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/htmlzip/latest/">HTML</a></dd>
+        
+        <dd><a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/epub/latest/">Epub</a></dd>
+        
+      </dl>
+      
+      
+
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/">Project Home</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/builds/">Builds</a>
+        </dd>
+        <dd>
+          <a href="http://readthedocs.org/projects/intermediatepythongithubio/downloads/">Downloads</a>
+        </dd>
+      </dl>
+      
+
+      
+
+      
+      <dl>
+        <dt>On GitHub</dt>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/blob/master/map_filter.rst">View</a>
+        </dd>
+        <dd>
+          <a href="https://github.com/yasoob/intermediatePython/edit/master/map_filter.rst">Edit</a>
+        </dd>
+      </dl>
+      
+      
+
+      
+      <dl>
+        <dt>Search</dt>
+        <dd>
+          <div style="padding: 6px;">
+            <form id="flyout-search-form" class="wy-form" target="_blank" action="https://readthedocs.org/projects/intermediatepythongithubio/search/" method="get">
+              <input type="text" name="q" placeholder="Search docs">
+              </form>
+          </div>
+        </dd>
+      </dl>
+      
+
+
+
+      <hr>
+      
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+      
+
+      
+
+</div>
+</div>
+  </div>
+
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/jquery-migrate-1.2.1.min.js"></script>
+      <script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/underscore.js"></script>
+      <script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/doctools.js"></script>
+      <script type="text/javascript" src="./4. Map, Filter and Reduce — Python Tips 0.1 documentation_files/readthedocs-doc-embed.js"></script>
+
+  
+
+  
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+
+</body></html>
