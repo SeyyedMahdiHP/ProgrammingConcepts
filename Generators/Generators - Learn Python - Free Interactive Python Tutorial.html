@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://www.learnpython.org/en/Generators -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Generators - Learn Python - Free Interactive Python Tutorial</title>
+    
+    <meta name="description" content="LearnPython.org is a free interactive Python tutorial for people who want to learn Python, fast.">
+    <meta name="keywords" content="Learn,Python,Tutorial,Interactive,Free">
+    <meta name="google-site-verification" content="cXWj61RCtO3fVP24Y7CO-nX0ba30tgdJYY8GGBactLI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Generators - Learn Python - Free Interactive Python Tutorial">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://learnpython.org/">
+    <meta property="og:image" content="http://learnpython.org/static/img/logos/learnpython.png">
+
+    <link rel="stylesheet" href="./Generators - Learn Python - Free Interactive Python Tutorial_files/codemirror.css">
+    <link rel="stylesheet" href="./Generators - Learn Python - Free Interactive Python Tutorial_files/monokai.css">
+    <link rel="stylesheet" type="text/css" href="./Generators - Learn Python - Free Interactive Python Tutorial_files/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./Generators - Learn Python - Free Interactive Python Tutorial_files/bootstrap-responsive.css">
+    <link rel="stylesheet" type="text/css" href="./Generators - Learn Python - Free Interactive Python Tutorial_files/learnpython.css">
+    <script type="text/javascript" async="" src="./Generators - Learn Python - Free Interactive Python Tutorial_files/ga.js"></script><script src="http://embed.insticator.com/advertisements/getheadertagforsite?id=361f53d9-0236-472e-8223-ac276882d55b&amp;cbt=1470917400000" async=""></script><script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/jquery.min.js"></script>
+
+    <!-- Insticator -->
+    <script type="text/javascript">(function(a,c){"Insticator"in a||(a.Insticator={ad:{},helper:{},client:{sid:"361f53d9-0236-472e-8223-ac276882d55b"},version:"1.0"},a.Insticator.ad.loadAd=function(b){a.Insticator.ad.q.push(b)},a.Insticator.ad.q=[]);var b=c.createElement("script"),cof=1000*60*10,cbt=new Date(Math.floor(new Date().getTime()/cof)*cof).getTime();b.src="//embed.insticator.com/advertisements/getheadertagforsite?id="+a.Insticator.client.sid+"&cbt="+cbt;b.async=!0;var d=c.getElementsByTagName("script")[0];d.parentNode.insertBefore(b,d)})(window,document);</script>
+    <!-- // Insticator -->
+
+</head>
+<body>
+
+<div class="navbar navbar-static-top" style="margin-bottom: 10px">
+    <div class="navbar-inner">
+        <div class="container">
+        <a class="brand" href="http://www.learnpython.org/" style="padding: 4px 10px"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/learnpython.png" style="height: 32px;"></a>
+        <div class="social hidden-phone" style="margin-top: 10px; display: inline-block; float: left">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style " style="width: 400px; margin-left: 20px">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                    <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+
+                <script type="text/javascript">
+                    var addthis_config = {"data_track_clickback":true};
+                    var addthis_share = {"url": "http://learnpython.org" };
+                </script>
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4dafdfe6039782b1"></script>
+                <!-- AddThis Button END -->
+
+                <!--
+                <div style="float: right; padding-left: 10px">
+                    <a class="FlattrButton" style="display:none;" rev="flattr;button:compact;" href="http://learnpython.org"></a>
+                </div>
+                -->
+        </div>
+
+        <ul class="nav pull-right">
+            <li><a href="http://www.learnpython.org/about">About</a></li>
+            <!--
+            <li><a href="/en/progress">Progress</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                    <div id="status" style="color: red"></div>
+                    <form method="post" accept-charset="UTF-8">
+                        <input style="margin-bottom: 15px;" type="email" placeholder="E-mail" id="email" name="email">
+                        <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
+                        <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
+                        <label class="string optional" for="user_remember_me"> Remember me</label>
+                        <button class="btn btn-primary btn-block" id="sign-in">Sign In</button>
+                        <label style="text-align:center;margin-top:5px">or</label>
+                        <input style="margin-bottom: 15px;" type="password" placeholder="Confirm Password" id="confirm" name="confirm">
+                        <button class="btn btn-primary btn-block" id="sign-up">Sign Up</button>
+                    </form>
+                </div>
+            </li>
+            -->
+        </ul>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span8">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="http://www.learnpython.org/">Python</a></li>
+                <li><a href="http://www.learnjavaonline.org/">Java</a></li>
+                <li><a href="http://www.learn-c.org/">C</a></li>
+            <!--
+                <li ><a href="http://www.learn-cpp.org">C++</a></li>
+            -->
+                <li><a href="http://www.learn-js.org/">JavaScript</a></li>
+                <li><a href="http://www.learn-php.org/">PHP</a></li>
+                <li><a href="http://www.learnshell.org/">Shell</a></li>
+                <li><a href="http://www.learncs.org/">C#</a></li>
+            <!--
+                <li ><a href="http://www.learn-perl.org">Perl <small>(new!)</small></a></li>
+                <li ><a href="http://www.learnrubyonline.org">Ruby <small>(new!)</small></a></li>
+            -->
+                <li><a href="http://www.learnpython.org/recruit-coders-jobs">Jobs</a></li>
+            </ul>
+
+        </div>
+        <div class="span4">
+            <ul class="nav nav-pills pull-right">
+            
+                <li class="active"><a href="http://www.learnpython.org/en/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/en.png"></a></li>
+            
+                <li><a href="http://www.learnpython.org/es/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/es.png"></a></li>
+            
+                <li><a href="http://www.learnpython.org/fa/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/fa.png"></a></li>
+            
+                <li><a href="http://www.learnpython.org/it/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/it.png"></a></li>
+            
+                <li><a href="http://www.learnpython.org/pl/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/pl.png"></a></li>
+            
+                <li><a href="http://www.learnpython.org/pt/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/pt.png"></a></li>
+            
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="container" id="main">
+    <div class="row">
+
+        <div class="span10" style="padding-right: 10px; box-sizing: border-box;">
+
+            <div>
+                <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-3723950136133694";
+                    /* Learn Python Bottom */
+                    google_ad_slot = "7782329453";
+                    google_ad_width = 728;
+                    google_ad_height = 90;
+                    //-->
+                </script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            </div>
+
+            
+            <ul class="breadcrumb" style="margin-top: 10px">
+              
+              <li><a href="http://www.learnpython.org/en/Welcome">Welcome</a> <span class="divider">/</span></li>
+              
+              <li class="active">Generators</li>
+            </ul>
+            
+
+            <div class="clearfix" style="margin-top: 10px; margin-bottom: 10px;">
+                
+                <a class="btn pull-left" href="http://www.learnpython.org/en/Modules_and_Packages"> <i class="icon-chevron-left"></i> Previous Tutorial</a>
+                
+                
+                <a class="btn pull-right" href="http://www.learnpython.org/en/List_Comprehensions">Next Tutorial <i class="icon-chevron-right"></i></a>
+                
+            </div>
+
+            <span id="inner-text">
+                
+                <h1>Generators</h1>
+                
+                <p>Generators are very easy to implement, but a bit difficult to understand.</p>
+<p>Generators are used to create iterators, but with a different approach. Generators are simple functions which return an iterable set of items, one at a time, in a special way.</p>
+<p>When an iteration over a set of item starts using the for statement, the generator is run. Once the generator's function code reaches a "yield" statement, the generator yields its execution back to the for loop, returning a new value from the set. The generator function can generate as many values (possibly infinite) as it wants, yielding each one in its turn.</p>
+<p>Here is a simple example of a generator function which returns 7 random integers:</p>
+<pre><code>import random
+
+def lottery():
+    # returns 6 numbers between 1 and 40
+    for i in xrange(6):
+        yield random.randint(1, 40)
+
+    # returns a 7th number between 1 and 15
+    yield random.randint(1,15)
+
+for random_number in lottery():
+    print "And the next number is... %d!" % random_number
+</code></pre><a class="btn btn-small btn-success" style="margin-bottom: 10px;">Execute Code</a>
+<p>This function decides how to generate the random numbers on its own, and executes the yield statements one at a time, pausing in between to yield execution back to the main for loop.</p>
+<h2>Exercise</h2>
+<p>Write a generator function which returns the Fibonacci series. They are calculated using the following formula: The first two numbers of the series is always equal to 1, and each consecutive number returned is the sum of the last two numbers.
+Hint: Can you use only two variables in the generator function? Remember that assignments can be done simultaneously. The code</p>
+<pre><code>a = 1
+b = 2
+a, b = b, a
+</code></pre><a class="btn btn-small btn-success" style="margin-bottom: 10px;">Execute Code</a>
+<p>will simultaneously switch the values of a and b.</p>
+            </span>
+            
+            <button id="start-exercise" class="btn btn-success" onclick="toggleMinimize(true)"><div class="icon-play icon-white" style="padding-right: 10px"></div> Start Exercise</button><br><br><a href="http://www.spoj.com/?utm_campaign=permanent&amp;utm_medium=banner&amp;utm_source=learnx" target="_blank"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/spoj-banner1.png"></a>
+            <script>
+                $(function(){
+                    toggleMinimize();
+                })
+            </script>
+            
+            <hr>
+            <div class="clearfix" style="margin-top: 10px; margin-bottom: 10px;">
+                
+                <a class="btn btn-primary pull-left" href="http://www.learnpython.org/en/Modules_and_Packages"><i class="icon-chevron-left icon-white"></i> Previous Tutorial</a>
+                
+                
+                <a class="btn btn-primary pull-right" href="http://www.learnpython.org/en/List_Comprehensions">Next Tutorial  <i class="icon-chevron-right icon-white"></i></a>
+                
+            </div>
+
+            <div class="hidden-phone">
+
+            <!--
+            <div>
+                <script type="text/javascript">
+                    google_ad_client = "ca-pub-3723950136133694";
+                    /* Learn Python Top Links */
+                    google_ad_slot = "7304541053";
+                    google_ad_width = 728;
+                    google_ad_height = 15;
+                </script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            </div>
+            -->
+
+            <div>
+                <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-3723950136133694";
+                    /* Learn Python Bottom */
+                    // google_ad_slot = "7782329453";
+
+                    /* Learn Python Long Bottom */
+                    google_ad_slot = "7062365450";
+                    google_ad_width = 728;
+                    google_ad_height = 90;
+                    //-->
+                </script>
+                <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+            </div>
+
+            <script type="text/javascript" src="./Generators - Learn Python - Free Interactive Python Tutorial_files/banner.js"></script>
+
+            
+
+            </div>
+
+        </div>
+        <div class="span2 hidden-phone" style="margin-left: 0">
+            <div id="google-ad-right">
+                <!--
+                <div style="margin-bottom: 10px">
+                    <a href="http://www.dreamhost.com/r.cgi?1502972"><img alt="DreamHost" src="http://images.dreamhost.com/rewards/300x250-Sunny.png" style="width: 160px; max-width: 160px"/></a>
+                </div>
+                -->
+
+                <div style="margin-bottom: 10px">
+                    <script>
+                        google_ad_client = "ca-pub-3723950136133694";
+                        google_ad_slot = "6624688330";
+                        google_ad_width = 160;
+                        google_ad_height = 600;
+                    </script>
+
+                    <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+                </div>
+
+                <div style="margin-bottom: 10px">
+                    <script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=283190&amp;u=learnpython&amp;width=160&amp;height=600"></script>
+                </div>
+
+                
+                <div style="margin-bottom: 10px; margin-left: 5px;">
+                    <a onclick="recordOutboundLink(this, &#39;Outbound Links&#39;, &#39;PyCharm&#39;);return false;" href="http://www.jetbrains.com/pycharm?utm_source=learnpythonorg&amp;utm_medium=Banner&amp;utm_campaign=PyCharm">
+                        <img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/pycharm.png" style="width: 160px; max-width: 160px">
+                    </a>
+                </div>
+                
+                <div style="margin-left: 5px;">
+                    <a href="https://digitalocean.com/"><img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/digital-ocean.png"></a>
+                </div>
+
+                <!--
+                <div style="margin-bottom: 10px">
+                    <script>
+                        google_ad_client = "ca-pub-3723950136133694";
+                        google_ad_slot = "6624688330";
+                        google_ad_width = 160;
+                        google_ad_height = 600;
+                    </script>
+
+                    <script src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+                </div>
+                -->
+                
+                <!--
+                <div style="margin-bottom: 10px">
+                    <a onClick="recordOutboundLink(this, 'Outbound Links', 'LearnC');return false;" href="http://www.learn-c.org">
+                        <img src="/static/learn-c-banner.png" style="width: 160px"/>
+                    </a>
+                </div>
+                <div style="margin-bottom: 10px">
+                    <a onClick="recordOutboundLink(this, 'Outbound Links', 'LearnJava');return false;" href="http://www.learnjavaonline.org">
+                        <img src="/static/learnjavaonline-banner.png" style="width: 160px"/>
+                    </a>
+                </div>
+                -->
+                
+                <!--
+                <div style="margin-bottom: 10px">
+                    <IFRAME FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=160 HEIGHT=600 SRC="http://ad.tblamnetwork.com/st?ad_type=iframe&ad_size=160x600&section=4633617&pub_url=${PUB_URL}"></IFRAME>
+                </div>
+                -->
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+
+    <div class="row">
+
+	<div class="span6">
+        <h5 style="line-height: 28px">
+            Code Window
+            <span style="float: right;">
+                <button id="run-button" class="btn btn-success" onclick="execute()"><div class="icon-play icon-white" style="padding-right: 10px"></div>Run</button>
+                <button id="reset-button" onclick="reset()" class="btn btn-primary">Reset</button>
+                <button id="solution-button" onclick="showSolution()" class="btn btn-primary">Solution</button>
+            </span>
+        </h5>
+
+
+    </div>
+
+	<div class="span6">
+		<div style="width: 100%; height: 100%">
+            <h5 style="line-height: 28px">
+                Output Window
+                <span style="float: right">
+                    <button id="expected-output-button" class="btn btn-primary" onclick="showExpected()">Expected Output</button>
+                    <button id="minimize-button" class="btn" onclick="toggleMinimize()">Minimize Code Window</button>
+                </span>
+            </h5>
+		</div>
+	</div>
+
+
+    </div> <!-- row -->
+
+    <div class="row" id="footer-toggle" style="display: block;">
+        <div class="span6">
+            <textarea id="code" style="width: 100%; height: 210px; display: none;"># fill in this function
+def fib():
+    pass #this is a null statement which does nothing when executed, useful as a placeholder.
+
+# testing code
+import types
+if type(fib()) == types.GeneratorType:
+    print "Good, The fib function is a generator."
+
+    counter = 0
+    for n in fib():
+        print n
+        counter += 1
+        if counter == 10:
+            break</textarea><div class="CodeMirror cm-s-monokai"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 32px;"><textarea autocorrect="off" autocapitalize="off" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 28px; display: block; right: 17px;"><div style="height: 1px; width: 722px;"></div></div><div class="CodeMirror-vscrollbar" style="display: block; bottom: 17px;"><div style="width: 1px; height: 218px;"></div></div><div class="CodeMirror-scrollbar-filler" style="display: block; width: 17px; height: 17px;"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="min-width: 751.938px; min-height: 218px; margin-left: 28px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span class="cm-comment">#</span><span class="cm-comment"> </span><span class="cm-comment">f</span><span class="cm-comment">i</span><span class="cm-comment">l</span><span class="cm-comment">l</span><span class="cm-comment"> </span><span class="cm-comment">i</span><span class="cm-comment">n</span><span class="cm-comment"> </span><span class="cm-comment">t</span><span class="cm-comment">h</span><span class="cm-comment">i</span><span class="cm-comment">s</span><span class="cm-comment"> </span><span class="cm-comment">f</span><span class="cm-comment">u</span><span class="cm-comment">n</span><span class="cm-comment">c</span><span class="cm-comment">t</span><span class="cm-comment">i</span><span class="cm-comment">o</span><span class="cm-comment">n</span></pre></div><div style="position: relative; z-index: 1; display: none;"></div><div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">1</div></div><pre><span class="cm-comment"># fill in this function</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">2</div></div><pre><span class="cm-keyword">def</span> <span class="cm-variable">fib</span>():</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">3</div></div><pre>    <span class="cm-keyword">pass</span> <span class="cm-comment">#this is a null statement which does nothing when executed, useful as a placeholder.</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">4</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">5</div></div><pre><span class="cm-comment"># testing code</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">6</div></div><pre><span class="cm-keyword">import</span> <span class="cm-variable">types</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">7</div></div><pre><span class="cm-keyword">if</span> <span class="cm-builtin">type</span>(<span class="cm-variable">fib</span>()) <span class="cm-operator">==</span> <span class="cm-variable">types</span>.<span class="cm-variable">GeneratorType</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">8</div></div><pre>    <span class="cm-keyword">print</span> <span class="cm-string">"Good, The fib function is a generator."</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">9</div></div><pre>&nbsp;</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">10</div></div><pre>    <span class="cm-variable">counter</span> = <span class="cm-number">0</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">11</div></div><pre>    <span class="cm-keyword">for</span> <span class="cm-variable">n</span> <span class="cm-operator">in</span> <span class="cm-variable">fib</span>():</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">12</div></div><pre>        <span class="cm-keyword">print</span> <span class="cm-variable">n</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">13</div></div><pre>        <span class="cm-variable">counter</span> += <span class="cm-number">1</span></pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">14</div></div><pre>        <span class="cm-keyword">if</span> <span class="cm-variable">counter</span> <span class="cm-operator">==</span> <span class="cm-number">10</span>:</pre></div><div style="position: relative;"><div style="position: absolute; left: -28px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="width: 20px;">15</div></div><pre>            <span class="cm-keyword">break</span></pre></div></div><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 14px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 218px;">&nbsp;</div><div class="CodeMirror-gutters"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 28px;"></div></div></div></div></div>
+        </div>
+        <div class="span6">
+            <!--<div id="canvas_container" style="display: none; border: 1px solid #eed; width: 475px; height: 210px"></div>-->
+            <div id="loading" style="display: block;">
+                Executing, please wait...
+            </div>
+            <textarea id="output" style="width: 475px; height: 210px; display: none;"></textarea><div class="CodeMirror cm-s-monokai"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 4px; left: 4px;"><textarea autocorrect="off" autocapitalize="off" style="position: absolute; padding: 0px; width: 1000px; height: 1em; outline: none;" tabindex="0"></textarea></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 1px;"></div></div><div class="CodeMirror-vscrollbar" style="bottom: 0px;"><div style="width: 1px; height: 1px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div style="position: relative; min-height: 100%;"><div class="CodeMirror-sizer" style="min-width: 244.563px; min-height: 22px; margin-left: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>T</span><span>h</span><span>e</span><span>r</span><span>e</span><span> </span><span>w</span><span>a</span><span>s</span><span> </span><span>a</span><span>n</span><span> </span><span>u</span><span>n</span><span>k</span><span>n</span><span>o</span><span>w</span><span>n</span><span> </span><span>e</span><span>r</span><span>r</span><span>o</span><span>r</span><span>!</span></pre></div><div style="position: relative; z-index: 1; display: none;"></div><div><pre>There was an unknown error!</pre></div><div class="CodeMirror-cursor" style="left: 4px; top: 0px; height: 14px;">&nbsp;</div><div class="CodeMirror-cursor CodeMirror-secondarycursor" style="display: none;">&nbsp;</div></div></div></div></div><div style="position: absolute; height: 30px; top: 22px;">&nbsp;</div><div class="CodeMirror-gutters" style="display: none;"></div></div></div></div>
+            <div style="background: rgba(255,255,255,0.1); margin-top: -20px; text-align: right; font-size: 10px; color: white; z-index: inherit; position: relative; line-height: 20px; padding-right: 5px;">
+                Powered by <a target="_blank" href="http://sphere-engine.com/">Sphere Engine ™</a>
+            </div>
+        </div>
+    </div>
+
+    </div> <!-- container -->
+
+    <div class="container">
+
+        <div class="row">
+            <div class="span12">
+                <div class="pull-right" style="padding-top: 3px">
+                    <a href="http://www.dmca.com/Protection/Status.aspx?ID=fd56e7e2-9e1f-43cc-be7c-e1023cb5781c" title="DMCA"> <img src="./Generators - Learn Python - Free Interactive Python Tutorial_files/dmca_protected_sml_120ad.png" alt="DMCA.com"></a>
+                </div>
+
+                <div class="copyright">Copyright © LearnPython.org. Read our <a href="http://www.learnpython.org/tos">Terms of Use</a> and <a href="http://www.learnpython.org/privacy">Privacy Policy</a></div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+<script src="http://s.univide.com/t.js?pid=1&amp;pcid=be5938dca5dfe965aa8d5e3e563d0e2d"></script>
+
+
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/codemirror.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/matchbrackets.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/clike.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/python.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/perl.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/php.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/javascript.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/ruby.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/shell.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/bootstrap.min.js"></script>
+<script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/bootbox.min.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-22741967-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+    $(function() {
+        $("#sign-in").click(function() {
+            var email = $("#email").val();
+            var password = $("#password").val();
+
+            $.ajax({
+                url: "/signin",
+                data: {
+                    email: email,
+                    password: password
+                },
+                success: function(data) {
+                    if (data.status == "success") {
+                        document.location.refresh();
+                    } else {
+                        $("#status").text("E-mail or password combination invalid.")
+                    }
+                }
+            })
+        });
+
+        $("#sign-up").click(function() {
+
+        });
+    });
+</script>
+
+
+
+    
+    <script>
+        var domainData = {"twitter": "@learnpython", "language_uppercase": "Python", "favicon": "favicon-learnpython.ico", "analytics": "UA-22741967-1", "contact_email": "admin@learnpython.org", "default_code": "# Welcome to the Interactive Python Tutorial.\n# Start by choosing a chapter and\n# write your code in this window.\n\nprint \"Hello, World!\"\n    ", "styled_domain": "LearnPython.org", "logo": "/static/img/logos/learnpython.png", "copyright": "Copyright &copy; LearnPython.org.", "sender": "LearnPython.org <admin@learnpython.org>", "language": "python", "namespace": "learnpython.org", "full_url": "http://learnpython.org", "support_email": "support@learnpython.org"};
+        var nextChapter = "/en/List_Comprehensions";
+        var previousChapter = "/en/Modules_and_Packages";
+        var backChapter = "/en/Welcome";
+        var tutorialData = {"code": "# fill in this function\ndef fib():\n    pass #this is a null statement which does nothing when executed, useful as a placeholder.\n\n# testing code\nimport types\nif type(fib()) == types.GeneratorType:\n    print \"Good, The fib function is a generator.\"\n\n    counter = 0\n    for n in fib():\n        print n\n        counter += 1\n        if counter == 10:\n            break", "page_title": "Generators", "links": [], "text": "<p>Generators are very easy to implement, but a bit difficult to understand.</p>\n<p>Generators are used to create iterators, but with a different approach. Generators are simple functions which return an iterable set of items, one at a time, in a special way.</p>\n<p>When an iteration over a set of item starts using the for statement, the generator is run. Once the generator's function code reaches a \"yield\" statement, the generator yields its execution back to the for loop, returning a new value from the set. The generator function can generate as many values (possibly infinite) as it wants, yielding each one in its turn.</p>\n<p>Here is a simple example of a generator function which returns 7 random integers:</p>\n<pre><code>import random\n\ndef lottery():\n    # returns 6 numbers between 1 and 40\n    for i in xrange(6):\n        yield random.randint(1, 40)\n\n    # returns a 7th number between 1 and 15\n    yield random.randint(1,15)\n\nfor random_number in lottery():\n    print \"And the next number is... %d!\" % random_number\n</code></pre>\n<p>This function decides how to generate the random numbers on its own, and executes the yield statements one at a time, pausing in between to yield execution back to the main for loop.</p>\n<h2>Exercise</h2>\n<p>Write a generator function which returns the Fibonacci series. They are calculated using the following formula: The first two numbers of the series is always equal to 1, and each consecutive number returned is the sum of the last two numbers.\nHint: Can you use only two variables in the generator function? Remember that assignments can be done simultaneously. The code</p>\n<pre><code>a = 1\nb = 2\na, b = b, a\n</code></pre>\n<p>will simultaneously switch the values of a and b.</p>", "solution": "# fill in this function\ndef fib():\n    a, b = 1, 1\n    while 1:\n        yield a\n        a, b = b, a + b\n\n# testing code\nimport types\nif type(fib()) == types.GeneratorType:\n    print \"Good, The fib function is a generator.\"\n\n    counter = 0\n    for n in fib():\n        print n\n        counter += 1\n        if counter == 10:\n            break", "is_tutorial": true, "previous_chapter": "Modules_and_Packages", "output": "Good, The fib function is a generator.\n1\n1\n2\n3\n5\n8\n13\n21\n34\n55", "next_chapter": "List_Comprehensions", "back_chapter": "Welcome"};
+    </script>
+    
+    <script src="./Generators - Learn Python - Free Interactive Python Tutorial_files/learnpython.js"></script>
+
+
+
+
+<img src="https://www.google-analytics.com/collect?v=1&amp;tid=UA-10507872-20&amp;cid=7061a7d1-3983-44eb-a6ea-253bea5519d5&amp;uid=&amp;t=pageview&amp;dp=/en/Generators&amp;dh=www.learnpython.org&amp;dt=Generators%20-%20Learn%20Python%20-%20Free%20Interactive%20Python%20Tutorial" style="display: none !important;"></body></html>

@@ -1,0 +1,39 @@
+
+abcdef
+
+exact match :
+	bcd
+pattern match:
+	^b.d     # ^ at the start of the string
+			 # . means the character is not important and can be anything
+
+#regular expression:
+	b.d			#select all b*d structure# note that . means can be anything
+	[a-z]{3}	#select all words with length 3 characters
+	[A-Z]{2,5}	#select all words with length 2 to 5 characters
+	[0-9][3,]	##select all number sequenses with length atleast 3 characters
+	\s 			#select ALL white spaces
+	\w 			#select all letters. \w means [a-zA-Z0-9_]  means 
+	characters,numbers,_  
+	\W 			#select all not in \w like :, , ,.....
+	\d			#select all digits
+	\D 			#select all none digits
+	
+q1:make a pattern for iran mobile number: #for eg 09123456789
+	09[0-9]{9}
+
+q2:email pattern: ********@****.**** #4 eg: SeyyedMahdiHP@gmail.com
+	[a-zA-Z0-9_\.\-]{2,}@[a-zA-Z0-9\.\-]{2,}\.[a-zA-Z0-9]{2,}
+	[\w\.\-]{2,}@[a-zA-Z0-9\.\-]{2,}\.[a-zA-Z0-9]{2,}
+	#note that . and - are part of the syntaxe, for use you should use \. \-
+	#note that for checking an email is valid or not, we can send an email to check it if  it isnot then a failor mail will be sent back 
+q3:iran national code: ***-******-*  # for eg: 123-456789-0
+	[0-9]{3}\-[0-9]{6}\-[0-9]{1}
+q3.1: is 111-111111-1 is a real national code?
+
+phase match:
+
+
+
+
+
