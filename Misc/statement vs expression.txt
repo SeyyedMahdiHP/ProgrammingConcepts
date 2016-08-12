@@ -1,0 +1,91 @@
+#http://www.greenteapress.com/thinkpython/thinkCSpy/html/index.html
+How to Think Like a Computer Scientist
+
+Python Version
+
+by Allen Downey, Jeffrey Elkner and Chris Meyers
+
+Table of Contents
+Foreword
+Preface
+Contributor List
+Chapter 1: The way of the program
+Chapter 2: Variables, expressions and statements
+Chapter 3: Functions
+Chapter 4: Conditionals and recursion
+Chapter 5: Fruitful functions
+Chapter 6: Iteration
+Chapter 7: Strings
+Chapter 8: Lists
+Chapter 9: Tuples
+Chapter 10: Dictionaries
+Chapter 11: Files and exceptions
+Chapter 12: Classes and objects
+Chapter 13: Classes and functions
+Chapter 14: Classes and methods
+Chapter 15: Sets of objects
+Chapter 16: Inheritance
+Chapter 17: Linked lists
+Chapter 18: Stacks
+Chapter 19: Queues
+Chapter 20: Trees
+Appendix A: Debugging
+Appendix B: Creating a new data type
+Appendix D: Recommendations for further reading
+Index
+###################################################################
+
+http://www.greenteapress.com/thinkpython/thinkCSpy/html/chap02.html
+2.4 Statements
+
+A statement is an instruction that the Python interpreter can execute. We have seen two kinds of statements: print and assignment.
+
+When you type a statement on the command line, Python executes it and displays the result, if there is one. The result of a print statement is a value. Assignment statements don't produce a result.
+
+A script usually contains a sequence of statements. If there is more than one statement, the results appear one at a time as the statements execute.
+
+For example, the script
+
+print 1 
+x = 2 
+print x 
+
+produces the output
+
+1 
+2 
+
+Again, the assignment statement produces no output.
+
+2.5 Evaluating expressions
+
+An expression is a combination of values, variables, and operators. If you type an expression on the command line, the interpreter evaluates it and displays the result:
+
+>>> 1 + 1 
+2 
+
+Although expressions contain values, variables, and operators, not every expression contains all of these elements. A value all by itself is considered an expression, and so is a variable.
+
+>>> 17 
+17 
+>>> x 
+2 
+
+Confusingly, evaluating an expression is not quite the same thing as printing a value.
+
+>>> message = 'Hello, World!' 
+>>> message 
+'Hello, World!' 
+>>> print message 
+Hello, World! 
+
+When the Python interpreter displays the value of an expression, it uses the same format you would use to enter a value. In the case of strings, that means that it includes the quotation marks. But if you use a print statement, Python displays the contents of the string without the quotation marks.
+
+In a script, an expression all by itself is a legal statement, but it doesn't do anything. The script
+
+17 
+3.2 
+'Hello, World!' 
+1 + 1 
+
+produces no output at all. How would you change the script to display the values of these four expressions?
