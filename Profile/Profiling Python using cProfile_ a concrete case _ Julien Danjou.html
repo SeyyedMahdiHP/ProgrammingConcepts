@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>
+        Profiling Python using cProfile: a concrete case
+        | Julien Danjou
+    </title>
+        <link href="https://julien.danjou.info/favicon.ico" rel="shortcut icon" type="image/x-icon">
+            <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/font-awesome.min.css" rel="stylesheet" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/animate.min.css" rel="stylesheet">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/style.min.css" rel="stylesheet">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/style-jd.min.css" rel="stylesheet">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/pygments.min.css" rel="stylesheet">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/flag-icon.min.css" rel="stylesheet">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/css" rel="stylesheet">
+    <link href="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/css(1)" rel="stylesheet">
+    
+        <link href="https://julien.danjou.info/blog/2015/gnocchi-1.3.0-released" rel="prev">
+            <link href="https://julien.danjou.info/blog/2016/fosdem-recap" rel="next">
+    
+        <link rel="alternate" type="application/rss+xml" href="https://julien.danjou.info/blog/index.xml" title="jd:/dev/blog">
+    
+        <meta property="og:title" content="Profiling Python using cProfile: a concrete case">
+    <meta property="og:description" content="Writing programs is fun, but making them fast can be a pain. Python programs are no exception to that, but the basic profiling toolchain is actually not that complicated to use. Here, I would like …">
+    <meta property="og:image" content="https://julien.danjou.info/media/images/blog/2015/speedometer.jpg">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@juldanjou">
+    <meta name="twitter:image:src" content="https://julien.danjou.info/media/images/blog/2015/speedometer.jpg">
+    <meta name="twitter:title" content="Profiling Python using cProfile: a concrete case">
+    <meta name="twitter:domain" content="julien.danjou.info">
+    <meta name="twitter:description" content="Writing programs is fun, but making them fast can be a pain. Python programs are no exception to that, but the basic profiling toolchain is actually not that complicated to use. Here, I would like …">
+        <script id="twitter-wjs" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/widgets.js"></script><script type="text/javascript" async="" defer="" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/goal.min.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-25393581-1', 'auto', {'allowLinker': true});
+      ga('send', 'pageview');
+    </script>
+      <script type="text/javascript" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/jquery.min.js"></script><script type="text/javascript" async="" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/embed.js"></script><script async="" type="text/javascript" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/count.js"></script><script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/count-data.js"></script><script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/alfie.f51946af45e0b561c60f768335c9eb79.js" async="" charset="UTF-8"></script></head>
+  <body class="archive no-mobile">
+        <!-- HEADER -->
+    <header class="header header-dark no-sticky">
+      <nav class="navbar container sf-js-enabled sf-arrows" style="touch-action: pan-y;">
+	<div class="navbar-header">
+          <button class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="https://julien.danjou.info/">
+            <img src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/jd.jpg" class="img-circle img-thumbnail" alt="Julien Danjou">
+            Julien Danjou
+          </a>
+        </div>
+	<div id="navbar" class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav pull-right">
+                                    <li>
+                            <a href="https://julien.danjou.info/about">
+                                              <span class="glyphicon glyphicon-user"></span>
+                                About
+              </a>
+            </li>
+                                    <li class="active">
+                            <a href="https://julien.danjou.info/blog">
+                                              <span class="glyphicon glyphicon-pencil"></span>
+                                Blog
+              </a>
+            </li>
+                                    <li>
+                            <a href="https://thehackerguidetopython.com/">
+                                              <span class="glyphicon glyphicon-book"></span>
+                                The Hacker's Guide to Python
+              </a>
+            </li>
+                                    <li>
+                            <a href="https://julien.danjou.info/projects">
+                                              <span class="glyphicon glyphicon-cog"></span>
+                                Projects
+              </a>
+            </li>
+                                    <li>
+                            <a href="https://julien.danjou.info/talks">
+                                              <span class="glyphicon glyphicon-globe"></span>
+                                Talks
+              </a>
+            </li>
+                      </ul>
+	</div>
+      </nav>
+    </header>
+    <!-- /.header -->
+
+    <!-- WRAPPER -->
+    <div class="wrapper" style="min-height: 265px;">
+
+                  <div class="headcontent headcontent-md bg-sl-center overlay overlay-mid-dark" style="background-image: url(&#39;/media/images/blog/2015/speedometer.jpg&#39;);">
+	<div class="container inforow">
+	  <div class="col-sm-10">
+	    <h1 class="white">
+                  Profiling Python using cProfile: a concrete case
+                  </h1>
+	  </div>
+	  <div class="col-sm-2 text-right">
+	    <ol class="breadcrumb breadcrumb-arrow">
+                                                                      <li>
+                <a href="https://julien.danjou.info/blog">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Blog
+                </a>
+              </li>
+                                                        <li class="active">
+                <a href="https://julien.danjou.info/blog/2015">
+                                    2015
+                </a>
+              </li>
+                            	    </ol>
+          </div>
+        </div>
+      </div>
+
+        <div class="container post">
+    <header class="entry-header">
+      <div class="meta">
+        <small><i class="fa fa-calendar"></i>Monday 16 November 2015</small>
+        <small>
+          <i class="fa fa-folder"></i>
+                      <a href="https://julien.danjou.info/blog/tags/Python.html">Python</a>,                      <a href="https://julien.danjou.info/blog/tags/Gnocchi.html">Gnocchi</a>                  </small>
+        <a href="https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara#disqus_thread"><i class="fa fa-comment"></i> 1 Comment</a>
+        <span>
+          <i class="fa fa-user-plus"></i> Follow Me
+        </span>
+        <div class="addthis_horizontal_follow_toolbox" style="margin-top: -25px;
+             margin-left: -25px;">
+        </div>
+      </div>
+    </header>
+    <div class="entry-content padding-bottom">
+            <p>Writing programs is fun, but making them fast can be a pain. Python programs
+are no exception to that, but the basic profiling toolchain is actually not
+that complicated to use. Here, I would like to show you how you can quickly
+profile and analyze your Python code to find what part of the code you should
+optimize.</p>
+<h1>What's profiling?</h1>
+<p>Profiling a Python program is doing a dynamic analysis that measures the
+execution time of the program and everything that compose it. That means
+measuring the time spent in each of its functions. This will give you data
+about where your program is spending time, and what area might be worth
+optimizing.</p>
+<p>It's a very interesting exercise. Many people focus on local optimizations,
+such as determining e.g. which of the Python functions <code>range</code> or <code>xrange</code> is
+going to be faster. It turns out that knowing which one is faster may never be
+an issue in your program, and that the time gained by one of the functions
+above might not be worth the time you spend researching that, or arguing about
+it with your colleague.</p>
+<p>Trying to blindly optimize a program without measuring where it is actually
+spending its time is a useless exercise. Following your guts alone is not
+always sufficient.</p>
+<p>There are many types of profiling, as there are many things you can measure. In
+this exercise, we'll focus on CPU utilization profiling, meaning the time spent
+by each function executing instructions. Obviously, we could do many more kind
+of profiling and optimizations, such as memory profiling which would measure
+the memory used by each piece of code – something I talk about in
+<a href="https://thehackerguidetopython.com/">The Hacker's Guide to Python</a>.</p>
+<h1>cProfile</h1>
+<p>Since Python 2.5, Python provides a C module called
+<em><a href="https://docs.python.org/2/library/profile.html">cProfile</a></em> which has a
+reasonable overhead and offers a good enough feature set. The basic usage goes
+down to:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">cProfile</span><br><span class="o">&gt;&gt;&gt;</span> <span class="n">cProfile</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">'2 + 2'</span><span class="p">)</span><br>         <span class="mi">2</span> <span class="n">function</span> <span class="n">calls</span> <span class="ow">in</span> <span class="mf">0.000</span> <span class="n">seconds</span><br>&nbsp;<br>   <span class="n">Ordered</span> <span class="n">by</span><span class="p">:</span> <span class="n">standard</span> <span class="n">name</span><br>&nbsp;<br>   <span class="n">ncalls</span>  <span class="n">tottime</span>  <span class="n">percall</span>  <span class="n">cumtime</span>  <span class="n">percall</span> <span class="n">filename</span><span class="p">:</span><span class="n">lineno</span><span class="p">(</span><span class="n">function</span><span class="p">)</span><br>        <span class="mi">1</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">1</span><span class="p">(</span><span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span><span class="p">)</span><br>        <span class="mi">1</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span>    <span class="mf">0.000</span> <span class="p">{</span><span class="n">method</span> <span class="s1">'disable'</span> <span class="n">of</span> <span class="s1">'_lsprof.Profiler'</span> <span class="n">objects</span><span class="p">}</span><br></pre></div>
+
+<p><br>
+Though you can also run a script with it, which turns out to be handy:</p>
+<div class="highlight"><pre><span></span>$ python -m cProfile -s cumtime lwn2pocket.py<br>         <span class="m">72270</span> <span class="k">function</span> calls <span class="o">(</span><span class="m">70640</span> primitive calls<span class="o">)</span> in 4.481 seconds<br>&nbsp;<br>   Ordered by: cumulative <span class="nb">time</span><br>&nbsp;<br>   ncalls  tottime  percall  cumtime  percall filename:lineno<span class="o">(</span><span class="k">function</span><span class="o">)</span><br>        <span class="m">1</span>    0.004    0.004    4.481    4.481 lwn2pocket.py:2<span class="o">(</span>&lt;module&gt;<span class="o">)</span><br>        <span class="m">1</span>    0.001    0.001    4.296    4.296 lwn2pocket.py:51<span class="o">(</span>main<span class="o">)</span><br>        <span class="m">3</span>    0.000    0.000    4.286    1.429 api.py:17<span class="o">(</span>request<span class="o">)</span><br>        <span class="m">3</span>    0.000    0.000    4.268    1.423 sessions.py:386<span class="o">(</span>request<span class="o">)</span><br>      4/3    0.000    0.000    3.816    1.272 sessions.py:539<span class="o">(</span>send<span class="o">)</span><br>        <span class="m">4</span>    0.000    0.000    2.965    0.741 adapters.py:323<span class="o">(</span>send<span class="o">)</span><br>        <span class="m">4</span>    0.000    0.000    2.962    0.740 connectionpool.py:421<span class="o">(</span>urlopen<span class="o">)</span><br>        <span class="m">4</span>    0.000    0.000    2.961    0.740 connectionpool.py:317<span class="o">(</span>_make_request<span class="o">)</span><br>        <span class="m">2</span>    0.000    0.000    2.675    1.338 api.py:98<span class="o">(</span>post<span class="o">)</span><br>       <span class="m">30</span>    0.000    0.000    1.621    0.054 ssl.py:727<span class="o">(</span>recv<span class="o">)</span><br>       <span class="m">30</span>    0.000    0.000    1.621    0.054 ssl.py:610<span class="o">(</span><span class="nb">read</span><span class="o">)</span><br>       <span class="m">30</span>    1.621    0.054    1.621    0.054 <span class="o">{</span>method <span class="s1">'read'</span> of <span class="s1">'_ssl._SSLSocket'</span> objects<span class="o">}</span><br>        <span class="m">1</span>    0.000    0.000    1.611    1.611 api.py:58<span class="o">(</span>get<span class="o">)</span><br>        <span class="m">4</span>    0.000    0.000    1.572    0.393 httplib.py:1095<span class="o">(</span>getresponse<span class="o">)</span><br>        <span class="m">4</span>    0.000    0.000    1.572    0.393 httplib.py:446<span class="o">(</span>begin<span class="o">)</span><br>       <span class="m">60</span>    0.000    0.000    1.571    0.026 socket.py:410<span class="o">(</span>readline<span class="o">)</span><br>        <span class="m">4</span>    0.000    0.000    1.571    0.393 httplib.py:407<span class="o">(</span>_read_status<span class="o">)</span><br>        <span class="m">1</span>    0.000    0.000    1.462    1.462 pocket.py:44<span class="o">(</span>wrapped<span class="o">)</span><br>        <span class="m">1</span>    0.000    0.000    1.462    1.462 pocket.py:152<span class="o">(</span>make_request<span class="o">)</span><br>        <span class="m">1</span>    0.000    0.000    1.462    1.462 pocket.py:139<span class="o">(</span>_make_request<span class="o">)</span><br>        <span class="m">1</span>    0.000    0.000    1.459    1.459 pocket.py:134<span class="o">(</span>_post_request<span class="o">)</span><br><span class="o">[</span>…<span class="o">]</span><br></pre></div>
+
+<p><br>
+This prints out all the function called, with the time spend in each and the
+number of times they have been called.</p>
+<h2>Advanced visualization with KCacheGrind</h2>
+<p>While being useful, the output format is very basic and does not make easy to
+grab knowledge for complete programs.
+For more advanced visualization, I leverage
+<a href="https://kcachegrind.github.io/html/Home.html">KCacheGrind</a>. If you did any C
+programming and profiling these last years, you may have used it as it is
+primarily designed as front-end for <a href="http://valgrind.org/">Valgrind</a> generated
+call-graphs.</p>
+<p>In order to use, you need to generate a <em>cProfile</em> result file, then convert it
+to KCacheGrind format. To do that, I use
+<em><a href="https://pypi.python.org/pypi/pyprof2calltree">pyprof2calltree</a></em>.</p>
+<div class="highlight"><pre><span></span>$ python -m cProfile -o myscript.cprof myscript.py<br>$ pyprof2calltree -k -i myscript.cprof<br></pre></div>
+
+<p><br>
+And the KCacheGrind window magically appears!</p>
+<figure class="illustration">
+  <img src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/kcachegrind.png">
+</figure>
+
+<h1>Concrete case: Carbonara optimization</h1>
+<p>I was curious about the performances of
+<a href="https://git.openstack.org/cgit/openstack/gnocchi/tree/gnocchi/carbonara.py">Carbonara</a>,
+the small timeserie library I wrote for
+<a href="http://launchpad.net/gnocchi">Gnocchi</a>. I decided to do some basic profiling
+to see if there was any obvious optimization to do.</p>
+<p>In order to profile a program, you need to run it. But running the whole
+program in profiling mode can generate <em>a lot</em> of data that you don't care
+about, and adds noise to what you're trying to understand. Since Gnocchi has
+thousands of unit tests and a few for Carbonara itself, I decided to profile
+the code used by these unit tests, as it's a good reflection of basic features
+of the library.</p>
+<p>Note that this is a good strategy for a curious and naive first-pass profiling.
+There's no way that you can make sure that the hotspots you will see in the
+unit tests are the actual hotspots you will encounter in production. Therefore,
+a profiling in conditions and with a scenario that mimics what's seen in
+production is often a necessity if you need to push your program optimization
+further and want to achieve perceivable and valuable gain.</p>
+<p>I activated <em>cProfile</em> using the method described above, creating a
+<code>cProfile.Profile</code> object around my tests (I actually
+<a href="https://github.com/testing-cabal/testtools/pull/163">started to implement that in testtools</a>).
+I then run <em>KCacheGrind</em> as described above. Using <em>KCacheGrind</em>, I generated
+the following figures.</p>
+<figure class="illustration">
+  <img src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/kcachegrind-carbonara-old-list.png">
+</figure>
+
+<p>The test I profiled here is called <code>test_fetch</code> and is pretty easy to
+understand: it puts data in a timeserie object, and then fetch the aggregated
+result. The above list shows that 88&nbsp;% of the ticks are spent in <code>set_values</code>
+(44 ticks over 50). This function is used to insert values into the timeserie,
+not to fetch the values. That means that it's really slow to insert data, and
+pretty fast to actually retrieve them.</p>
+<p>Reading the rest of the list indicates that several functions share the rest of
+the ticks, <code>update</code>, <code>_first_block_timestamp</code>, <code>_truncate</code>, <code>_resample</code>, etc.
+Some of the functions in the list are not part of Carbonara, so there's no
+point in looking to optimize them. The only thing that can be optimized is,
+sometimes, the number of times they're called.</p>
+<figure class="illustration">
+  <img src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/kcachegrind-carbonara-old-graph.png">
+</figure>
+
+<p>The call graph gives me a bit more insight about what's going on here. Using my
+knowledge about how Carbonara works, I don't think that the whole stack on the
+left for <code>_first_block_timestamp</code> makes much sense. This function is supposed
+to find the first timestamp for an aggregate, e.g. with a timestamp of 13:34:45
+and a period of 5 minutes, the function should return 13:30:00. The way it
+works currently is by calling the <code>resample</code> function from Pandas on a
+timeserie with only one element, but that seems to be very slow. Indeed,
+currently this function represents 25&nbsp;% of the time spent by <code>set_values</code> (11
+ticks on 44).</p>
+<p>Fortunately, I recently added a small function called <code>_round_timestamp</code> that
+does exactly what <code>_first_block_timestamp</code> needs that without calling any
+Pandas function, so no <code>resample</code>. So I ended up rewriting that function this
+way:</p>
+<div class="highlight"><pre><span></span>def _first_block_timestamp(self):<br><span class="gd">-        ts = self.ts[-1:].resample(self.block_size)</span><br><span class="gd">-        return (ts.index[-1] - (self.block_size * self.back_window))</span><br><span class="gi">+        rounded = self._round_timestamp(self.ts.index[-1], self.block_size)</span><br><span class="gi">+        return rounded - (self.block_size * self.back_window)</span><br></pre></div>
+
+<p><br>
+And then I re-run the exact same test to compare the output of <em>cProfile</em>.</p>
+<figure class="illustration">
+  <img src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/kcachegrind-carbonara-new-list.png">
+  </figure>
+
+<p>The list of function seems quite different this time. The number of time spend
+used by <code>set_values</code> dropped from 88&nbsp;% to 71&nbsp;%.</p>
+<figure class="illustration">
+  <img src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/kcachegrind-carbonara-new-graph.png">
+</figure>
+
+<p>The call stack for <code>set_values</code> shows that pretty well: we can't even see the
+<code>_first_block_timestamp</code> function as it is so fast that it totally disappeared
+from the display. It's now being considered insignificant by the profiler.</p>
+<p>So we just speed up the whole insertion process of values into Carbonara by a
+nice 25&nbsp;% in a few minutes. Not that bad for a first naive pass, right?</p>          </div>
+
+        <script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/40155.js"></script><script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/CKJS4.js"></script>
+
+<div class="ck_form ck_vertical_subscription_form ck_horizontal">
+  <div class="ck_form_content">
+    <h3 class="ck_form_title">I've been using Python for 10 years: there's a few things I can teach you.</h3>
+    <div class="ck_description">
+      <span class="ck_image">
+        <img alt="Thgtp-snake" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/thgtp-snake.png">
+      </span>
+      <p><span style="line-height: 1.6em; background-color: initial;">Subscribe to my 30 days Python course. You'll receive tips, good practice advice, exclusive content and new ideas to improve your code.</span></p>
+    </div>
+  </div>
+
+  <div class="ck_form_fields">
+    <div id="ck_success_msg" style="opacity: 1;">
+      <p>Success! Now check your email to confirm your subscription.</p>
+    </div>
+
+    <!--  Form starts here  -->
+    <form id="ck_subscribe_form" class="ck_subscribe_form" action="https://app.convertkit.com/landing_pages/40155/subscribe" data-remote="true" style="display: none;">
+      <input type="hidden" value="{&quot;form_style&quot;:&quot;full&quot;,&quot;embed_style&quot;:&quot;inline&quot;,&quot;embed_trigger&quot;:&quot;scroll_percentage&quot;,&quot;scroll_percentage&quot;:&quot;70&quot;,&quot;delay_seconds&quot;:&quot;10&quot;,&quot;display_position&quot;:&quot;br&quot;,&quot;display_devices&quot;:&quot;all&quot;,&quot;days_no_show&quot;:&quot;15&quot;,&quot;converted_behavior&quot;:&quot;show&quot;}" id="ck_form_options">
+      <input type="hidden" name="id" value="40155" id="landing_page_id">
+      <div class="ck_errorArea">
+        <div id="ck_error_msg" style="display:none">
+          <p>There was an error submitting your subscription. Please try again.</p>
+        </div>
+      </div>
+      <div class="ck_control_group ck_first_name_field_group">
+        <label class="ck_label" for="ck_firstNameField">First Name</label>
+        <input type="text" name="first_name" class="ck_first_name" id="ck_firstNameField">
+      </div>
+      <div class="ck_control_group ck_email_field_group">
+        <label class="ck_label" for="ck_emailField">Email Address</label>
+        <input type="email" name="email" class="ck_email_address" id="ck_emailField" required="">
+      </div>
+
+        <label class="ck_checkbox" style="display:none;">
+          <input class="optIn ck_course_opted" name="course_opted" type="checkbox" id="optIn" checked="">
+          <span class="ck_opt_in_prompt">I'd like to receive the free email course.</span>
+        </label>
+
+      <button class="subscribe_button ck_subscribe_button btn fields" id="ck_subscribe_button" disabled="">Working...</button>
+      <span class="ck_guarantee">
+        I won't send spam. Unsubscribe at any time.
+          <a class="ck_powered_by" href="https://convertkit.com/?utm_campaign=poweredby">Powered by ConvertKit</a>
+      </span>
+    </form>
+  </div>
+
+</div>
+
+
+
+<style type="text/css">/* Layout */
+  .ck_form {
+  /* divider image */
+	background: #fff url(data:image/gif;base64,R0lGODlhAQADAIABAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS41LWMwMTQgNzkuMTUxNDgxLCAyMDEzLzAzLzEzLTEyOjA5OjE1ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQ5NjM5RjgxQUVEMTFFNEJBQTdGNTQwMjc5MTZDOTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQ5NjM5RjkxQUVEMTFFNEJBQTdGNTQwMjc5MTZDOTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDk2MzlGNjFBRUQxMUU0QkFBN0Y1NDAyNzkxNkM5NyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRDk2MzlGNzFBRUQxMUU0QkFBN0Y1NDAyNzkxNkM5NyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAABAAMAAAICRFIAOw==) repeat-y center top;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+	line-height: 1.5em;
+	overflow: hidden;
+	color: #666;
+	font-size: 16px;
+	border-top: solid 20px #3071b0;
+  border-top-color: #91cc56;
+	border-bottom: solid 10px #3d3d3d;
+  border-bottom-color: #577a34;
+	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	-moz-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	clear: both;
+	margin: 20px 0px;
+}
+
+.ck_form, .ck_form * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#ck_subscribe_form {
+  clear: both;
+}
+
+/* Element Queries — uses JS */
+
+.ck_form_content, .ck_form_fields {
+	width: 50%;
+	float: left;
+	padding: 5%;
+}
+
+.ck_form.ck_horizontal {
+}
+
+.ck_form_content {
+	border-bottom: none;
+}
+
+.ck_form.ck_vertical {
+	background: #fff;
+}
+
+.ck_vertical .ck_form_content, .ck_vertical .ck_form_fields {
+	padding: 10%;
+	width: 100%;
+	float: none;
+}
+
+.ck_vertical .ck_form_content {
+	border-bottom: 1px dotted #aaa;
+	overflow: hidden;
+}
+
+/* Trigger the vertical layout with media queries as well */
+
+@media all and (max-width: 499px) {
+
+	.ck_form {
+		background: #fff;
+	}
+
+	.ck_form_content, .ck_form_fields {
+		padding: 10%;
+		width: 100%;
+		float: none;
+	}
+
+	.ck_form_content {
+		border-bottom: 1px dotted #aaa;
+	}
+
+}
+
+/* Content */
+
+.ck_form_content h3 {
+	margin: 0px 0px 15px;
+	font-size: 24px;
+	padding: 0px;
+}
+
+
+.ck_form_content p {
+	font-size: 14px;
+}
+
+.ck_image {
+	float: left;
+	margin-right: 5px;
+}
+
+/* Form fields */
+
+.ck_errorArea {
+	display: none;
+}
+
+#ck_success_msg {
+	padding: 10px 10px 0px;
+	border: solid 1px #ddd;
+	background: #eee;
+}
+
+.ck_label {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ck_form input[type="text"], .ck_form input[type="email"] {
+	font-size: 14px;
+	padding: 10px 8px;
+	width: 100%;
+	border: 1px solid #d6d6d6; /* stroke */
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px; /* border radius */
+	background-color: #f8f7f7; /* layer fill content */
+	margin-bottom: 5px;
+	height: auto;
+}
+
+.ck_form input[type="text"]:focus, .ck_form input[type="email"]:focus {
+	outline: none;
+	border-color: #aaa;
+}
+
+.ck_checkbox {
+  padding: 10px 0px 10px 20px;
+  display: block;
+  clear: both;
+}
+
+.ck_checkbox input.optIn {
+  margin-left: -20px;
+  margin-top: 0;
+}
+.ck_form .ck_opt_in_prompt {
+  margin-left: 4px;
+}
+.ck_form .ck_opt_in_prompt p {
+  display: inline;
+}
+
+.ck_form .ck_subscribe_button {
+    width: 100%;
+    color: #fff;
+    margin: 10px 0px 0px;
+    padding:  10px 0px;
+    font-size: 18px;
+    background: #588716;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; /* border radius */
+    cursor: pointer;
+    border: none;
+    text-shadow: none;
+  }
+
+
+.ck_form .ck_guarantee {
+	color: #626262;
+	font-size: 12px;
+	text-align: center;
+	padding: 5px 0px;
+	display: block;
+}
+
+.ck_form .ck_powered_by {
+	display: block;
+	color: #aaa;
+}
+
+.ck_form .ck_powered_by:hover {
+	display: block;
+	color: #444;
+}
+
+.ck_converted_content {
+  display: none;
+	padding: 5%;
+	background: #fff;
+}
+
+
+
+.ck_form {
+  width: 50% !important;
+  margin: auto !important;
+  margin-bottom: 50px !important;
+}
+
+.ck_subscribe_button {
+  padding: 0 !important;
+}
+
+.ck_image {
+  width: 25% !important;
+  margin-right: 20px !important;
+}
+
+.ck_image img {
+  width: 100% !important;
+}
+
+.ck_form_content h3 {
+  margin-bottom: 30px !important;
+}
+</style>
+
+      </div>
+
+  <div class="container" id="disqus_thread"><iframe id="dsq-app2" name="dsq-app2" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 578px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+
+  <script type="text/javascript">
+    var disqus_shortname = 'jdanjou';
+
+    (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the
+    &lt;a href="https://disqus.com/?ref_noscript" rel="nofollow"&gt;comments powered by
+      Disqus.&lt;/a&gt;</noscript>
+
+  <div class="addthis_recommended_horizontal"></div>
+
+  <div class="container padding-top">
+    <nav class="nav-single clearfix">
+              <div class="nav-previous text-left">
+          <a href="https://julien.danjou.info/blog/2015/gnocchi-1.3.0-released">
+	    <small>Previous Post</small>
+	    <span>Gnocchi 1.3.0 release</span>
+          </a>
+        </div>
+                    <div class="nav-next text-right">
+          <a href="https://julien.danjou.info/blog/2016/fosdem-recap">
+	    <small>Next Post</small>
+	    <span>FOSDEM 2016, recap</span>
+          </a>
+        </div>
+          </nav>
+  </div>
+          </div>
+    <!-- /.wrapper -->
+
+    <!-- FOOTER -->
+    <footer class="footer footer-dark">
+      <div class="container">
+
+	<hr>
+
+	<div class="row">
+	  <div class="col-sm-6">
+	    <p class="copyright">
+              Created by <a href="https://julien.danjou.info/">Julien Danjou</a> using
+              <a href="https://github.com/hyde/hyde">Hyde</a>.
+              <a href="https://github.com/jd/julien.danjou.info">Sources are
+                available</a>.
+              This work is licensed under a
+              <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative
+                Commons Attribution-ShareAlike 3.0 Unported License</a>.
+              <br>
+              <br>
+              <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/deed.en_US">
+                <img alt="Creative Commons License" style="border-width:0" src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/creative-commons.png">
+              </a>
+            </p>
+	  </div>
+	  <div class="col-sm-6 text-right">
+	    <nav>
+	      Follow Me
+              <div class="addthis_horizontal_follow_toolbox" style="float: right;">
+              </div>
+	    </nav>
+	  </div>
+	</div>
+      </div>
+    </footer>
+    <!-- /.footer -->
+
+    <!-- ScrollTop -->
+    <a href="https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara#" class="scrolltop vis"><i></i></a>
+
+    
+          <!-- SCRIPTS -->
+    <script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/jquery.min(1).js"></script>
+    <script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/plugins.min.js"></script>
+    <script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/custom.min.js"></script>
+    <script src="./Profiling Python using cProfile_ a concrete case _ Julien Danjou_files/bootstrap-tab-bookmark.js"></script>
+
+    <script type="text/javascript">
+	var $mcGoal = {'settings':{'uuid':'53ceb9eb499d62f6ee37c8167','dc':'us7'}};
+	(function() {
+		 var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+		sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+	})();
+    </script>
+
+    
+
+  <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4eaacbb674bf94f0" async="async">
+  </script>
+
+  <script type="text/javascript">
+    var disqus_shortname = 'jdanjou';
+
+    (function () {
+      var s = document.createElement('script'); s.async = true;
+      s.type = 'text/javascript';
+      s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+  </script>
+
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  
+</body></html>

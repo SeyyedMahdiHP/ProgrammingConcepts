@@ -1,0 +1,67 @@
+F:\Pentester Academy\Python For Pentesters\Projects\Minaeiz>python3 -m cProfile -s cumtime odd_odd_even_finder.py
+9567 + 1085 == 10652
+42641 + 9641 == 52282
+655 + 655 == 1310
+19517 / 673 == 29
+test passes
+         15263555 function calls (15263552 primitive calls) in 52.306 seconds
+
+   Ordered by: cumulative time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.003    0.003   53.065   53.065 {built-in method builtins.exec}
+        1    0.006    0.006   53.063   53.063 odd_odd_even_finder.py:7(<module>)
+        1    0.000    0.000   53.053   53.053 odd_odd_even_finder.py:35(test_software)
+        4    1.416    0.354   53.053   13.263 odd_odd_even_finder.py:12(solve)
+  1741026    1.927    0.000   43.023    0.000 odd_odd_even_finder.py:26(is_valid)
+  1335058   33.263    0.000   34.022    0.000 {built-in method builtins.eval}
+  1741030    3.113    0.000    8.590    0.000 odd_odd_even_finder.py:19(fill_in)
+  1741026    1.277    0.000    7.075    0.000 re.py:170(search)
+  1741026    3.975    0.000    3.975    0.000 {method 'search' of '_sre.SRE_Pattern' objects}
+  1741026    2.489    0.000    2.489    0.000 {method 'translate' of 'str' objects}
+  1741026    2.353    0.000    2.353    0.000 {built-in method maketrans}
+  1741030    1.822    0.000    1.823    0.000 re.py:278(_compile)
+  1741030    0.624    0.000    0.624    0.000 {method 'join' of 'str' objects}
+        5    0.027    0.005    0.027    0.005 {built-in method builtins.print}
+    44/43    0.011    0.000    0.011    0.000 {built-in method builtins.len}
+        4    0.000    0.000    0.000    0.000 re.py:205(findall)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:531(compile)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:819(parse)
+        2    0.000    0.000    0.000    0.000 sre_compile.py:516(_code)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:429(_parse_sub)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:491(_parse)
+       10    0.000    0.000    0.000    0.000 cp720.py:20(encode)
+        4    0.000    0.000    0.000    0.000 {method 'findall' of '_sre.SRE_Pattern' objects}
+        2    0.000    0.000    0.000    0.000 sre_compile.py:412(_compile_info)
+        3    0.000    0.000    0.000    0.000 sre_compile.py:221(_compile_charset)
+      3/2    0.000    0.000    0.000    0.000 sre_compile.py:64(_compile)
+        3    0.000    0.000    0.000    0.000 sre_compile.py:248(_optimize_charset)
+       10    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_encode}
+       11    0.000    0.000    0.000    0.000 sre_parse.py:247(get)
+      4/3    0.000    0.000    0.000    0.000 sre_parse.py:167(getwidth)
+       15    0.000    0.000    0.000    0.000 sre_parse.py:226(__next)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:217(__init__)
+        6    0.000    0.000    0.000    0.000 sre_parse.py:157(__getitem__)
+        5    0.000    0.000    0.000    0.000 sre_parse.py:276(tell)
+        2    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        9    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+        7    0.000    0.000    0.000    0.000 sre_parse.py:242(match)
+       16    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+       51    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+        8    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+        1    0.000    0.000    0.000    0.000 sre_compile.py:386(_simple)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:70(__init__)
+        4    0.000    0.000    0.000    0.000 sre_compile.py:513(isstring)
+        2    0.000    0.000    0.000    0.000 sre_parse.py:797(fix_flags)
+        1    0.000    0.000    0.000    0.000 sre_parse.py:362(_escape)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:105(__init__)
+        4    0.000    0.000    0.000    0.000 sre_parse.py:75(groups)
+        4    0.000    0.000    0.000    0.000 sre_parse.py:165(append)
+        3    0.000    0.000    0.000    0.000 sre_parse.py:153(__len__)
+        2    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+        5    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+        1    0.000    0.000    0.000    0.000 sre_parse.py:161(__setitem__)
+        2    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 <string>:1(<module>)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+

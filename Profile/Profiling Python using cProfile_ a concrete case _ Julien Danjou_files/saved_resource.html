@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<!-- saved from url=(0584)https://disqus.com/embed/comments/?base=default&version=90aeb3a56d1f2d3db731af14996f11cf&f=jdanjou&t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&s_o=default -->
+<html lang="en" dir="ltr" class="js no-touch localstorage sessionstorage contenteditable use-opacity-transitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Disqus Comments</title>
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <style>
+        .alert--warning {
+            border-radius: 3px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            background-color: #FFE070;
+            color: #A47703;
+        }
+
+        .alert--warning a,
+        .alert--warning a:hover,
+        .alert--warning strong {
+            color: #A47703;
+            font-weight: bold;
+        }
+
+        .alert--error p,
+        .alert--warning p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        
+        </style>
+    
+    <style>
+        html {
+            overflow: hidden;
+        }
+
+        #error {
+            display: none;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        
+    </style>
+
+<link rel="stylesheet" href="./lounge.b8a48e21347270023683c139ce34360c.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="remote/config" src="./config.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="common.bundle" src="./common.bundle.cdaa848b73614f0a6a57e34e5b94be9f.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="lounge.bundle" src="./lounge.bundle.02f56bb22ef8fa906c47fdac11560eff.js"></script><style id="css_1471201598860"></style><!--<base target="_parent">--><base href="." target="_parent"><link rel="stylesheet" href="./discovery.ec9371c4ef39ecee074c2acf24d5e0e2.css"><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="ga" src="./ga.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="discovery/main" src="./discovery.bundle.40e79a6e25f6d95ea88301548969b038.js"></script></head>
+<body>
+    
+
+    
+    <div id="error" class="alert--error">
+        <p>We were unable to load Disqus. If you are a moderator please see our <a href="https://docs.disqus.com/help/83/"> troubleshooting guide</a>. </p>
+    </div>
+
+    
+    <script type="text/json" id="disqus-forumData">{"session":{"canModerate":false,"audienceSyncVerified":false,"mustVerify":false,"canReply":true,"mustVerifyEmail":false},"features":{},"forum":{"category":"Tech","description":"\u003cp>Julien Danjou blog\u003c/p>","founder":"143010297","twitterName":"juldanjou","url":"https://julien.danjou.info","raw_description":"Julien Danjou blog","guidelines":null,"favicon":{"permalink":"https://disqus.com/api/forums/favicons/jdanjou.jpg","cache":"//a.disquscdn.com/uploads/forums/359/7251/favicon.png"},"raw_guidelines":null,"language":"en","daysThreadAlive":0,"installCompleted":false,"avatar":{"small":{"permalink":"https://disqus.com/api/forums/avatars/jdanjou.jpg?size=32","cache":"//a.disquscdn.com/1470359843/images/noavatar32.png"},"large":{"permalink":"https://disqus.com/api/forums/avatars/jdanjou.jpg?size=92","cache":"//a.disquscdn.com/1470359843/images/noavatar92.png"}},"channel":null,"daysAlive":0,"pk":"3597251","signedUrl":"https://disq.us/?url=https%3A%2F%2Fjulien.danjou.info&key=lK5tPNXyoPKi-XT56fWipg","settings":{"supportLevel":0,"adsDRNativeEnabled":false,"disable3rdPartyTrackers":false,"adsVideoEnabled":false,"adsProductVideoEnabled":false,"adsPositionTopEnabled":false,"ssoRequired":false,"linkAffiliationEnabled":true,"adsProductLinksThumbnailsEnabled":false,"adsProductStoriesEnabled":false,"organicDiscoveryEnabled":true,"allowMedia":true,"discoveryMax":false,"discoveryLocked":false,"moderatorText":"","adsEnabled":false,"allowAnonPost":false,"hasCustomAvatar":false,"adultContent":false,"promotedDiscoveryEnabled":false,"allowAnonVotes":false,"mustVerify":true,"colorScheme":"light","adsSettingsLocked":false,"mustVerifyEmail":true,"audienceSyncEnabled":false,"typeface":"auto","adsPositionBottomEnabled":false,"mediaembedEnabled":true,"adsProductLinksEnabled":false,"discoveryThumbnailsEnabled":false,"isVIP":false,"adsPositionInthreadEnabled":false},"id":"jdanjou","createdAt":"2015-05-12T02:43:27.601909","name":"jd:/dev/blog"}}</script>
+
+    
+    <script type="text/json" id="disqus-threadData">{"cursor":{"hasPrev":false,"prev":null,"total":1,"hasNext":false,"next":"1:0:0"},"code":0,"response":{"lastModified":1465345004,"posts":[{"forum":"jdanjou","parent":null,"isApproved":true,"author":{"username":"N8nnc","about":"Listen well. Be polite. Learn alot. Laugh often.","name":"Nathan Hillery (N8nNC)","disable3rdPartyTrackers":false,"isPowerContributor":false,"isAnonymous":false,"rep":1.438475,"profileUrl":"https://disqus.com/by/N8nnc/","url":"http://nathanhillery.wordpress.com","reputation":1.438475,"location":"Durham, NC","isPrivate":false,"signedUrl":"http://disq.us/?url=http%3A%2F%2Fnathanhillery.wordpress.com&key=kmBKiYZ4wL1PFWIoY4rnCA","isPrimary":true,"joinedAt":"2010-07-18T14:11:57","id":"3675200","avatar":{"small":{"permalink":"https://disqus.com/api/users/avatars/N8nnc.jpg","cache":"//a.disquscdn.com/uploads/users/367/5200/avatar32.jpg?1370905115"},"isCustom":true,"permalink":"https://disqus.com/api/users/avatars/N8nnc.jpg","cache":"//a.disquscdn.com/uploads/users/367/5200/avatar92.jpg?1370905115","large":{"permalink":"https://disqus.com/api/users/avatars/N8nnc.jpg","cache":"//a.disquscdn.com/uploads/users/367/5200/avatar92.jpg?1370905115"}}},"media":[],"isDeleted":false,"isFlagged":false,"dislikes":0,"raw_message":"Thanks for this overview.  It got me going quickly. \n\nNote that the command line option 'cumtime' failed for me (KeyError: 'cumtime').  The option 'cum' (or 'cumulative') does work.  The output column header is 'cumtime'.  Oddly, https://docs.python.org/2/library/profile.html shows 'cumtime' as a valid option.","createdAt":"2016-02-29T16:36:52","id":"2543466135","thread":"4323775833","depth":0,"numReports":0,"isDeletedByAuthor":false,"likes":3,"isEdited":false,"message":"\u003cp>Thanks for this overview.  It got me going quickly.\u003c/p>\u003cp>Note that the command line option 'cumtime' failed for me (KeyError: 'cumtime').  The option 'cum' (or 'cumulative') does work.  The output column header is 'cumtime'.  Oddly, \u003ca href=\"https://docs.python.org/2/library/profile.html\" rel=\"nofollow\">https://docs.python.org/2/libr...\u003c/a> shows 'cumtime' as a valid option.\u003c/p>","isSpam":false,"isHighlighted":false,"points":3}],"thread":{"feed":"https://jdanjou.disqus.com/profiling_python_using_cprofile_a_concrete_case/latest.rss","identifiers":[],"dislikes":0,"likes":2,"message":"","id":"4323775833","isDeleted":false,"category":"3713410","author":"143010297","userScore":0,"userSubscription":false,"isSpam":false,"signedLink":"https://disq.us/?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&key=tkvCME1wiFRkepyQ-uPjZw","createdAt":"2015-11-16T15:00:39","hasStreaming":false,"raw_message":"","isClosed":false,"link":"https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara","slug":"profiling_python_using_cprofile_a_concrete_case","forum":"jdanjou","clean_title":"Profiling Python using cProfile: a concrete case","posts":1,"moderators":[143010297],"title":"\n                  Profiling Python using cProfile: a concrete case\n                  ","highlightedPost":null}},"order":"popular"}</script>
+
+    
+
+    <div id="fixed-content"></div>
+
+
+    
+        
+<script type="text/json" id="disqus-urls">{
+    "root":"//disqus.com",
+    "next":"//a.disquscdn.com/next/current/embed"
+}</script>
+
+        <script src="./lounge.load.90aeb3a56d1f2d3db731af14996f11cf.js" id="bootstrap-script" data-app="lounge" async=""></script>
+    
+
+
+<div id="layout" data-tracking-area="layout">
+
+<div id="onboard" data-tracking-area="onboard"></div>
+
+<div id="highlighted-post" data-tracking-area="highlighted" class="highlighted-post" style="display: none;"></div>
+
+<div id="global-alert"></div>
+
+<header id="main-nav" data-tracking-area="main-nav">
+<nav class="nav nav-primary">
+<ul>
+<li class="nav-tab nav-tab--primary tab-conversation active" data-role="post-count"><a class="publisher-nav-color">
+<span class="comment-count">
+1 comment
+</span>
+
+<span class="comment-count-placeholder">
+Comments
+</span>
+</a>
+</li>
+<li class="nav-tab nav-tab--primary tab-community">
+<a href="https://disqus.com/home/forums/jdanjou/" class="publisher-nav-color" data-action="community-sidebar" data-forum="jdanjou" id="community-tab">
+<span class="community-name">
+<strong>jd:/dev/blog</strong>
+
+</span>
+
+<strong class="community-name-placeholder">Community</strong>
+</a>
+</li>
+<li class="nav-tab nav-tab--primary dropdown user-menu" data-role="logout"><a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" class="dropdown-toggle" data-toggle="dropdown">
+<span class="dropdown-toggle-wrapper">
+
+<span>
+Login
+</span>
+
+</span> <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+
+
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="auth:disqus">Disqus</a>
+</li>
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="auth:facebook">Facebook</a>
+</li>
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="auth:twitter">Twitter</a>
+</li>
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="auth:google">Google</a>
+</li>
+
+
+
+</ul>
+</li>
+<li class="nav-tab nav-tab--primary notification-menu unread" data-role="notification-menu"><a href="https://disqus.com/home/inbox/" class="notification-container" data-action="home" data-home-path="home/inbox/">
+<span class="notification-icon icon-comment" aria-hidden=""></span>
+<span class="notification-count" data-role="notification-count">1</span>
+</a>
+</li>
+</ul>
+</nav>
+</header>
+
+<section id="conversation" data-role="main" data-tracking-area="main">
+<div class="nav nav-secondary" data-tracking-area="secondary-nav">
+<ul>
+<li id="recommend-button" class="nav-tab nav-tab--secondary recommend dropdown">
+<div class="thread-likes"><a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="recommend" title="Recommend this discussion" class="dropdown-toggle ">
+<span class="icon-heart"></span>
+<span class="label label-default">Recommend</span>
+<span class="label label-recommended">Recommended</span>
+<span class="label label-count">2</span>
+</a>
+<ul class="dropdown-menu dropdown-menu--coachmark">
+<li>
+<h2 class="coachmark__heading">Discussion Recommended!</h2>
+<p class="coachmark__description">Recommending means this is a discussion worth sharing. It gets shared to your followers' Disqus feeds, and gives the creator kudos!</p>
+<a href="https://disqus.com/home/?utm_source=disqus_embed&amp;utm_content=recommend_btn" class="btn btn-primary coachmark__button" target="_blank">
+ Find More Discussions 
+</a>
+</li>
+</ul>
+</div></li>
+<li id="thread-share-menu" class="nav-tab nav-tab--secondary dropdown share-menu hidden-sm"><a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" class="dropdown-toggle" data-toggle="dropdown" title="Share">
+<span class="icon-export"></span>
+<span class="label">Share</span>
+</a>
+<ul class="share-menu dropdown-menu">
+<li>
+<div class="share-menu__label">Share this discussion on</div>
+<ul>
+<li class="twitter">
+<a data-action="share:twitter" href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#">Twitter</a>
+</li>
+<li class="facebook">
+<a data-action="share:facebook" href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#">Facebook</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li data-role="post-sort" class="nav-tab nav-tab--secondary dropdown sorting pull-right">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" class="dropdown-toggle" data-toggle="dropdown">
+Sort by Best
+
+
+<span class="caret"></span>
+</a>
+<ul class="dropdown-menu pull-right">
+<li class="selected">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="sort" data-sort="popular">Best<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="sort" data-sort="desc">Newest<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+
+<li>
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="sort" data-sort="asc">Oldest<i aria-hidden="true" class="icon-checkmark"></i></a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="posts">
+<div id="form" class="textarea-wrapper--top-level"><form class="reply">
+<div class="postbox">
+<div role="alert"></div>
+<div class="avatar">
+<span class="user">
+<img data-role="user-avatar" src="./noavatar92.7b2fde640943965cc88df0cdee365907.png" alt="Avatar">
+</span>
+</div>
+
+<div class="textarea-wrapper" data-role="textarea" dir="auto"><div><span class="placeholder">Join the discussion…</span><div class="textarea" tabindex="0" role="textbox" aria-multiline="true" contenteditable="PLAINTEXT-ONLY" data-role="editable" aria-label="Join the discussion…" style="overflow: auto; max-height: 350px;"><p><br></p></div><div style="display: none;"><ul class="user-mention__list">
+<li class="header user-mention__header">
+<h5>in this conversation</h5>
+</li>
+</ul>
+</div></div>
+<div data-role="drag-drop-placeholder" class="media-drag-hover" style="display: none">
+<div class="drag-text">
+⬇ Drag and drop your images here to upload them.
+</div>
+</div>
+<div class="media-preview empty" data-role="media-preview"><ul data-role="media-legacy-list"></ul>
+<ul data-role="media-progress-list"></ul>
+<ul data-role="media-rich-list"></ul>
+<div class="media-expanded empty" data-role="media-preview-expanded">
+<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-role="media-preview-expanded-image" alt="Media preview placeholder">
+</div>
+</div>
+<div class="edit-alert" role="postbox-alert"></div>
+<div class="post-actions">
+<ul class="wysiwyg">
+<li class="wysiwyg__item" data-role="media-uploader"><a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" tabindex="-1" data-action="attach" class="attach" title="Upload Images"><span>Attach</span></a>
+<input type="file" data-role="media-upload" tabindex="-1" accept="image/*">
+</li>
+</ul>
+</div>
+</div>
+
+<div data-role="login-form"><div><section class="auth-section logged-out">
+<div class="connect">
+<h6>Log in with</h6>
+<ul data-role="login-menu" class="services login-buttons">
+
+<li class="auth-disqus">
+<button type="button" data-action="auth:disqus" title="Disqus" class="connect__button"><i class="icon-disqus"></i></button>
+</li>
+<li class="auth-facebook">
+<button type="button" data-action="auth:facebook" title="Facebook" class="connect__button"><i class="icon-facebook-circle"></i></button>
+</li>
+<li class="auth-twitter">
+<button type="button" data-action="auth:twitter" title="Twitter" class="connect__button"><i class="icon-twitter-circle"></i></button>
+</li>
+<li class="auth-google">
+<button type="button" data-action="auth:google" title="Google" class="connect__button"><i class="icon-google-plus-circle"></i></button>
+</li>
+</ul>
+</div>
+<div class="guest">
+<h6 class="guest-form-title">
+<span class="register-text"> or sign up with Disqus </span>
+<span class="guest-text"> or pick a name </span>
+</h6>
+
+<div class="help-tooltip__wrapper help-icon">
+<div id="rules" class="tooltip show help-tooltip">
+<h3 class="help-tooltip__heading">Disqus is a discussion network</h3>
+<ul class="help-tooltip__list">
+<li><span>Disqus never moderates or censors. The rules on this community are its own.</span></li>
+<li><span>Your email is safe with us. It's only used for moderation and optional notifications.</span></li>
+<li><span>Don't be a jerk or do anything illegal. Everything is easier that way.</span></li>
+</ul>
+<p class="clearfix"><a href="https://docs.disqus.com/kb/terms-and-policies/" class="btn btn-small help-tooltip__button" target="_blank">Read full terms and conditions</a></p>
+</div>
+</div>
+
+<p class="input-wrapper">
+<input dir="auto" type="text" placeholder="Name" name="display_name" id="view34_display_name" maxlength="30" class="input--text">
+</p>
+
+<div class="guest-details " data-role="guest-details">
+<p class="input-wrapper">
+<input dir="auto" type="email" placeholder="Email" name="email" id="view34_email" class="input--text">
+</p>
+
+<p class="input-wrapper">
+<input dir="auto" type="password" class="register-text input--text" placeholder="Password" name="password" id="view34_password">
+</p>
+
+<div class="acceptance-wrapper register-text">
+By signing up, you agree to the Disqus <a target="_blank" href="https://help.disqus.com/customer/portal/articles/1753105-basic-rules-for-disqus-powered-profiles-and-discussions">Basic Rules</a>, <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466260-terms-of-service">Terms of Service</a>, and <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">Privacy Policy</a>.
+</div>
+<div class="acceptance-wrapper guest-text">
+By posting, you agree to the Disqus <a target="_blank" href="https://help.disqus.com/customer/portal/articles/1753105-basic-rules-for-disqus-powered-profiles-and-discussions">Basic Rules</a>, <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466260-terms-of-service">Terms of Service</a>, and <a target="_blank" href="https://help.disqus.com/customer/portal/articles/466259-privacy-policy">Privacy Policy</a>.
+</div>
+
+<input type="checkbox" name="author-guest" style="display:none">
+
+<div class="proceed" data-role="submit-btn-container">
+<button type="submit" class="proceed__button btn submit" aria-label="Next"><span class="icon-proceed"></span><div class="spinner"></div></button>
+</div>
+</div>
+</div>
+</section>
+
+</div></div>
+</div>
+</form></div>
+
+<button class="alert alert--realtime" style="display: none" data-role="realtime-notification">
+</button>
+
+<div id="no-posts" style="display:none"></div>
+
+<ul id="post-list" class="post-list"><li class="post" id="post-2543466135"><div role="alert"></div>
+<div data-role="post-content" class="post-content">
+<ul class="post-menu dropdown" data-role="menu">
+<li class="collapse">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="collapse" title="Collapse"><span>−</span></a>
+</li>
+<li class="expand">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="collapse" title="Expand"><span>+</span></a>
+</li>
+
+<li class="" role="menu">
+<a class="dropdown-toggle" href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="flag" data-role="flag" title="Flag as inappropriate">
+<i aria-hidden="true" class="icon icon-flag"></i>
+</a>
+</li>
+</ul>
+<div class="indicator"></div>
+
+<div class="avatar hovercard">
+<a href="https://disqus.com/by/N8nnc/" class="user" data-action="profile" data-username="N8nnc">
+<img data-role="user-avatar" data-user="3675200" src="./avatar92.jpg" alt="Avatar">
+</a>
+</div>
+<div class="post-body">
+<header class="comment__header">
+<span class="post-byline">
+<span class="author publisher-anchor-color"><a href="https://disqus.com/by/N8nnc/" data-action="profile" data-username="N8nnc" data-role="username">Nathan Hillery (N8nNC)</a></span>
+
+</span>
+
+<span class="post-meta">
+<span class="bullet time-ago-bullet" aria-hidden="true">•</span>
+
+<a href="https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara#comment-2543466135" data-role="relative-time" class="time-ago" title="Monday, February 29, 2016 8:06 PM">6 months ago</a>
+</span>
+
+</header>
+
+<div class="post-body-inner">
+<div class="post-message-container" data-role="message-container">
+<div class="publisher-anchor-color" data-role="message-content">
+<div class="post-message " data-role="message" dir="auto">
+<p>Thanks for this overview.  It got me going quickly.</p><p>Note that the command line option 'cumtime' failed for me (KeyError: 'cumtime').  The option 'cum' (or 'cumulative') does work.  The output column header is 'cumtime'.  Oddly, <a href="https://docs.python.org/2/library/profile.html" rel="nofollow">https://docs.python.org/2/libr...</a> shows 'cumtime' as a valid option.</p>
+</div>
+
+<span class="post-media"><ul data-role="post-media-list"></ul></span>
+</div>
+</div>
+<a class="see-more hidden" title="see more" data-action="see-more">see more</a>
+</div>
+
+<footer class="comment__footer">
+<menu class="comment-footer__menu">
+<li class="voting" data-role="voting">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" class="vote-up  count-3" data-action="upvote" title="">
+
+<span class="updatable count" data-role="likes">3</span>
+<span class="control"><i aria-hidden="true" class="icon icon-arrow-2"></i></span>
+</a>
+<span role="button" class="vote-down  count-0" data-action="downvote" title="Vote down">
+
+<span class="control"><i aria-hidden="true" class="icon icon-arrow"></i></span>
+</span>
+</li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="reply" data-role="reply-link">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="reply">
+<span class="text">Reply</span></a></li>
+<li class="bullet" aria-hidden="true">•</li>
+
+
+<li class="comment__share">
+<a class="toggle"><span class="text">Share ›</span></a>
+<ul class="comment-share__buttons">
+<li class="twitter">
+<button class="share__button" data-action="share:twitter">Twitter</button>
+</li>
+<li class="facebook">
+<button class="share__button" data-action="share:facebook">Facebook</button>
+</li>
+<li class="link">
+<input class="share__button" value="http://disq.us/p/162bb13" name="Link" title="Click to copy post link" data-action="copy-link" readonly="">
+</li>
+</ul>
+</li>
+
+<li class="realtime" data-role="realtime-notification:2543466135">
+<span style="display:none;" class="realtime-replies"></span>
+<a style="display:none;" href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" class="realtime-button"></a>
+</li>
+
+</menu>
+</footer>
+</div>
+
+<div data-role="blacklist-form"></div>
+<div class="reply-form-container" data-role="reply-form"></div>
+</div>
+
+<ul data-role="children" class="children"></ul>
+
+</li></ul>
+
+<div class="load-more" data-role="more" style="display:none">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" data-action="more-posts" class="btn load-more__button">Load more comments</a>
+</div>
+</div>
+
+</section>
+
+<div id="placement-bottom" data-tracking-area="discovery-south"><div class="post-list" style="height: auto; visibility: visible;"><div style="display: block; width: 100%;"><div id="discovery-main-c82" class="discovery-main">
+
+<section id="col-organic-c100" class="col-organic">
+<header class="discovery-col-header">
+<h2>Also on <strong>jd:/dev/blog</strong>
+</h2>
+</header>
+<ul class="discovery-posts" data-role="discovery-posts"><li class="discovery-post post-0" id="discovery-link-organic-4288644245">
+<a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fgnocchi-1.3.0-released%3ALpo-njpWrASm384yTMFCnpxdVLI&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=4288644245&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4288644245" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Gnocchi 1.3.0 release | Julien Danjou">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Gnocchi 1.3.0 release | Julien Danjou
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+3 comments
+</li>
+<li class="time">9 months ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fgnocchi-1.3.0-released%3ALpo-njpWrASm384yTMFCnpxdVLI&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=4288644245&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=4288644245" class="top-comment" data-role="discovery-top-comment">
+<img alt="Avatar" data-role="discovery-avatar" src="./noavatar92.png">
+<p><span class="user" data-role="discovery-top-comment-author">Yang Zhonggang</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">OK,thanks</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-1" id="discovery-link-organic-3759748702">
+<a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2011%2Fgoogle-contacts-for-emacs%3ACASYEr8pE0KNp21QJ8WWTuv4dWg&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=3759748702&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=3759748702" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Google Contacts for Emacs">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Google Contacts for Emacs
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+1 comment
+</li>
+<li class="time">a year ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2011%2Fgoogle-contacts-for-emacs%3ACASYEr8pE0KNp21QJ8WWTuv4dWg&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=3759748702&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=3759748702" class="top-comment" data-role="discovery-top-comment">
+<img alt="Avatar" data-role="discovery-avatar" src="./avatar92(1).jpg">
+<p><span class="user" data-role="discovery-top-comment-author">Diego Berrocal</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">This is very neat! :D</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-2" id="discovery-link-organic-3756990996">
+<a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2013%2Frant-about-github-pull-request-workflow-implementation%3AOcbgmCjBlGbA0tBXTg5DbrqSFMc&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=3756990996&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=3756990996" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Rant about Github pull-request workflow implementation">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Rant about Github pull-request workflow implementation
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+1 comment
+</li>
+<li class="time">a year ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2013%2Frant-about-github-pull-request-workflow-implementation%3AOcbgmCjBlGbA0tBXTg5DbrqSFMc&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=3756990996&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=3756990996" class="top-comment" data-role="discovery-top-comment">
+<img alt="Avatar" data-role="discovery-avatar" src="./avatar92(2).jpg">
+<p><span class="user" data-role="discovery-top-comment-author">Anders Furuhed</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">Your text is very helpful - thanks.</span></p>
+</a>
+
+</li>
+<li class="discovery-post post-3" id="discovery-link-organic-3756674057">
+<a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2014%2Fpython-bad-practice-concrete-case%3A5EHDW3tm2E1zqmLz6pzD61DeeV0&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=3756674057&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=3756674057" class="publisher-anchor-color">
+
+<header class="discovery-post-header">
+<h3 title="Python bad practice, a concrete case">
+<span data-role="discovery-thread-title" class="title line-truncate" data-line-truncate="2">
+Python bad practice, a concrete case
+</span>
+</h3>
+
+<ul class="meta">
+<li class="comments">
+4 comments
+</li>
+<li class="time">a year ago</li>
+</ul>
+</header>
+
+</a><a href="http://disq.us/url?url=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2014%2Fpython-bad-practice-concrete-case%3A5EHDW3tm2E1zqmLz6pzD61DeeV0&amp;imp=13292rr3m1nef6&amp;prev_imp&amp;forum_id=3597251&amp;forum=jdanjou&amp;thread_id=4323775833&amp;thread=3756674057&amp;zone=thread&amp;area=bottom&amp;object_type=thread&amp;object_id=3756674057" class="top-comment" data-role="discovery-top-comment">
+<img alt="Avatar" data-role="discovery-avatar" src="./noavatar92.png">
+<p><span class="user" data-role="discovery-top-comment-author">Daniel Leuenberger</span> — <span data-role="discovery-top-comment-snippet" class="line-truncate" data-line-truncate="3">That would be great! I would appreciate that.</span></p>
+</a>
+
+</li>
+</ul>
+</section>
+
+</div>
+</div></div></div>
+
+<div id="footer" data-tracking-area="footer" class="disqus-footer__wrapper">
+<ul class="disqus-footer">
+<li class="disqus-footer__logo"><a href="https://disqus.com/" rel="nofollow" title="Powered by Disqus" class="disqus-footer__link">Powered by Disqus</a></li>
+<li id="thread-subscribe-button" class="email disqus-footer__item"> 
+<div class="default">
+<a href="https://disqus.com/embed/comments/?base=default&amp;version=90aeb3a56d1f2d3db731af14996f11cf&amp;f=jdanjou&amp;t_u=https%3A%2F%2Fjulien.danjou.info%2Fblog%2F2015%2Fguide-to-python-profiling-cprofile-concrete-case-carbonara&amp;t_d=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;t_t=%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Profiling%20Python%20using%20cProfile%3A%20a%20concrete%20case%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20&amp;s_o=default#" rel="nofollow" data-action="subscribe" title="Subscribe and get email updates from this discussion" class="disqus-footer__link"><i aria-hidden="true" class="icon icon-mail"></i><span class="clip">Subscribe</span> <i aria-hidden="true" class="icon icon-checkmark"></i></a>
+</div>
+<div class="form">
+<div class="input-wrapper"><input id="thread-subscribe-email" type="email" placeholder="yourname@email.com" class="disqus-footer__input input--text"></div>
+</div>
+</li>
+<li class="install disqus-footer__item">
+<a href="https://publishers.disqus.com/engage?utm_source=jdanjou&amp;utm_medium=Disqus-Footer" rel="nofollow" target="_blank" class="disqus-footer__link">
+<i aria-hidden="true" class="icon icon-disqus"></i>
+<span class="clip hidden-sm">Add Disqus to your site</span>
+<span class="clip visible-sm hidden-xs">Add Disqus</span>
+<span class="clip visible-xs">Add</span>
+</a>
+</li>
+<li class="privacy disqus-footer__item">
+<a href="https://help.disqus.com/customer/portal/articles/1657951?utm_source=disqus&amp;utm_medium=embed-footer&amp;utm_content=privacy-btn" rel="nofollow" target="_blank" class="disqus-footer__link">
+<i aria-hidden="true" class="icon icon-lock"></i>
+<span class="clip">Privacy</span>
+</a>
+</li>
+</ul>
+</div>
+</div></body></html>

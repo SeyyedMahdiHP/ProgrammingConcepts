@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://regexcrossword.com/ -->
+<html lang="en" ng-app="rcApp" ng-controller="MainCtrl" ng-class="{&#39;offline&#39;: network.offline}" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+	
+	<title ng-bind="page.title" class="ng-binding">Regex Crossword</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="A crossword puzzle game using regular expressions. Earn achievements completing puzzle challenges. Easy tutorials for people new to regular expressions.">
+	<meta name="author" content="Maria Hagsten Michelsen, Ole Bjørn Michelsen">
+
+	<meta property="fb:admins" content="693083361">
+	<meta property="fb:app_id" content="416105278477663">
+	<meta property="game:points" content="">
+	<meta property="og:description" content="A crossword puzzle game using regular expressions. Earn achievements completing puzzle challenges. Easy tutorials for people new to regular expressions.">
+	<meta property="og:image" content="https://regexcrossword.com/img/logo-social.png">
+	<meta property="og:site_name" content="Regex Crossword">
+	<meta property="og:title" content="Regex Crossword">
+	<meta property="og:type" content="game">
+	<meta property="og:url" content="https://regexcrossword.com">
+
+	<!--<base href="/">--><base href=".">
+
+	<link rel="shortcut icon" href="https://regexcrossword.com/img/favicon.ico">
+	<link rel="image_src" href="https://regexcrossword.com/img/logo-social.png">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://regexcrossword.com/img/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://regexcrossword.com/img/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://regexcrossword.com/img/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://regexcrossword.com/img/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://regexcrossword.com/img/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://regexcrossword.com/img/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://regexcrossword.com/img/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://regexcrossword.com/img/apple-touch-icon-152x152.png">
+
+	<meta name="application-name" content="Regex Crossword">
+	<meta name="msapplication-TileColor" content="#000000">
+	<meta name="msapplication-TileImage" content="/img/mstile-144x144.png">
+
+	<link href="https://regexcrossword.com/feed.php" type="application/atom+xml" rel="alternate" title="News feed for regex challenges and puzzles.">
+<link href="./Regex Crossword_files/styles-d8c6a50f2826c139f67b.css" rel="stylesheet"><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v2/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
+<body>
+	<ga account-id="UA-38894114-1"></ga>
+	<div id="fb-root" app-id="416105278477663" class="ng-isolate-scope fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="./Regex Crossword_files/Lcj5EtQ5qmD.html" style="border: none;"></iframe></div></div></div>
+
+	<div class="navbar navbar-inverse navbar-fixed-top" ng-class="{&#39;anim-snow&#39;: isDecember}" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" ng-click="navbarExpanded = !navbarExpanded">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="https://regexcrossword.com/" ng-click="navbarExpanded = false">
+					<img class="logo" src="./Regex Crossword_files/logo.svg" alt="Regex Crossword" width="25" height="25">
+				</a>
+			</div>
+			<div class="navbar-collapse collapse" uib-collapse="!navbarExpanded" ng-click="navbarExpanded = false" style="height: 0px;">
+				<ul class="nav navbar-nav">
+					<li><a href="https://regexcrossword.com/playerpuzzles">Player puzzles</a></li>
+					<li><a href="https://regexcrossword.com/howtoplay">How to play</a></li>
+					<li><a href="https://regexcrossword.com/stats">Stats</a></li>
+					<li><a href="https://regexcrossword.com/about">About</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://regexcrossword.com/#" ng-click="toggleSidebar()"><i class="icon-question"></i> Help</a></li>
+					<li ng-show="user.authenticated" class="ng-hide">
+						<a href="https://regexcrossword.com/profile/" ng-href="/profile/" class="ng-binding"><i class="icon-"></i> </a>
+					</li>
+					<li ng-show="user.authenticated" class="ng-hide">
+						<a href="https://regexcrossword.com/#" ng-click="logout()" title="Log out"><i class="icon-exit"></i></a>
+					</li>
+					<li ng-hide="user.authenticated || network.offline" class="">
+						<a href="https://regexcrossword.com/#" ng-click="login()"><i class="icon-user"></i> Login</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- ngView:  --><div ng-view="" autoscroll="true" class="view ng-scope"><div class="jumbotron ng-scope"><div class="container"><h1>Regex Cross­word</h1><p>Welcome to the fantastic world of nerdy regex fun! Start playing by selecting one of the puzzle challenges below. There are a wide range of difficulties from beginner to expert.</p><p><a href="https://regexcrossword.com/howtoplay" class="btn btn-info btn-large">How to play »</a></p></div></div><div class="container ng-scope"><div class="challenges row"><!-- ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Tutorial</h2><p class="ng-binding">A step by step tutorial, teaching you the different symbols and regex patterns.</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/tutorial" href="https://regexcrossword.com/challenges/tutorial">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Beginner</h2><p class="ng-binding">Cut your teeth on an easy set of crosswords, learning the basics of regular expressions.</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/beginner" href="https://regexcrossword.com/challenges/beginner">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Intermediate</h2><p class="ng-binding">So you've got skills eh? Let's see how you handle a tougher challenge...</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/intermediate" href="https://regexcrossword.com/challenges/intermediate">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Experienced</h2><p class="ng-binding">Now it's getting difficult. We are ramping up the size and complexity. Try to keep up!</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/experienced" href="https://regexcrossword.com/challenges/experienced">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Palindromeda</h2><p class="ng-binding">Bend your mind around these cubistic 2D palindrome puzzles.</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/palindromeda" href="https://regexcrossword.com/challenges/palindromeda">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Double Cross</h2><p class="ng-binding">Don't get cross-eyed, the clues are coming from all directions!</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/doublecross" href="https://regexcrossword.com/challenges/doublecross">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Cities</h2><p class="ng-binding">Rome wasn't built in a day you know, but see if you can complete these puzzles that fast.</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/cities" href="https://regexcrossword.com/challenges/cities">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Volapük</h2><p class="ng-binding">This is not a crossword, this is an exercise in pure regex prowess.</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/volapuk" href="https://regexcrossword.com/challenges/volapuk">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Hamlet</h2><p class="ng-binding">Though this be madness, yet there is method in't. Will you walk out of the air, my lord?</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/hamlet" href="https://regexcrossword.com/challenges/hamlet">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --><div class="challenge col-md-4 ng-scope" ng-repeat="challenge in challenges"><h2 class="ng-binding">Hexagonal</h2><p class="ng-binding">Dive into the honeycomb like a busy bee and become a true beekeeper.</p><div class="progress-striped progress ng-isolate-scope" value="solvedPct(challenge.puzzles)" type="info">
+  <div class="progress-bar progress-bar-info" ng-class="type &amp;&amp; &#39;progress-bar-&#39; + type" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" ng-style="{width: (percent &lt; 100 ? percent : 100) + &#39;%&#39;}" aria-valuetext="0%" aria-labelledby="progressbar" ng-transclude="" style="width: 0%;"></div>
+</div><p><a class="btn btn-success" ng-class="{
+					&#39;btn-success&#39;: solvedPct(challenge.puzzles) &lt; 100,
+					&#39;btn-default&#39;: solvedPct(challenge.puzzles) === 100
+				}" ng-href="/challenges/hexagonal" href="https://regexcrossword.com/challenges/hexagonal">Play »</a></p></div><!-- end ngRepeat: challenge in challenges --></div></div></div>
+
+	<!-- ngIf: showSidebar -->
+
+	<footer>
+		<ul class="social list-menu">
+			<li><div class="fb-like fb_iframe_widget" data-href="https://regexcrossword.com" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=416105278477663&amp;container_width=0&amp;href=https%3A%2F%2Fregexcrossword.com%2F&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;share=false&amp;show_faces=false"><span style="vertical-align: top; width: 0px; height: 0px; overflow: hidden;"><iframe name="f3a1112c83ec56c" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="./Regex Crossword_files/like.html" style="border: none; visibility: visible; width: 0px; height: 0px; display: none !important;"></iframe></span></div></li>
+			<li class="divider"></li>
+			<li><a href="https://twitter.com/RegexCrossword" class="twitter-follow-button" data-show-count="true">Follow @RegexCossword</a></li>
+		</ul>
+		<p class="copyright">
+			Regex Crossword is created and maintained by <a href="https://twitter.com/omichelsen">@omichelsen</a> and <a href="https://twitter.com/maria_hagsten">@maria_hagsten</a>.
+		</p>
+		<ul class="sitemap list-menu">
+			<li>Donate with <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=GMUAF7MWFZWDC&amp;lc=GB&amp;item_name=Regex%20Crossword&amp;item_number=regexcrossword&amp;currency_code=EUR&amp;bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted" title="Donate via PayPal">PayPal</a></li>
+			<li class="divider"></li>
+			<li><a href="https://regexcrossword.com/privacy">Privacy Policy</a></li>
+			<li class="divider"></li>
+			<li><a href="https://regexcrossword.com/feed.php">Atom Feed</a></li>
+		</ul>
+	</footer>
+
+	<!--  -->
+<script id="facebook-jssdk" src="./Regex Crossword_files/sdk.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://cdn.userreport.com/userreport.js"></script><script id="twitter-wjs" src="./Regex Crossword_files/widgets.js"></script><script src="./Regex Crossword_files/bundle-styles-d8c6a50f2826c139f67b.js"></script><script src="./Regex Crossword_files/bundle-libs-db9bd4740121a91058ab.js"></script><script src="./Regex Crossword_files/bundle-app-daf11f67f8eb1cc95c2a.js"></script>
+
+<div class="cfp-hotkeys-container fade ng-scope" ng-class="{in: helpVisible}" style="display: none;"><div class="cfp-hotkeys"><!-- ngIf: !header --><h4 class="cfp-hotkeys-title ng-binding ng-scope" ng-if="!header">Keyboard Shortcuts:</h4><!-- end ngIf: !header --><!-- ngIf: header --><table><tbody><!-- ngRepeat: hotkey in hotkeys | filter:{ description: '!$$undefined$$' } --><tr ng-repeat="hotkey in hotkeys | filter:{ description: &#39;!$$undefined$$&#39; }" class="ng-scope"><td class="cfp-hotkeys-keys"><!-- ngRepeat: key in hotkey.format() track by $index --><span ng-repeat="key in hotkey.format() track by $index" class="cfp-hotkeys-key ng-binding ng-scope">?</span><!-- end ngRepeat: key in hotkey.format() track by $index --></td><td class="cfp-hotkeys-text ng-binding">Show / hide this help menu</td></tr><!-- end ngRepeat: hotkey in hotkeys | filter:{ description: '!$$undefined$$' } --><tr ng-repeat="hotkey in hotkeys | filter:{ description: &#39;!$$undefined$$&#39; }" class="ng-scope"><td class="cfp-hotkeys-keys"><!-- ngRepeat: key in hotkey.format() track by $index --><span ng-repeat="key in hotkey.format() track by $index" class="cfp-hotkeys-key ng-binding ng-scope">h</span><!-- end ngRepeat: key in hotkey.format() track by $index --></td><td class="cfp-hotkeys-text ng-binding">Show help reference</td></tr><!-- end ngRepeat: hotkey in hotkeys | filter:{ description: '!$$undefined$$' } --></tbody></table><!-- ngIf: footer --><div class="cfp-hotkeys-close" ng-click="toggleCheatSheet()">×</div></div></div></body></html>
