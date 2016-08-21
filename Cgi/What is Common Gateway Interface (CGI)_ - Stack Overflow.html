@@ -1,0 +1,2862 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>What is Common Gateway Interface (CGI)? - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">    
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded&amp;a">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="What is Common Gateway Interface (CGI)?">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="CGI is a Common Gateway Interface. As the name says, it is a &quot;common&quot; gateway interface for everything. It is so trivial and naive from the name. I feel that I understood this and I felt this every...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">
+    <link rel="canonical" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">
+
+    
+    
+    <script type="text/javascript" async="" src="http://engine.adzerk.net/ados?t=1471725485933&amp;request={%22Placements%22:[{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1226239493%22,%22AT%22:4,%22Z%22:[43]},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1354413327%22,%22AT%22:4,%22Z%22:[44]},{%22A%22:22,%22S%22:8277,%22D%22:%22adzerk1896221161%22,%22ATA%22:[5,17,2221],%22Z%22:[45]}],%22Keywords%22:%22cgi%2Cx-user-registered%22,%22Referrer%22:%22https%3A%2F%2Fwww.google.com%2F%22,%22IsAsync%22:true}"></script><script async="" src="http://edge.quantserve.com/quant.js"></script><script async="" src="http://b.scorecardresearch.com/beacon.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/ados.js"></script><script src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/jquery.min.js"></script>
+    <script src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;What is Common Gateway Interface (CGI)?&#39;" href="http://stackoverflow.com/feeds/question/2089271">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:5,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:2089271});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '2089271');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text'); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1471725120,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"8c7e4cd0f7077e632e0913ceb0f37a59","rep":1,"isRegistered":true,"userType":3,"userId":3427552,"accountId":3693636,"gravatar":"<div class=\"gravatar-wrapper-32\"><img src=\"https://www.gravatar.com/avatar/4775b85b9de5e76fa0268c5e2d472de3?s=32&amp;d=identicon&amp;r=PG&amp;f=1\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/3427552/mahdi","canSeeDeletedPosts":false}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"fd09991aa6d6","js/moderator.en.js":"2be157203f0c","js/full-anon.en.js":"9f6038d81692","js/full.en.js":"f59a9279a0b6","js/wmd.en.js":"dc51078c84ec","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"71d3e40fd6df","js/help.en.js":"b50417081cc4","js/tageditor.en.js":"2178711359dd","js/tageditornew.en.js":"511df03b52b0","js/inline-tag-editing.en.js":"4fa1a4a3339e","js/revisions.en.js":"db5a160e1690","js/review.en.js":"48bdcd1b2416","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"6bb4a20283f6","js/explore-qlist.en.js":"2a9a628fca7f","js/events.en.js":"9a8e62fa4d42","js/keyboard-shortcuts.en.js":"273790c5f3c5","js/external-editor.en.js":"683ce04845f3","js/external-editor.en.js":"683ce04845f3","js/snippet-javascript.en.js":"b45759e6e55e","js/snippet-javascript-codemirror.en.js":"823586268fff"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+<script async="" src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/full.en.js"></script><script async="" src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/snippet-javascript.en.js"></script><script async="" src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/post-validation.en.js"></script><script type="text/javascript" src="http://static.adzerk.net/Extensions/adFeedback.js"></script><link rel="stylesheet" href="http://static.adzerk.net/Extensions/adFeedback.css"></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    
+        <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+
+
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+                    <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+                    <a href="http://stackoverflow.com/users/logout" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:8 })">log out</a>
+    </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                </li>
+        </ul>
+    </div>
+    <div class="header" id="your-communities-header">
+        <h3>
+                <a href="http://stackexchange.com/users/3693636/?tab=accounts">your communities</a>
+        </h3>
+            
+            <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" id="edit-pinned-sites">edit</a>
+            <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" id="cancel-pinned-sites" style="display: none;">cancel</a>
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <ul class="my-sites">
+                    <li>
+                        
+
+
+
+    <a href="http://askubuntu.com/" class="site-link js-gps-track" data-id="89" data-gps-track="
+            site.switch({ target_site:89, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-askubuntu" title="Ask Ubuntu"></div>
+        Ask Ubuntu
+            <span class="rep-score">11</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://security.stackexchange.com/" class="site-link js-gps-track" data-id="162" data-gps-track="
+            site.switch({ target_site:162, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-security" title="Information Security"></div>
+        Information Security
+            <span class="rep-score">11</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://meta.stackexchange.com/" class="site-link js-gps-track" data-id="4" data-gps-track="
+            site.switch({ target_site:4, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+        Meta Stack Exchange
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://stackoverflow.com/" class="site-link js-gps-track" data-id="1" data-gps-track="
+            site.switch({ target_site:1, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+                    <li>
+                        
+
+
+
+    <a href="http://superuser.com/" class="site-link js-gps-track" data-id="3" data-gps-track="
+            site.switch({ target_site:3, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-superuser" title="Super User"></div>
+        Super User
+            <span class="rep-score">1</span>
+    </a>
+
+                    </li>
+            </ul>
+                <div class="pinned-site-editor-container" style="display: none;">
+                    <input id="js-site-search-txt" type="text" class="site-filter-input" value="" placeholder="Add a Stack Exchange community">
+                    <input type="submit" id="pin-site-btn" value="Add" disabled="disabled">
+                    <ul class="js-found-sites found-sites"></ul>
+                    <ul class="pinned-site-list sortable" data-custom-list="False">
+                    </ul>
+                    <input type="submit" value="Save" id="save-pinned-sites-btn" disabled="disabled">
+                    <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" id="reset-pinned-sites">reset to default list</a>
+                </div>
+    </div>
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+        <a href="http://blog.stackoverflow.com/" class="fr">company blog</a>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+                <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 159 Stack Exchange sites">
+                    <span class="hidden-text">Stack Exchange</span>
+                </a>
+
+    <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+        <span class="hidden-text">Inbox</span>
+        <span class="unread-count" style="display:none"></span>
+    </a>
+    <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" class="topbar-icon icon-achievements yes-hover js-achievements-button " data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+        <span class="hidden-text">Reputation and Badges</span>
+        <span class="unread-count" style="display:none">
+            
+        </span>
+    </a>
+        </div>
+
+        <div class="topbar-links">
+
+                <a href="http://stackoverflow.com/users/3427552/mahdi" class="profile-me js-gps-track" data-gps-track="profile_summary.click()">
+                    
+                    <div class="gravatar-wrapper-24" title="Mahdi"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/4775b85b9de5e76fa0268c5e2d472de3" alt="" width="24" height="24" class="avatar-me js-avatar-me"></div>
+
+                    <div class="links-container topbar-flair">
+
+                        <span class="reputation" title="your reputation: 1">
+                            1
+                        </span>
+<span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>                    </div>
+                </a>
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+
+
+
+
+        <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" class="icon-help js-help-button" title="Help Center and other resources">
+            help
+            <span class="triangle"></span>
+        </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://business.stackoverflow.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+                                            </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="Search Q&amp;A" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                            <li><a id="nav-jobs" href="http://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab">Jobs</a></li>
+                                                <li><a id="nav-docs" href="http://stackoverflow.com/documentation">Documentation</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+<div class="hero-box docs-announcement">
+    <div class="hero-close js-dismiss">Dismiss</div>
+    
+    
+    <div class="hero-content text-left">
+        <div class="text-wrapper">
+            <div class="hero-title">
+                Announcing Stack Overflow Documentation
+            </div>
+
+            <p class="subtitle">
+                We started with Q&amp;A. Technical documentation is next, and we need your help.
+            </p>
+            <p class="subtitle">
+                Whether you're a beginner or an experienced developer, you <i>can</i> contribute.
+            </p>
+        </div>
+
+            <a href="http://stackoverflow.com/tour/documentation" class="btn js-gps-track" data-gps-track="docs.hero.clicked({target: 1 })">
+                I want to help →
+            </a>
+
+        <div class="img"></div>
+    </div>
+</div>
+
+<script>
+    StackExchange.ready(function() {
+        var location = 0;
+        if ($("body").hasClass("question-page")) {
+            location = 2;
+        } else if ($("body").hasClass("home-page")) {
+            location = 1;
+        }
+
+        $(".docs-announcement .js-dismiss").one("click", function() {
+            $(".docs-announcement").fadeOut("fast");
+            $.post("/dismiss-documentation-hero", { fkey: StackExchange.options.user.fkey, location: location });
+        });
+
+        StackExchange.using("gps", function () {
+            StackExchange.gps.track("docs.hero.show", { location: location }, true);
+        });
+    });
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi" class="question-hyperlink">What is Common Gateway Interface (CGI)?</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="2089271" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1226239493",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1226239493"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo0NzE0OTMsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNjI3NzYzLCJkaSI6IjdlMDNkZTM5MTdmMjRkYjM5MGIxMGMyOWJkOGIwMmMxIiwiZG0iOjEsImZjIjoxOTI0NDQyLCJmbCI6MjE0MjMxMiwiaXAiOiI4NS4xOTguOC4xMzUiLCJrdyI6ImNnaSx4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtNDAzMzY1ZGFjNGMzNDQzMWJkMmVmN2JmYzkxYmM0MDMiLCJ6biI6NDMsInRzIjoxNDcxNzI1NDg5MTk4LCJiZiI6dHJ1ZSwicG4iOiJhZHplcmsxMjI2MjM5NDkzIiwidXIiOiJodHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vam9icz91dG1fc291cmNlPXdlYnNpdGUmdXRtX21lZGl1bT1iYW5uZXImdXRtX2NvbnRlbnQ9bGVhZGVyYm9hcmRfMiZ1dG1fY2FtcGFpZ249aG91c2VfYWRzX2hvdXNlX2Fkc19ST1NfU08ifQ&amp;s=wgRjjxuJRFmtq6h2O_X4Z4tbUhg" rel="nofollow" target="_blank" title=""><img src="http://static.adzerk.net/Advertisers/6768ddb6a63e482c9c31155cdde7af9a.png" title="" alt="" border="0" width="728" height="90" style="display: none !important;"></a><img height="0px" width="0px" border="0" style="position: absolute; display: none !important;" src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo0NzE0OTMsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNjI3NzYzLCJkaSI6IjdlMDNkZTM5MTdmMjRkYjM5MGIxMGMyOWJkOGIwMmMxIiwiZG0iOjEsImZjIjoxOTI0NDQyLCJmbCI6MjE0MjMxMiwiaXAiOiI4NS4xOTguOC4xMzUiLCJrdyI6ImNnaSx4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtNDAzMzY1ZGFjNGMzNDQzMWJkMmVmN2JmYzkxYmM0MDMiLCJ6biI6NDMsInRzIjoxNDcxNzI1NDg5MjAwLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmsxMjI2MjM5NDkzIiwiZnEiOjB9&amp;s=V280tm4KoabYTfE72LlzG5WIuoc"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089271">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">582</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" title="Click to mark as favorite question (click again to undo)">favorite</a>
+        <div class="favoritecount"><b>274</b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>CGI is a Common Gateway Interface. As the name says, it is a "common" gateway interface for everything. It is so trivial and naive from the name. I feel that I understood this and I felt this every time I encountered this word. But frankly, I didn't. I'm still confused. </p>
+
+<p>I am a PHP programmer with web development experience. </p>
+
+<blockquote>
+  <p>user (client) request for page ---&gt; webserver(-&gt;embedded PHP
+  interpreter) ----&gt; Server side(PHP) Script ---&gt; MySQL Server.</p>
+</blockquote>
+
+<p>Now say my PHP Script can fetch results from MySQL server &amp; MATLAB server &amp; some other server.</p>
+
+<p>So, now PHP Script is the CGI? Because its interface for the between webserver &amp; All other servers? I don't know. Sometimes they call CGI, a technology &amp; other times they call CGI a program or some other server. </p>
+
+<ul>
+<li><p>What exactly is CGI?</p></li>
+<li><p>Whats the big deal with <code>/cgi-bin/*.cgi</code>? What's up with this? I don't know what is this <code>cgi-bin</code> directory on the server for. I don't know why they have *.cgi extensions.</p></li>
+<li><p>Why does Perl always comes in the way. CGI &amp; Perl (language). I also don't know what's up with these two. Almost all the time I keep hearing these two in combination "CGI &amp; Perl". This book is another great example <a href="http://rads.stackoverflow.com/amzn/click/1565924193" rel="nofollow">CGI Programming with Perl</a>. Why not "CGI Programming with PHP/JSP/ASP"? I never saw such things. </p></li>
+<li><p><strong>CGI Programming in C</strong>, confuses me a lot. "<strong>in C</strong>"?? Seriously?? I don't know what to say. I'm just confused. "<strong>in C</strong>"?? This changes everything. Program needs to be compiled and executed. This entirely changes my view of web programming. When do I compile? How does the program gets executed (because it will be a machine code, so it must execute as a independent process). How does it communicate with the web server? IPC? and interfacing with all the servers (in my example MATLAB &amp; MySQL) using socket programming? I'm lost!!</p></li>
+<li><p>People say that CGI is deprecated and isn't in use anymore. Is that so? What is the latest update?</p></li>
+</ul>
+
+<blockquote>
+  <p>Once, I ran into a situation where I
+  had to give HTTP PUT request access to
+  web server (Apache HTTPD). Its a long
+  back. So, as far as I remember this is
+  what I did:</p>
+  
+  <ol>
+  <li><p>Edited the configuration file of Apache HTTPD to tell webserver to pass
+  all HTTP PUT requests to some
+  <code>put.php</code> ( I had to write this PHP
+  script)</p></li>
+  <li><p>Implement put.php to handle the request (save the file to the location
+  mentioned)</p></li>
+  </ol>
+  
+  <p>People said that I wrote a CGI Script.
+  Seriously, I didn't have a clue what
+  they were talking about.</p>
+</blockquote>
+
+<ul>
+<li>Did I really write CGI Script?  </li>
+</ul>
+
+<p>I hope you understood what my confusion is. (Because I myself don't know where I'm confused). I request you guys to keep your answer as simple as possible. I really can't understand any fancy technical terminology. At least not in this case. </p>
+
+<p><strong>EDIT:</strong></p>
+
+<p>I found this amazing tutorial <a href="http://www.whizkidtech.redprince.net/cgi-bin/tutorial" rel="nofollow">"CGI Programming Is Simple!" - CGI Tutorial</a>, which explains the concepts in <strong>simplest</strong> possible way. After reading this article you may want to read <a href="http://www.cs.tut.fi/~jkorpela/forms/cgic.html" rel="nofollow">Getting Started with CGI Programming in C</a> to supplement your understanding with actual code samples. I've also added these links to this tutorial to Wikipedia's article: <a href="http://en.wikipedia.org/wiki/Common_Gateway_Interface" rel="nofollow">http://en.wikipedia.org/wiki/Common_Gateway_Interface</a></p>
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/cgi" class="post-tag js-gps-track" title="show questions tagged &#39;cgi&#39;" rel="tag">cgi</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/2089271/3427552" title="short permalink to this question" class="short-link" id="link-post-2089271">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089271/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/2089271/revisions" title="show all edits to this post">edited <span title="2016-08-10 19:59:53Z" class="relativetime">Aug 10 at 19:59</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/270302/avindra-goolcharan"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/615a797afdf93c242e2b86221b9d02e6" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/270302/avindra-goolcharan">Avindra Goolcharan</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">1,013</span><span title="10 silver badges"><span class="badge2"></span><span class="badgecount">10</span></span><span title="22 bronze badges"><span class="badge3"></span><span class="badgecount">22</span></span>
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2010-01-18 21:15:48Z" class="relativetime">Jan 18 '10 at 21:15</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/193653/claws"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/a863c2bf5491d989180b8d7e982424b3" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/193653/claws">claws</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 14,605" dir="ltr">14.6k</span><span title="37 gold badges"><span class="badge1"></span><span class="badgecount">37</span></span><span title="99 silver badges"><span class="badge2"></span><span class="badgecount">99</span></span><span title="168 bronze badges"><span class="badge3"></span><span class="badgecount">168</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089271" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2021704" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">6</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I've already seen CGI writen in Cobol. No kiding!</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/14673/luc-m" title="8,328 reputation" class="comment-user">Luc M</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021704_2089271"><span title="2010-01-18 21:25:25Z" class="relativetime-clean">Jan 18 '10 at 21:25</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2021768" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Luc M. Interested. Which CGI do you mean (given that there exists a raycaster in LINQ...)?</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/148423/joe" title="23,995 reputation" class="comment-user">Joe</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021768_2089271"><span title="2010-01-18 21:33:37Z" class="relativetime-clean">Jan 18 '10 at 21:33</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2021998" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">7</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@claws: People, mainly old-school, will call ANY code,  regardless of the actual method of execution,  executed via the webserver a CGI.   What you actually wrote is a PHP script, which may  or may not be executed via the CGI protocol.   Your confusion seems to stem from the ambivalent  meaning of CGI, a protocol to execute code and the  code that's being executed via the protocol  (which later on got generalized to mean  any web-executed code)</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/5190/vinko-vrsalovic" title="162,905 reputation" class="comment-user">Vinko Vrsalovic</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021998_2089271"><span title="2010-01-18 21:59:26Z" class="relativetime-clean">Jan 18 '10 at 21:59</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-60216845" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Back in the mid 90's I wrote a couple of CGI scripts in HyperCard</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/341407/neal-davis" title="143 reputation" class="comment-user">Neal Davis</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment60216845_2089271"><span title="2016-03-29 22:03:29Z" class="relativetime-clean">Mar 29 at 22:03</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-61919880" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Joe I never received the notification and today , reading again this post, I saw your question.  The CGI's were written on OpenVMS as independant executables ( no framework involved or third party applicaitons...)</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/14673/luc-m" title="8,328 reputation" class="comment-user">Luc M</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment61919880_2089271"><span title="2016-05-12 17:29:06Z" class="relativetime-clean">May 12 at 17:29</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089271" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								11 Answers
+                                <span style="display:none;" itemprop="answerCount">11</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="2089297"></a>
+<div id="answer-2089297" class="answer accepted-answer" data-answerid="2089297" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089297">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">321</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>CGI is an interface which tells the webserver how to pass data back and forth to and from an application.  More specifically, it describes how request information is passed in environment variables (such as request type, remote IP address), how the reqeust body is passed in via standard input, and how the response is passed out via standard output. You can refer to the <a href="http://www.ietf.org/rfc/rfc3875.txt">CGI specification</a> for details.</p>
+
+<p>To use your image:</p>
+
+<p><code>user (client) request for page ---&gt; webserver ---[CGI]----&gt; Server side Program ---&gt; MySQL Server.</code></p>
+
+<p>Most, if not all, webservers can be configured to execute a program as a 'CGI'. This means that the webserver, upon receiving a request, will forward the data to a specific program, setting some environment variables and marshalling the parameters via standard input and standard output so the program can know where and what to look for.</p>
+
+<p>The main benefit is that you can run ANY executable code from the web, given that both the webserver and the program know how CGI works. That's why you could write web programs in C or Bash with a regular CGI-enabled webserver. That, and that most programming environments can easily use standard input, standard output and environment variables.</p>
+
+<p>In your case you most likely used another, specific for PHP, means of communication between your scripts and the webserver, this, as you well mention in your question, is an embedded interpreter called mod_php.</p>
+
+<p>So, answering your questions:</p>
+
+<blockquote>
+  <p>What exactly is CGI?</p>
+</blockquote>
+
+<p>See above.</p>
+
+<blockquote>
+  <p>Whats the big deal with /cgi-bin/*.cgi? Whats up with this? I don't know what is this cgi-bin directory on the server for. I don't know why they have *.cgi extensions.</p>
+</blockquote>
+
+<p>That's the traditional place for cgi programs, many webservers come with this directory pre configured to execute all binaries there as CGI programs. The .cgi extension denotes an executable that is expected to work through the CGI.</p>
+
+<blockquote>
+  <p>Why does Perl always comes in the way. CGI &amp; Perl (language). I also don't know whats up with these two. Almost all the time I keep hearing these two in combination "CGI &amp; Perl". This book is another great example CGI Programming with Perl Why not "CGI Programming with PHP/JSP/ASP". I never saw such things.</p>
+</blockquote>
+
+<p>Because Perl is ancient (older than PHP, JSP and ASP which all came to being when CGI was already old, Perl existed when CGI was new) and became fairly famous for being a very good language to serve dynamic webpages via the CGI. Nowadays there are other alternatives to run Perl in a webserver, mainly <a href="http://perl.apache.org/">mod_perl</a>.</p>
+
+<blockquote>
+  <p>CGI Programming in C this confuses me a lot. in C?? Seriously?? I don't know what to say. I"m just confused. "in C"?? This changes everything. Program needs to be compiled and executed. This entirely changes my view of web programming. When do I compile? How does the program gets executed (because it will be a machine code, so it must execute as a independent process). How does it communicate with the web server? IPC? and interfacing with all the servers (in my example MATLAB &amp; MySQL) using socket programming? I'm lost!!</p>
+</blockquote>
+
+<p>You compile the executable once, the webserver executes the program and passes the data in the request to the program and outputs the received response. CGI specifies that one program instance will be launched per each request. This is why CGI is inefficient and kind of obsolete nowadays.</p>
+
+<blockquote>
+  <p>They say that CGI is deprecated. Its no more in use. Is it so? What is its latest update?</p>
+</blockquote>
+
+<p>CGI is still used when performance is not paramount and a simple means of executing code is required. It is inefficient for the previously stated reasons and there are more modern means of executing any program in a web enviroment. Currently the most famous is <a href="http://www.fastcgi.com/">FastCGI</a>. </p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089297/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089297">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089297/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/2089297/revisions" title="show all edits to this post">edited <span title="2016-04-04 19:11:53Z" class="relativetime">Apr 4 at 19:11</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/162698/rob"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/53a32f8b605e4ba0d739bffc4349a8d0" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/162698/rob">Rob</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">9,443</span><span title="6 gold badges"><span class="badge1"></span><span class="badgecount">6</span></span><span title="23 silver badges"><span class="badge2"></span><span class="badgecount">23</span></span><span title="42 bronze badges"><span class="badge3"></span><span class="badgecount">42</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:20:13Z" class="relativetime">Jan 18 '10 at 21:20</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/5190/vinko-vrsalovic"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/27a12fdc32baf8748018d373a973d22f" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/5190/vinko-vrsalovic">Vinko Vrsalovic</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 162,905" dir="ltr">163k</span><span title="34 gold badges"><span class="badge1"></span><span class="badgecount">34</span></span><span title="268 silver badges"><span class="badge2"></span><span class="badgecount">268</span></span><span title="323 bronze badges"><span class="badge3"></span><span class="badgecount">323</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089297" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="11" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2021690" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="hot">16</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">More specifically, it describes how request information is passed in environment variables (such as request type, remote IP address), how the reqeust body is passed in via standard input, and how the response is passed out via standard output.  You can refer to the CGI specification (<a href="http://hoohoo.ncsa.illinois.edu/cgi/" rel="nofollow">hoohoo.ncsa.illinois.edu/cgi</a>) for details.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/32082/daf" title="2,957 reputation" class="comment-user">daf</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021690_2089297"><span title="2010-01-18 21:23:28Z" class="relativetime-clean">Jan 18 '10 at 21:23</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2021698" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Assuming <code>Server side Program</code> in your figure is my PHP script. So, I never Did any CGI programming? Because I never wrote anything that comes in between webserver &amp; my PHP script. Damn!! this kills me.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/193653/claws" title="14,605 reputation" class="comment-user owner">claws</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021698_2089297"><span title="2010-01-18 21:24:52Z" class="relativetime-clean">Jan 18 '10 at 21:24</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2021797" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">PHP is still based heavily on the CGI protocol, most of the content of $_SERVER is straight from the CGI spec. And "CGI programming" always did mean the program processing the request, not the implementation of the protocol itself. If you explained what you do with PHP to a 1993 era web programming pioneer, he'd consider it an advanced (though possibly wimpy) form of CGI programming.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/16883/michael-borgwardt" title="239,800 reputation" class="comment-user">Michael Borgwardt</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021797_2089297"><span title="2010-01-18 21:36:30Z" class="relativetime-clean">Jan 18 '10 at 21:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2021844" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">3</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Michael: But when running via mod_php is not CGI at all (even if based on it). And I agree that CGI refers to both the protocol and the scripts executed via it.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/5190/vinko-vrsalovic" title="162,905 reputation" class="comment-user">Vinko Vrsalovic</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021844_2089297"><span title="2010-01-18 21:42:24Z" class="relativetime-clean">Jan 18 '10 at 21:42</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-8725684" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Vinko Vrsalovic: if CGI is an interface for Perl, C or other languages to execute in Web Server than Which interface is used by PHP to run in Apache???????? and is PHP comes under CGI Specifications??</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/805437/hardik" title="1,745 reputation" class="comment-user">hardik</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment8725684_2089297"><span title="2011-08-31 05:41:27Z" class="relativetime-clean">Aug 31 '11 at 5:41</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089297" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick="">show <b>11</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1354413327",4).setZone(44); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1354413327"><a href="http://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo0NzE0OTMsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNjI3NzY3LCJkaSI6IjZhYjgyOTUxYzkzNjQ4N2U4MTU5ZGRjMzViN2E1OTZmIiwiZG0iOjEsImZjIjoxOTI0NDQ2LCJmbCI6MjE0MjMxMiwiaXAiOiI4NS4xOTguOC4xMzUiLCJrdyI6ImNnaSx4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtNDAzMzY1ZGFjNGMzNDQzMWJkMmVmN2JmYzkxYmM0MDMiLCJ6biI6NDQsInRzIjoxNDcxNzI1NDg5MjAwLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmsxMzU0NDEzMzI3IiwidXIiOiJodHRwOi8vc3RhY2tvdmVyZmxvdy5jb20vam9icy9yZW1vdGU_dXRtX3NvdXJjZT13ZWJzaXRlJnV0bV9tZWRpdW09YmFubmVyJnV0bV9jb250ZW50PWxlYWRlcmJvYXJkXzMmdXRtX2NhbXBhaWduPWhvdXNlX2Fkc19ST1NfU08ifQ&amp;s=DetaWajJKOdIRIeFVca8l2-1MYw" rel="nofollow" target="_blank" title=""><img src="http://static.adzerk.net/Advertisers/d220101fccb24c5f805ac8f614335fc7.png" title="" alt="" border="0" width="728" height="90" style="display: none !important;"></a><img height="0px" width="0px" border="0" style="position: absolute; display: none !important;" src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo0NzE0OTMsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNjI3NzY3LCJkaSI6IjZhYjgyOTUxYzkzNjQ4N2U4MTU5ZGRjMzViN2E1OTZmIiwiZG0iOjEsImZjIjoxOTI0NDQ2LCJmbCI6MjE0MjMxMiwiaXAiOiI4NS4xOTguOC4xMzUiLCJrdyI6ImNnaSx4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6MTYwNCwicnQiOjEsInJmIjoiaHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8iLCJzdCI6ODI3NywidWsiOiJ1ZTEtNDAzMzY1ZGFjNGMzNDQzMWJkMmVmN2JmYzkxYmM0MDMiLCJ6biI6NDQsInRzIjoxNDcxNzI1NDg5MjAyLCJiZiI6dHJ1ZSwicG4iOiJhZHplcmsxMzU0NDEzMzI3IiwiZnEiOjB9&amp;s=wqKvKcKXzlMKZk-qDd7gDHTJfas"></div>
+  
+<a name="2089326"></a>
+<div id="answer-2089326" class="answer" data-answerid="2089326" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089326">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">50</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<blockquote>
+  <p>What exactly is CGI?</p>
+</blockquote>
+
+<p>A means for a web server to get its data from a program (instead of, for instance, a file).</p>
+
+<blockquote>
+  <p>Whats the big deal with /cgi-bin/*.cgi? </p>
+</blockquote>
+
+<p>No big deal. It is just a convention.</p>
+
+<blockquote>
+  <p>I don't know what is this cgi-bin directory on the server for.
+  I don't know why they have *.cgi extensions.</p>
+</blockquote>
+
+<p>The server has to know what to do with the file (i.e. treat it as a program to execute instead of something to simply serve up). Having a .html extension tells it to use a text/html content type. Having a .cgi extension tells it to run it as a program.</p>
+
+<p>Keeping executables in a separate directory gives some added protection against executing incorrect files and/or serving up CGI programs as raw data in case the server gets misconfigured.</p>
+
+<blockquote>
+  <p>Why does Perl always comes in the way. </p>
+</blockquote>
+
+<p>It doesn't. Perl was just big and popular at the same time as CGI.</p>
+
+<p>I haven't used Perl CGI for years. I was using mod_perl for a long time, and tend towards PSGI/Plack with FastCGI these days.</p>
+
+<blockquote>
+  <p>This book is another great example CGI Programming with Perl
+  Why not "CGI Programming with PHP/JSP/ASP". </p>
+</blockquote>
+
+<p>CGI isn't very efficient. Better methods for talking to programs from webservers came along at around the same time as PHP. JSP and ASP <em>are</em> different methods for talking to programs.</p>
+
+<blockquote>
+  <p>CGI Programming in C this confuses me a lot. in C?? Seriously??</p>
+</blockquote>
+
+<p>It is a programming language, why not?</p>
+
+<blockquote>
+  <p>When do I compile?</p>
+</blockquote>
+
+<ol>
+<li>Write code</li>
+<li>Compile</li>
+<li>Access URL</li>
+<li>Webserver runs program</li>
+</ol>
+
+<blockquote>
+  <p>How does the program gets executed (because it will be a machine code, so it must execute as a independent process).</p>
+</blockquote>
+
+<p>It doesn't have to execute as an independent process (you can write Apache modules in C), but the whole concept of CGI is that it launches an external process.</p>
+
+<blockquote>
+  <p>How does it communicate with the web server? IPC?</p>
+</blockquote>
+
+<p>STDIN/STDOUT and environment variables — as defined in the CGI specification.</p>
+
+<blockquote>
+  <p>and interfacing with all the servers (in my example MATLAB &amp; MySQL) using socket 
+  programming?</p>
+</blockquote>
+
+<p>Using whatever methods you like and are supported.</p>
+
+<blockquote>
+  <p>They say that CGI is depreciated. Its no more in use. Is it so? </p>
+</blockquote>
+
+<p>CGI is inefficient, slow and simple. It is rarely used, when it is used, it is because it is simple. If performance isn't a big deal, then simplicity is worth a lot.</p>
+
+<blockquote>
+  <p>What is its latest update?</p>
+</blockquote>
+
+<p>1.1</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089326/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089326">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089326/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/2089326/revisions" title="show all edits to this post">edited <span title="2014-10-01 09:59:18Z" class="relativetime">Oct 1 '14 at 9:59</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:25:12Z" class="relativetime">Jan 18 '10 at 21:25</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/19068/quentin"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/1d2d3229ed1961d2bd81853242493247" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/19068/quentin">Quentin</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 478,759" dir="ltr">479k</span><span title="54 gold badges"><span class="badge1"></span><span class="badgecount">54</span></span><span title="619 silver badges"><span class="badge2"></span><span class="badgecount">619</span></span><span title="797 bronze badges"><span class="badge3"></span><span class="badgecount">797</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089326" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-50107519" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">1. Write code 2. Compile 3. Access URL 4. Webserver runs program. <b>||</b> But <b>how</b> does the webserver know <b>where</b> you place the compiled executable program? How does it know which executable program (among them all) to run?</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/632951/pacerier" title="29,569 reputation" class="comment-user">Pacerier</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment50107519_2089326"><span title="2015-06-25 06:03:42Z" class="relativetime-clean">Jun 25 '15 at 6:03</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-50109311" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Pacerier — The same way that it knows which static file to send to the client if a static file is requested.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/19068/quentin" title="478,759 reputation" class="comment-user">Quentin</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment50109311_2089326"><span title="2015-06-25 07:02:30Z" class="relativetime-clean">Jun 25 '15 at 7:02</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089326" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2089505"></a>
+<div id="answer-2089505" class="answer" data-answerid="2089505" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089505">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">33</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>CGI is an interface specification between a web server (HTTP server) and an executable program of some type that is to handle a particular request.</p>
+
+<p>It describes how certain properties of that request should be communicated to the environment of that program and how the program should communicate the response back to the server and how the server should 'complete' the response to form a valid reply to the original HTTP request.</p>
+
+<p>For a while CGI was an IETF Internet Draft and as such had an expiry date. It expired with no update so there was no CGI 'standard'. It is now an informational RFC, but as such documents common practice and isn't a standard itself. <a href="http://www.ietf.org/rfc/rfc3875">rfc3875.txt</a>, <a href="https://tools.ietf.org/html/rfc3875">rfc3875.html</a></p>
+
+<p>Programs implementing a CGI interface can be written in any language runnable on the target machine. They must be able to access <em>environment variables</em> and usually <em>standard input</em> and they generate their output on <em>standard output</em>.</p>
+
+<p>Compiled languages such as C were commonly used as were scripting languages such as perl, often using libraries to make accessing the CGI environment easier.</p>
+
+<p>One of the big disadvantages of CGI is that a new program is spawned for each request so maintaining state between requests could be a major performance issue. The state might be handled in cookies or encoded in a URL, but if it gets to large it must be stored elsewhere and keyed from encoded url information or a cookie. Each CGI invocation would then have to reload the stored state from a store somewhere.</p>
+
+<p>For this reason, and for a greatly simple interface to requests and sessions, better integrated environments between web servers and applications are much more popular. Environments like a modern php implementation with apache integrate the target language much better with web server and provide access to request and sessions objects that are needed to efficiently serve http requests. They offer a much easier and richer way to write 'programs' to handle HTTP requests.</p>
+
+<p>Whether you wrote a CGI script rather depends on interpretation. It certainly did the job of one but it is much more usual to run php as a module where the interface between the script and the server isn't strictly a CGI interface.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089505/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089505">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089505/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info user-hover">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/2089505/revisions" title="show all edits to this post">edited <span title="2015-06-25 06:06:58Z" class="relativetime">Jun 25 '15 at 6:06</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/632951/pacerier"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/77f196f4d3b4b89fc179071f3aa21e1e" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/632951/pacerier">Pacerier</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 29,569" dir="ltr">29.6k</span><span title="31 gold badges"><span class="badge1"></span><span class="badgecount">31</span></span><span title="145 silver badges"><span class="badge2"></span><span class="badgecount">145</span></span><span title="270 bronze badges"><span class="badge3"></span><span class="badgecount">270</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:53:10Z" class="relativetime">Jan 18 '10 at 21:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/19563/charles-bailey"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/a8db27c91db97757a829c7971fd62b84" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/19563/charles-bailey">Charles Bailey</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 364,970" dir="ltr">365k</span><span title="55 gold badges"><span class="badge1"></span><span class="badgecount">55</span></span><span title="472 silver badges"><span class="badge2"></span><span class="badgecount">472</span></span><span title="547 bronze badges"><span class="badge3"></span><span class="badgecount">547</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089505" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2022013" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Bother. I started writing this when there were no other answers, but got called way. Now it's about #8 in the list. I haven't the will to delete it now, I'll come back and delete it later.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/19563/charles-bailey" title="364,970 reputation" class="comment-user">Charles Bailey</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2022013_2089505"><span title="2010-01-18 22:02:03Z" class="relativetime-clean">Jan 18 '10 at 22:02</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2022071" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="warm">5</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hey.. Please don't delete it. It says some things in more clear way. I found it helpful. May be some others might also find it so.  :)</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/193653/claws" title="14,605 reputation" class="comment-user owner">claws</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2022071_2089505"><span title="2010-01-18 22:08:42Z" class="relativetime-clean">Jan 18 '10 at 22:08</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-2022092" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">OK, I'll leave it up for a bit. It would probably be good if someone integrated any 'better' passages into one of the fuller answers, though. Then we might have get a more definitive answer.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/19563/charles-bailey" title="364,970 reputation" class="comment-user">Charles Bailey</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2022092_2089505"><span title="2010-01-18 22:12:34Z" class="relativetime-clean">Jan 18 '10 at 22:12</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089505" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2089341"></a>
+<div id="answer-2089341" class="answer" data-answerid="2089341" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089341">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">14</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The CGI is specified in <a href="http://www.ietf.org/rfc/rfc3875.txt">RFC 3875</a>, though that is a later "official" codification of the original <a href="http://hoohoo.ncsa.uiuc.edu/cgi/">NCSA document</a>. Basically, CGI defines a protocol to pass data about a HTTP request from a webserver to a program to process - any program, in any language. At the time the spec was written (1993), most web servers contained only static pages, "web apps" were a rare and new thing, so it seemed natural to keep them apart from the "normal" static content, such as in a <code>cgi-bin</code> directory apart from the static content, and having them end in <code>.cgi</code>.</p>
+
+<p>At this time, here also were no dedicated "web programming languages" like PHP, and C was the dominating portable programming language - so many people wrote their CGI scripts in C. But Perl quickly turned out to be a better fit for this kind of thing, and CGI became almost synonymous with Perl for a while. Then there came Java Servlets, PHP and a bunch of others and took over large parts of Perl's market share.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089341/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089341">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089341/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:27:52Z" class="relativetime">Jan 18 '10 at 21:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/16883/michael-borgwardt"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/0382297f273df0a544b0c6c2734de096" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/16883/michael-borgwardt">Michael Borgwardt</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 239,800" dir="ltr">240k</span><span title="50 gold badges"><span class="badge1"></span><span class="badgecount">50</span></span><span title="354 silver badges"><span class="badge2"></span><span class="badgecount">354</span></span><span title="590 bronze badges"><span class="badge3"></span><span class="badgecount">590</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089341" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-50107692" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Why is PHP a  "dedicated web programming language"? PHP is a generic purpose language and <a href="http://gtk.php.net/" rel="nofollow">people</a> have been using it for UI apps too.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/632951/pacerier" title="29,569 reputation" class="comment-user">Pacerier</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment50107692_2089341"><span title="2015-06-25 06:11:06Z" class="relativetime-clean">Jun 25 '15 at 6:11</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-50110556" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Pacerier: it was designed to be a programming language for generating web pages, and that's what 99.9% of its users use it for. It's even in its <i>name</i>. Claiming anything else is just pointless hair-splitting. If you're using it for UI apps, scientific computing or embedded programming, fine, be happy, nobody's saying you're not allowed to.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/16883/michael-borgwardt" title="239,800 reputation" class="comment-user">Michael Borgwardt</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment50110556_2089341"><span title="2015-06-25 07:36:03Z" class="relativetime-clean">Jun 25 '15 at 7:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089341" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2089305"></a>
+<div id="answer-2089305" class="answer" data-answerid="2089305" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089305">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">11</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>CGI essentially passes the request off to <em>any</em> interpreter that is configured with the web server - This could be Perl, Python, PHP, Ruby, C pretty much anything. Perl was the most common back in the day thats why you often see it in reference to CGI.</p>
+
+<p>CGI is not dead. In fact most large hosting companies run PHP as CGI as opposed to mod_php because it offers user level config and some other things while it is slower than mod_php. Ruby and Python are also typically run as CGI. they key difference here is that a server module runs as part of the actual server software - where as with CGI its totally outside the server The server just uses the CGI module to determine how to pass and recieve data to the outside interpreter.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089305/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089305">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089305/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/2089305/revisions" title="show all edits to this post">edited <span title="2014-07-01 02:22:59Z" class="relativetime">Jul 1 '14 at 2:22</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/846053/xwlee"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/5c2524c96e647c2235ebb3d96f3cc8fa" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/846053/xwlee">xwlee</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">169</span><span title="2 silver badges"><span class="badge2"></span><span class="badgecount">2</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:20:52Z" class="relativetime">Jan 18 '10 at 21:20</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/215966/prodigitalson"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/e184311ce0e9f4f18a23ac5cd39797a0" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/215966/prodigitalson">prodigitalson</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 47,240" dir="ltr">47.2k</span><span title="3 gold badges"><span class="badge1"></span><span class="badgecount">3</span></span><span title="62 silver badges"><span class="badge2"></span><span class="badgecount">62</span></span><span title="85 bronze badges"><span class="badge3"></span><span class="badgecount">85</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089305" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2021729" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Not downvoting but most python web installs i've seen where on mod_wsgi or mod_python.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/81179/christophed" title="55,624 reputation" class="comment-user">ChristopheD</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021729_2089305"><span title="2010-01-18 21:28:30Z" class="relativetime-clean">Jan 18 '10 at 21:28</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089305" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2089335"></a>
+<div id="answer-2089335" class="answer" data-answerid="2089335" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089335">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">10</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>CGI is a mechanism whereby an external program is called by the web server in order to handle a request, with environment variables and standard input being used to feed the request data to the program. The exact language the external program is written in does not matter, although it is easier to write CGI programs in some languages versus others.</p>
+
+<p>Since CGI scripts need execute permissions, httpd by default only allows CGI programs in the <code>cgi-bin</code> directory to be run for (possibly now misguided) security purposes.</p>
+
+<p>Most PHP scripts run in the web server process via <code>mod_php</code>. This is not CGI.</p>
+
+<p>CGI is slow since the program (and related interpreter) must be started up per request. Modern alternatives are embedded execution, used by mod_php, and long-running processes, used by FastCGI. A given language may have its own way of implementing those mechanisms, so be sure to ask around before resorting to CGI.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089335/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089335">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089335/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:27:17Z" class="relativetime">Jan 18 '10 at 21:27</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/20862/ignacio-vazquez-abrams"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/2343ae368d3241278581ce6c87f62a25" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/20862/ignacio-vazquez-abrams">Ignacio Vazquez-Abrams</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 436,250" dir="ltr">436k</span><span title="61 gold badges"><span class="badge1"></span><span class="badgecount">61</span></span><span title="772 silver badges"><span class="badge2"></span><span class="badgecount">772</span></span><span title="939 bronze badges"><span class="badge3"></span><span class="badgecount">939</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089335" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="2" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-2021789" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hey! I mentioned it below in my answer.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/193619/nathan-osman" title="22,651 reputation" class="comment-user">Nathan Osman</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment2021789_2089335"><span title="2010-01-18 21:35:57Z" class="relativetime-clean">Jan 18 '10 at 21:35</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-8725771" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Ignacio Vazquez-Abrams: if CGI Interface creates a new Process, each time it receives a request for CGI Resource than what is execution difference between CGI and mod_php??????? is CGI and mod_php are the same ???? or is it possible to write PHP scripts that run under CGI Interface not under mod_php???</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/805437/hardik" title="1,745 reputation" class="comment-user">hardik</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment8725771_2089335"><span title="2011-08-31 05:53:19Z" class="relativetime-clean">Aug 31 '11 at 5:53</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-8740517" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@Hardik: mod_php runs as part of HTTPd, which is responsible for its own processes.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/20862/ignacio-vazquez-abrams" title="436,250 reputation" class="comment-user">Ignacio Vazquez-Abrams</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment8740517_2089335"><span title="2011-08-31 20:36:10Z" class="relativetime-clean">Aug 31 '11 at 20:36</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-44918844" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">what is this 'external program'? is it an interpreter if i run php with php-fpm?</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/307157/slier" title="2,584 reputation" class="comment-user">slier</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment44918844_2089335"><span title="2015-02-02 16:33:24Z" class="relativetime-clean">Feb 2 '15 at 16:33</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-44918882" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@slier: It's an arbitrary program that isn't the web server.</span>
+                    –&nbsp;<a href="http://stackoverflow.com/users/20862/ignacio-vazquez-abrams" title="436,250 reputation" class="comment-user">Ignacio Vazquez-Abrams</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#comment44918882_2089335"><span title="2015-02-02 16:34:25Z" class="relativetime-clean">Feb 2 '15 at 16:34</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089335" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick="">show <b>2</b> more comments</a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2089316"></a>
+<div id="answer-2089316" class="answer" data-answerid="2089316" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089316">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">9</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Have a look at <a href="http://en.wikipedia.org/wiki/Common_Gateway_Interface">CGI</a> in Wikipedia. CGI is a <em>protocol</em> between the web server and a external program or a script that handles the input and generates output that is sent to the browser.</p>
+
+<p>CGI is a simply a way for web server and a program to communicate, nothing more, nothing less. Here the server manages the network connection and HTTP protocol and the program handles input and generates output that is sent to the browser. CGI script can be basically any program that can be executed by the webserver and follows the CGI protocol. Thus a CGI program can be implemented, for example, in  C. However that is extremely rare, since C is not very well suited for the task.</p>
+
+<p><code>/cgi-bin/*.cgi</code> is a simply a path where people commonly put their CGI script. Web server are commonly configured by default to fetch CGI scripts from that path.</p>
+
+<p>a CGI script can be implemented also in PHP, but all PHP programs are not CGI scripts. If webserver has embedded PHP interpreter (e.g. mod_php in Apache), then the CGI phase is skipped by more efficient direct protocol between the web server and the interpreter.</p>
+
+<p>Whether you have implemented a CGI script or not depends on how your script is being executed by the web server.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089316/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089316">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089316/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/2089316/revisions" title="show all edits to this post">edited <span title="2010-01-18 21:30:14Z" class="relativetime">Jan 18 '10 at 21:30</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:23:04Z" class="relativetime">Jan 18 '10 at 21:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1431/juha-syrj%c3%a4l%c3%a4"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/69d0034bbc8ef52aeaf67aaa69f37c6d" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1431/juha-syrj%c3%a4l%c3%a4">Juha Syrjälä</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 16,364" dir="ltr">16.4k</span><span title="20 gold badges"><span class="badge1"></span><span class="badgecount">20</span></span><span title="90 silver badges"><span class="badge2"></span><span class="badgecount">90</span></span><span title="151 bronze badges"><span class="badge3"></span><span class="badgecount">151</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089316" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089316" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2278885"></a>
+<div id="answer-2278885" class="answer" data-answerid="2278885" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2278885">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>You maybe want to know what is not CGI, and the answer is a MODULE for your web server (if I suppose you are runnig Apache). AND THAT'S THE BIG DIFERENCE, because CGI needs and external program, thread, whatever to instantiate a PERL, PHP, C app server where when you run as a MODULE that program is the web server (apache) per-se. </p>
+
+<p>Because of all this there is a lot of performance, security, portability issues that come into play. But it's good to know what is not CGI first, to understand what it is.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2278885/3427552" title="short permalink to this answer" class="short-link" id="link-post-2278885">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2278885/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2010-02-17 07:06:22Z" class="relativetime">Feb 17 '10 at 7:06</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/90466/denica"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/0b4f2b6666af60b1a2c5fc9fcf1c3bf7" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/90466/denica">denica</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">126</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="12 bronze badges"><span class="badge3"></span><span class="badgecount">12</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2278885" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2278885" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="23199845"></a>
+<div id="answer-23199845" class="answer" data-answerid="23199845" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="23199845">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A real-life example: a complicated database that needs to be shown on a website. Since the database was designed somewhere around 1986 (!), lots of data was packed in different ways to save on disk space. </p>
+
+<p>As the development went on, the developers could no longer solve complicated data requests in SQL alone, for example because the sorting algorythms were unusual. </p>
+
+<p>There are three sensible solutions: </p>
+
+<ol>
+<li>quick and dirty: send the unsored data to PHP, sort it there. Obviously a very expensive solution, because this would be repeated every time the page is called</li>
+<li>write a plugin to the database engine -- but the admin wasn't ready to allow foreign code to run on their server, or </li>
+<li>you can process the data in a program (C, Perl, etc.), and output HTML. The program itself goes into /cgi-bin, and is called by the web server (e.g. Apache) directly, not through PHP. </li>
+</ol>
+
+<p>CGI runs your script in Solution #3 and outputs the effect to the browser. You have the speed of the compiled program, the flexibility of a language better than SQL, and no need to write plugins to the SQL server. (Again, this is an example specific to SQL and C)</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/23199845/3427552" title="short permalink to this answer" class="short-link" id="link-post-23199845">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/23199845/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/23199845/revisions" title="show all edits to this post">edited <span title="2015-01-18 19:25:34Z" class="relativetime">Jan 18 '15 at 19:25</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-04-21 14:54:53Z" class="relativetime">Apr 21 '14 at 14:54</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/680353/micha%c5%82-leon"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/315eef5026fdeae96134a799aa8f5dc7" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/680353/micha%c5%82-leon">Michał Leon</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">598</span><span title="5 silver badges"><span class="badge2"></span><span class="badgecount">5</span></span><span title="10 bronze badges"><span class="badge3"></span><span class="badgecount">10</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-23199845" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-23199845" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="25985255"></a>
+<div id="answer-25985255" class="answer" data-answerid="25985255" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="25985255">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>A CGI is a program (or a Web API) you write, and save it on the Web Server site. CGI is a file.</p>
+
+<p>This file sits and waits on the Web Server.  When the client browser sends a request to the Web Server to execute your CGI file, the Web Server runs your CGI file on the server site. The inputs for this CGI program, if any, are from the client browser. The outputs of this CGI program are sent to the browser.</p>
+
+<p>What language you use to write a CGI program? Other posts already mention c,java, php, perl, etc.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/25985255/3427552" title="short permalink to this answer" class="short-link" id="link-post-25985255">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/25985255/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-09-23 00:56:07Z" class="relativetime">Sep 23 '14 at 0:56</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/4068598/loc-pham"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/e62c53a4609a00a5ff743547a2562f2a" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/4068598/loc-pham">Loc Pham</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">41</span><span title="1 bronze badge"><span class="badge3"></span><span class="badgecount">1</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-25985255" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-25985255" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+
+  
+<a name="2089347"></a>
+<div id="answer-2089347" class="answer" data-answerid="2089347" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="2089347">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>The idea behind CGI is that a program/script (whether Perl or even C) receives input via STDIN (the request data) and outputs data via STDOUT (echo, printf statements). The reason most php scripts don't qualify is because they are run under the PHP Apache module.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/2089347/3427552" title="short permalink to this answer" class="short-link" id="link-post-2089347">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/2089347/edit" class="suggest-edit-post" title="revise and improve this post">edit</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2010-01-18 21:28:24Z" class="relativetime">Jan 18 '10 at 21:28</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/193619/nathan-osman"><div class="gravatar-wrapper-32"><img src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/11e74c6cb64be4d24fdee076ddb374b0" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/193619/nathan-osman">Nathan Osman</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score 22,651" dir="ltr">22.7k</span><span title="39 gold badges"><span class="badge1"></span><span class="badgecount">39</span></span><span title="166 silver badges"><span class="badge2"></span><span class="badgecount">166</span></span><span title="279 bronze badges"><span class="badge3"></span><span class="badgecount">279</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-2089347" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-2089347" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+				    <div class="question-status">
+        <h2>                    <b>protected</b> by <a href="http://stackoverflow.com/users/2224265/tushar-gupta">Tushar Gupta</a> <span dir="ltr"><span title="2014-10-19 06:54:31Z" class="relativetime">Oct 19 '14 at 6:54</span></span>
+</h2>
+        <p>
+Thank you for your interest in this question. 
+Because it has attracted low-quality or spam answers that had to be removed, posting an answer now requires 10 <a href="http://stackoverflow.com/help/whats-reputation">reputation</a> on this site (the <a href="http://stackoverflow.com/help/privileges/new-user">association bonus does not count</a>).
+<br><br>
+Would you like to answer one of these <a href="http://stackoverflow.com/unanswered?fromProtectedNotice=true">unanswered questions</a> instead?
+</p>
+    </div>
+
+
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/cgi" class="post-tag" title="show questions tagged &#39;cgi&#39;" rel="tag">cgi</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+
+
+
+<script>
+    window.showNewUser = false;
+
+</script>
+
+<div class="module newuser newuser-greeting" id="newuser-box" style="display:none;">
+    <h4>Hello World!</h4>
+    <div>
+        <p>This is a collaboratively edited question and answer site for <b>professional and enthusiast programmers</b>. It's 100% free.</p><p>Got a question about the site itself? <a href="http://meta.stackoverflow.com/">meta</a> is the place to talk about things like what questions are appropriate, what tags we should use, etc.</p>
+        <p class="ar">
+                <a href="http://stackoverflow.com/tour?mnu=1">about »</a>&nbsp;&nbsp;&nbsp;
+            <a href="http://stackoverflow.com/help?mnu=1">help »</a>
+                &nbsp; <a href="http://meta.stackoverflow.com/">meta »</a>
+        </p>
+    </div>
+</div>
+    <script>
+    if (showNewUser) {
+        document.getElementById('newuser-box').style.display = '';
+    }
+    </script>						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2010-01-18 21:15:48Z"><b>6 years ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>128689 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/2089271/what-is-common-gateway-interface-cgi?lastactivity" class="lastactivity-link" title="2016-08-10 19:59:53Z">10 days ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Featured on Meta
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <a href="http://meta.stackoverflow.com/questions/331663/documentation-update-august-4th?cb=1" class="question-hyperlink">
+<div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>                </a>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/331663/documentation-update-august-4th?cb=1" class="question-hyperlink">Documentation Update, August 4th</a>
+                </div>
+                <br class="cbt">
+            </div>
+                <div class="bulletin-title">
+                    Hot Meta Posts
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">12</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/332770/how-to-get-so-stickers-in-2016?cb=1" class="question-hyperlink">How to get SO stickers in 2016</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">15</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/332783/vlq-queue-add-votes-for-users-flagging-post?cb=1" class="question-hyperlink">VLQ Queue - Add votes for users flagging post</a>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">22</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/332722/let-me-edit-my-own-improvement-request?cb=1" class="question-hyperlink">Let me edit my own improvement request</a>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1896221161",[5,17,2221]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk1896221161"><div id="careersadsdoublehigh" style="display:none;"></div><img height="0px" width="0px" border="0" style="position: absolute; display: none !important;" src="http://engine.adzerk.net/i.gif?e=eyJhdiI6NDE0LCJhdCI6NSwiYnQiOjAsImNtIjo5MjEsImNoIjoxMTc4LCJjayI6e30sImNyIjoyNjg4LCJkaSI6ImY1MjA2NDMyMGFjNTQ0ZDk5N2U5ZGY4NmY5MzYxMzlhIiwiZG0iOjEsImZjIjoyNDg1LCJmbCI6MjY2MywiaXAiOiI4NS4xOTguOC4xMzUiLCJrdyI6ImNnaSx4LXVzZXItcmVnaXN0ZXJlZCIsIm53IjoyMiwicGMiOjAsImVjIjowLCJwciI6NjE3MzcsInJ0IjoxLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jb20vIiwic3QiOjgyNzcsInVrIjoidWUxLTQwMzM2NWRhYzRjMzQ0MzFiZDJlZjdiZmM5MWJjNDAzIiwiem4iOjQ1LCJ0cyI6MTQ3MTcyNTQ4OTIwMywiYmYiOnRydWUsInBuIjoiYWR6ZXJrMTg5NjIyMTE2MSIsImZxIjowfQ&amp;s=6shoVDVflonYnNqT3OFXcr_qQQk"></div>
+            <div id="hireme"></div>
+        <script>
+;"use strict";var _typeof=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(n){return typeof n}:function(n){return n&&typeof Symbol=="function"&&n.constructor===Symbol?"symbol":typeof n};(function(n){try{var t=function(){var r,t,i;if(typeof[].indexOf!="function")return{v:void 0};if(r=["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com"],r[0]!=="*"&&r.indexOf(location.hostname)===-1)return{v:void 0};t=window;t.clc_opts=n;n.autoload&&(t.clc_init=t.clc_init||[],t.clc_init.push(function(){return t.clc.load()}));i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}();if((typeof t=="undefined"?"undefined":_typeof(t))==="object")return t.v}catch(i){}}).call(null, {"az":true,"kt":2000,"tto":true,"autoload":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"allowed":["stackoverflow.com","serverfault.com","careers.stackoverflow.com","blog.codinghorror.com","joelonsoftware.com","www.joelonsoftware.com"],"h":"clc.stackoverflow.com","u":"//clc.stackoverflow.com/p.js","lib":"//cdn.sstatic.net/clc/clc.min.js?v=84432a71b7a2"});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/14062201?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">6</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/14062201/how-does-php-interact-with-http-servers-like-lighttpd?noredirect=1&amp;lq=1" class="question-hyperlink">How does PHP interact with HTTP servers? (like lighttpd)</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/16600950?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">-6</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/16600950/what-is-a-cgi-in-perl?noredirect=1&amp;lq=1" class="question-hyperlink">What is a CGI in Perl</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/7056697?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">5</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/7056697/how-does-a-webserver-interface-with-php?noredirect=1&amp;lq=1" class="question-hyperlink">How does a webserver interface with PHP</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/3841889?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/3841889/in-what-situation-can-cgi-be-faster-than-servlet?noredirect=1&amp;lq=1" class="question-hyperlink">In what situation can CGI be faster than Servlet?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/14169325?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/14169325/a-router-like-web-interface-for-a-sbc-ts-7500?noredirect=1&amp;lq=1" class="question-hyperlink">A Router like Web Interface for a SBC (TS-7500)</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/29689417?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/29689417/how-to-terminate-an-eventsource-cgi?noredirect=1&amp;lq=1" class="question-hyperlink">How to terminate an EventSource CGI?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/31357155?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/31357155/what-exactly-happens-upon-request-to-a-php-script-comparing-to-nodejs?noredirect=1&amp;lq=1" class="question-hyperlink">What exactly happens upon request to a PHP script comparing to NodeJS?</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/27313927?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">1</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/27313927/using-phpunit-on-cgi-environment?noredirect=1&amp;lq=1" class="question-hyperlink">using phpunit on cgi environment</a>
+</div>
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/26063803?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/26063803/web-interface-to-control-functions-in-os?noredirect=1&amp;lq=1" class="question-hyperlink">Web Interface to Control Functions in OS</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/139760?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="http://stackoverflow.com/questions/139760/are-there-alternatives-to-cgi-and-do-i-really-need-one?rq=1" class="question-hyperlink">Are there alternatives to CGI (and do I really need one)?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/219110?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">126</div></a><a href="http://stackoverflow.com/questions/219110/how-python-web-frameworks-wsgi-and-cgi-fit-together?rq=1" class="question-hyperlink">How Python web frameworks, WSGI and CGI fit together</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/1971138?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/1971138/cgi-automation-question?rq=1" class="question-hyperlink">CGI automation question</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/2135034?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">1</div></a><a href="http://stackoverflow.com/questions/2135034/what-are-some-unusual-languages-you-have-used-for-a-cgi-application?rq=1" class="question-hyperlink">What are some unusual languages you have used for a CGI application?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/2741268?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">2</div></a><a href="http://stackoverflow.com/questions/2741268/why-do-i-get-a-bad-gateway-error-with-my-perl-cgi-program-on-iis?rq=1" class="question-hyperlink">Why do I get a “Bad Gateway” error with my Perl CGI program on IIS?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/5214268?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">2</div></a><a href="http://stackoverflow.com/questions/5214268/cgi-is-inefficient-but-what-is-being-used-that-is-so-different-nowaydays?rq=1" class="question-hyperlink">CGI is inefficient, but what is being used that is so different nowaydays?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/17810642?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/17810642/cgi-c-program-return-value-to-main-html-and-display-result?rq=1" class="question-hyperlink">Cgi C program return value to main HTML and display result</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/26127196?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">1</div></a><a href="http://stackoverflow.com/questions/26127196/error-500-when-with-perl-cgi-but-not-any-of-the-common-pitfalls?rq=1" class="question-hyperlink">Error 500 when with perl cgi - but not any of the common pitfalls</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/26928769?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">2</div></a><a href="http://stackoverflow.com/questions/26928769/what-is-the-difference-between-perl-as-a-language-and-cgi-scripts?rq=1" class="question-hyperlink">What is the difference between perl as a language and CGI scripts?</a></div><div class="spacer js-gps-track"><a href="http://stackoverflow.com/q/30603013?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="http://stackoverflow.com/questions/30603013/what-is-the-best-way-to-create-a-web-interface-to-an-interactive-perl-script?rq=1" class="question-hyperlink">What is the best way to create a web interface to an interactive perl script?</a></div>
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1898234/fast-exponentiation-algorithm-how-to-arrive-at-it" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Fast exponentiation algorithm - How to arrive at it?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-outdoors" title="The Great Outdoors Stack Exchange"></div><a href="http://outdoors.stackexchange.com/questions/13604/are-corpses-on-mount-everest-used-as-way-points" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:395 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are corpses on Mount Everest used as way-points?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1897970/does-the-union-of-two-not-disjoint-open-balls-always-contain-the-line-connecting" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Does the union of two not disjoint open balls always contain the line connecting the two centers?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/86590/can-you-drink-a-potion-one-handed-underwater" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can you drink a potion one-handed underwater?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-datascience" title="Data Science Stack Exchange"></div><a href="http://datascience.stackexchange.com/questions/13513/why-do-internet-companies-prefer-java-python-for-data-scientist-job" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:557 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do internet companies prefer Java/Python for data scientist job?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="http://apple.stackexchange.com/questions/249856/is-please-tell-me-who-you-are-run-git-config-a-virus-opened-xcode-and-this" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is "Please tell me who you are. Run git config" a virus? (Opened Xcode and this came up)
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/77045/what-does-shin-in-a-japanese-train-station-name-mean" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What does "Shin" in a Japanese train station name mean?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-cooking" title="Seasoned Advice"></div><a href="http://cooking.stackexchange.com/questions/73278/what-effect-would-boiling-for-1-minute-and-resting-have-on-a-vinegar-based-bbq-s" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:49 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What effect would boiling for 1 minute and resting have on a vinegar-based BBQ sauce?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/77057/new-orleans-mardi-gras-and-beads" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    New Orleans Mardi Gras and beads
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-askubuntu" title="Ask Ubuntu"></div><a href="http://askubuntu.com/questions/814673/where-exactly-are-programs-and-files-saved-on-a-non-persistent-live-system" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:89 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where exactly are programs and files saved on a non-persistent live system?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1896554/linear-algebra-versus-functional-analysis-finite-versus-infinite-dimensional-ve" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Linear Algebra Versus Functional Analysis: Finite Versus Infinite Dimensional Vector Spaces
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-astronomy" title="Astronomy Stack Exchange"></div><a href="http://astronomy.stackexchange.com/questions/17990/what-happens-to-the-99-9-of-the-sun-rays-that-do-not-fall-on-any-planets-or-an" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:514 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What happens to the 99.9 % of the sun-rays that do not fall on any planets or any other celestial body?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/138446/why-was-luke-red-five" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why was Luke "Red Five"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/52152/can-we-expect-machines-as-extraterrestrial-forms-of-life" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can we expect machines as extraterrestrial forms of life?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/304389/remove-newline-character-just-every-n-lines" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Remove newline character just every N lines
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/304663/how-to-protect-my-system-against-the-off-path-tcp-exploit-in-linux" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to protect my system against the Off-Path TCP Exploit in Linux?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/343691/what-is-the-appropriate-word-for-the-delay-failure-due-to-lengthy-bureaucratic" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the appropriate word for the "delay/failure due to lengthy bureaucratic procedure"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/52284/where-should-we-store-our-brains" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Where should we store our brains?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-puzzling" title="Puzzling Stack Exchange"></div><a href="http://puzzling.stackexchange.com/questions/40982/lost-in-the-ice-who-am-i" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:559 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Lost in the ice - Who am I?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/304694/udf-to-add-two-numbers-in-awk" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    UDF to add two numbers in awk
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/138456/help-book-with-meat-eating-alien-horses" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Help! Book With Meat-eating Alien Horses?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-travel" title="Travel Stack Exchange"></div><a href="http://travel.stackexchange.com/questions/76983/why-do-uk-border-officers-question-eu-citizens-entering" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:273 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Why do UK border officers question EU citizens entering?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="http://english.stackexchange.com/questions/342273/are-whores-and-horse-homophones" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are "whores" and "horse" homophones?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/75416/is-it-normal-for-a-phd-candidate-to-be-dissatisfied-with-their-phd-thesis-topic" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it normal for a PhD candidate to be dissatisfied with their PhD thesis topic, if the field is not hot?
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/2089271" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/2089271/ivc/69a6');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/2089271/ivc/69a6" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang"></div></div>
+
+
+        </div>
+    </div><script async="" src="./What is Common Gateway Interface (CGI)_ - Stack Overflow_files/clc.min.js"></script>
+    <div id="footer" class="categories">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                    <a href="http://stackoverflow.com/company/about">about us</a>
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1">blog</a>
+                        <a href="http://chat.stackoverflow.com/">chat</a>
+                    <a href="http://data.stackexchange.com/">data</a>
+                    <a href="http://stackexchange.com/legal">legal</a>
+                    <a href="http://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a href="http://stackoverflow.com/company/work-here">work here</a>
+                    <a href="http://stackexchange.com/mediakit">advertising info</a>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="http://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more">
+                                more (13)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more">
+                                more (9)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more">
+                                more (21)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="http://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="http://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more">
+                                more (5)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2016 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2016.8.19.3910
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    
+    
+        
+        ados.run.push(function () {
+                setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+                ados_setKeywords('cgi,x-user-registered');; ados_load();
+        });   
+        
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+            
+            ga('create', 'UA-5620270-1', {'userId': '3693636' });
+            ga('set', 'dimension1', '3693636');             ga('set', 'dimension2', '|cgi|');             ga('send', 'pageview');
+        
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<script async="" src="http://clc.stackoverflow.com/p.js?zones=1%3Dhireme&amp;ac=3693636&amp;tags=cgi&amp;host=stackoverflow.com&amp;lw=2781&amp;bw=1366&amp;az=1"></script></body></html>

@@ -1,0 +1,349 @@
+#site_panel
+{
+	border: 0px 0;
+	width: 979px;
+}
+
+#ptl
+{
+	background-image: url(../images/rtl/p_top-left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 23px;
+	width: 18px;
+}
+
+#ptc
+{
+	background-image: url(../images/rtl/p_top-center.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	height: 23px;
+}
+
+#ptr
+{
+	background-image: url(../images/rtl/p_top-right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 23px;
+	width: 17px;
+}
+
+#pl
+{
+	background-image: url(../images/rtl/p_left.png);
+	background-repeat: repeat-y;
+	background-position: left center;
+	width: 18px;
+}
+
+#pc-main
+{
+	background-repeat: repeat;
+	background-position: center center;
+	vertical-align: top;
+	background-image: url(../images/bk.png);
+}
+
+#pr
+{
+	background-image: url(../images/rtl/p_right.png);
+	background-repeat: repeat-y;
+	background-position: right center;
+	width: 17px;
+}
+
+#pbl
+{
+	background-image: url(../images/rtl/p_bottom-left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 23px;
+	width: 18px;
+}
+
+#pbc
+{
+	background-image: url(../images/rtl/p_bottom-center.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	height: 23px;
+	width: auto;
+}
+
+#pbr
+{
+	background-image: url(../images/rtl/p_bottom-right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 23px;
+	width: 17px;
+}
+
+#main_tb
+{
+	width: 100%;
+	border: 0px none;
+}
+
+/* Base -> Logo */
+
+#logo_panel
+{
+	border: 0px none;
+	width: 100%;
+}
+
+/* Base -> Top Menu */
+
+#topmenu_panel
+{
+	border: 0px none;
+	width: 100%;
+}
+
+#tml
+{
+	background-image: url(../images/rtl/tm_left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 36px;
+	width: 10px;
+}
+
+#tmc
+{
+	background-image: url(../images/rtl/tm_center.png);
+	background-repeat: repeat;
+	background-position: center top;
+	height: 36px;
+}
+
+#tmr
+{
+	background-image: url(../images/rtl/tm_right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 36px;
+	width: 10px;
+}
+
+/* Base -> Content Panel and Main Menus */
+
+#cont_panel
+{
+	width: 100%;
+	border: 0px none;
+}
+
+#lrmenu
+{
+	width: 197px;
+	vertical-align: top;
+	
+}
+
+#lrmenu_panel
+{
+	width: 197px;
+	border: 0px none;
+}
+
+#lmt
+{
+	background-image: url(../images/rtl/lm_top.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 24px;
+	width: 197px;
+}
+
+#lmc
+{
+	background-image: url(../images/rtl/lm_back.png);
+	background-repeat: repeat-y;
+	background-position: center top;
+	width: 197px;
+	vertical-align: middle;
+}
+
+#lmb
+{
+	background-image: url(../images/rtl/lm_bottom.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	height: 24px;
+	width: 197px;
+}
+
+/* Base -> Footer */
+
+#footer_panel
+{
+	width: 100%;
+}
+
+#fl
+{
+	background-image: url(../images/rtl/f_left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 49px;
+	width: 10px;
+}
+
+#fc
+{
+	background-image: url(../images/rtl/f_center.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	height: 49px;
+	vertical-align: middle;
+}
+
+#fr
+{
+	background-image: url(../images/rtl/f_right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 49px;
+	width: 10px;
+}
+
+/* Main */
+
+#jom
+{
+	vertical-align: top;
+}
+
+#jom_panel
+{
+	border: 0px none;
+	width: 100%;
+}
+
+/* Main -> Navigator */
+
+#navg
+{
+	vertical-align: text-top;
+}
+
+#navg_panel
+{
+	border: 0px none;
+	height: 30px;
+	width: 100%;
+	vertical-align: text-top;
+}
+
+#nf
+{
+	background-image: url(../images/rtl/n_left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 30px;
+	width: 15px;
+}
+
+#nc
+{
+	background-image: url(../images/rtl/n_center.png);
+	background-repeat: repeat-x;
+	background-position: center center;
+	height: 30px;
+	vertical-align: top;
+}
+
+#nr
+{
+	background-image: url(../images/rtl/n_right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 30px;
+	width: 15px;
+}
+
+/* Main -> Box */
+
+#box_panel
+{
+	width: 100%;
+	border: 0px none;
+}
+
+#btl
+{
+	background-image: url(../images/rtl/b_top-left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 9px;
+	width: 9px;
+}
+
+#btc
+{
+	background-image: url(../images/rtl/b_top-center.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	height: 9px;
+}
+
+#btr
+{
+	background-image: url(../images/rtl/b_top-right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 9px;
+	width: 9px;
+}
+
+#bl
+{
+	background-image: url(../images/rtl/b_left.png);
+	background-repeat: repeat-y;
+	background-position: left top;
+	width: 9px;
+}
+
+#bc
+{
+	background-image: url(../images/rtl/b_center.png);
+	background-repeat: repeat;
+}
+
+#br
+{
+	background-image: url(../images/rtl/b_right.png);
+	background-repeat: repeat-y;
+	background-position: right top;
+	width: 9px;
+}
+
+#bbl
+{
+	background-image: url(../images/rtl/b_bottom.left.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 9px;
+	width: 9px;
+}
+
+#bbc
+{
+	background-image: url(../images/rtl/b_bottom-center.png);
+	background-repeat: repeat-x;
+	background-position: center top;
+	height: 9px;
+}
+
+#bbr
+{
+	background-image: url(../images/rtl/b_bottom-right.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+	height: 9px;
+	width: 9px;
+}

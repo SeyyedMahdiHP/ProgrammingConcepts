@@ -1,0 +1,929 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0158)http://www.dotech.ir/ShowNews/64/CGI-%DA%86%DB%8C%D8%B3%D8%AA-%D9%88-%DA%86%DA%AF%D9%88%D9%86%D9%87-%DA%A9%D8%A7%D8%B1-%D9%85%DB%8C%E2%80%8C%DA%A9%D9%86%D8%AF -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script async="" src="http://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42357441-1', 'dotech.ir');
+  ga('send', 'pageview');
+
+</script><link rel="shortcut icon" href="http://www.dotech.ir/img/favicon.png">
+<!--<base href="http://www.dotech.ir/">--><base href=".">
+<link rel="alternate" href="http://www.dotech.ir/" hreflang="fa-ir">
+<title>CGI چیست و چگونه کار می‌کند</title>
+<meta name="keywords" content="طراحی سایت,طراحی فروشگاه اینترنتی,بهینه سازی سایت,سئو,طراحی پورتال,طراحی وب سایت,بهینه سازی وب سایت,طراحی CRM,طراحی ERP,SEO سایت,طراحی حرفه ای سایت,داتک,شرکت دنیای ایده های تابان فناوری,شرکت داتک">
+<meta name="description" content="CGI مخفف Common Gateway Interface است. CGI یک بخشی از وب سرور (Web Server) است که این قابلیت را فراهم میکند تا برنامه ای در سمت سرور اجرا شود و خروجی آن برنامه برای کاربر متصل شده به سرور از طریق صفحه ی وب به نمایش در آید. CGI یکی از اولین روش ها برای تولید صفحات وب پویا (Dynamic) به حساب می‌آید که دارای قدمت زیادی ست. به عنوان مثال در موتور های جستجو کاربر تنها یک صفحه در مقابل خود میبیند که شامل یک کادر برای وارد کردن کلید واژه و یک دکمه‌ی جستجو ست. وقتی کاربر دکمه ی جستجو را میزند، CGI یه اسکریپت را (فرضا&quot; به زبان Perl) که در پوشه‌ی خاصی (cgi_bin) روی سرور قرار گرفته اجرا می کنه. با اجرای این اسکریپت کلید واژه ی کاربر به عنوان ورودی استخراج شده و در پایگاه داده‌ای این کلید واژه جست و جو می‌شود تا نتایج جست و جو به دست آید. در نهایت در خروجی اسکریپت یه فایل HTML درست شده که نتایج جستجو را شامل می‌شود و CGI این HTML را به عنوان پاسخ برای کاربر ارسال میکند. چون پویش در یک پایگاه داده به طور مستقیم از راه HTML ممکن نیست، مجبور شدیم از کد Perl برای این کار کمک بگیریم و CGI فقط نقش یه واسطه را بازی میکند.">
+<meta name="fontiran.com:license" content="LX5AL">
+<meta name="designer" content="Design By ,DOTECH, Co. Tel : +982188715359 , +982188714830 , e-mail : info@dotech.ir, dotech">
+<meta name="owner" content="Design By ,DOTECH, Co. Tel : +982188715359 , +982188714830 , e-mail : info@dotech.ir, dotech">
+<meta name="author" content="www.dotech.ir">
+<link rel="stylesheet" href="./CGI چیست و چگونه کار می_کند_files/3019570d.css" type="text/css">
+<script language="javascript" type="text/javascript" src="./CGI چیست و چگونه کار می_کند_files/760f525c.js"></script><style type="text/css">cufon{text-indent:0!important;}@media screen,projection{cufon{display:inline!important;display:inline-block!important;position:relative!important;vertical-align:middle!important;font-size:1px!important;line-height:1px!important;}cufon cufontext{display:-moz-inline-box!important;display:inline-block!important;width:0!important;height:0!important;overflow:hidden!important;text-indent:-10000in!important;}cufon canvas{position:relative!important;}}@media print{cufon{padding:0!important;}cufon canvas{display:none!important;}}</style>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$('.imgHover').hover(function(){
+		$(this).fadeTo('fast',.6)},function(){
+			$(this).fadeTo('slow',1)});
+});
+</script>
+</head>
+<body>
+<script type="text/javascript">
+var DHTML = (document.getElementById || document.all || document.layers);
+function ap_getObj(name)
+{
+ if (document.getElementById)
+ {
+  return document.getElementById(name).style;
+ }
+ else if (document.all)
+ {
+  return document.all[name].style;
+ }
+ else if (document.layers)
+ {
+  return document.layers[name];
+ }
+}
+function ap_showWaitMessage(div,flag)
+{
+ if (!DHTML) return;
+ var x = ap_getObj(div);
+ x.visibility = (flag) ? 'visible':'hidden'
+ if(! document.getElementById)
+  if(document.layers)
+   x.left=280/2;
+ return true;
+}
+</script>
+<div id="waitDiv" style="position: absolute; left: 50%; top: 30%; visibility: hidden; text-align: center;">
+    <img src="./CGI چیست و چگونه کار می_کند_files/waite.gif" alt="wait please" width="50" height="50">
+    <br>
+    <font face="Tahoma,Helvetica" style="text-align:center;font-weight:bold;" size="1"> شکیبا باشید </font>
+</div>
+<script type="text/javascript">
+ap_showWaitMessage('waitDiv', 1);
+</script><script type="text/javascript" language="javascript">
+function MessageBox(title,message,type) {
+	var titleBackground = "";
+	switch (type) {
+		case "1": // successful
+			titleBackground = "#8dc63f";
+			break;
+		case "2": // warning
+			titleBackground = "#ffcb05";
+			break;
+		case "3": // error
+			titleBackground = "#d71920";
+			break;
+	}
+    $.confirm({
+        'title'		   : title,
+		'titleBackground' : titleBackground,
+        'message'	     : message,
+        'buttons'	     : {
+            'بستن'	: {
+                'class'	: 'gray'
+            }
+        }
+    });
+}
+//===================================================
+function MessageBoxAutoFade(title,message,type,duration) {
+	if ( typeof duration === "undefined" ) {
+		duration = 3000;
+	}
+	var titleBackground = "";
+	switch (type) {
+		case "1": // successful
+			titleBackground = "#8dc63f";
+			break;
+		case "2": // warning
+			titleBackground = "#ffcb05";
+			break;
+		case "3": // error
+			titleBackground = "#d71920";
+			break;
+	}
+	$.confirm({
+		'title'		   : title,
+		'titleBackground' : titleBackground,
+		'message'	     : message,
+		'buttons'	     : {
+			'بستن'	: {
+				'class'	: 'gray'
+			}
+		}
+	});
+	setTimeout(function(){
+		$.confirm.hide();
+	}, duration);
+}
+//===================================================
+function ConfirmBox(title,message,confirmAction,notConfirmAction) {
+    $.confirm({
+        'title'		   : title,
+		'titleBackground' : "#d71920",
+        'message'	     : message,
+        'buttons'	     : {
+			'LConfirm'	: {
+				'class'	: 'gray',
+				'action': function(){
+					confirmAction;
+				}
+			},
+			'LNotConfirm'	: {
+				'class'	: 'gray',
+				'action': function(){
+					//window.location.href =
+				}	
+			}
+		}
+    });
+}
+//===================================================
+function ConfirmBoxSaveVote(title,message,FId,FName) {
+    $.confirm({
+        'title'		: title,
+        'message'	  : message,
+        'buttons'	  : {
+			'LSubmitVote'	: {
+				'class'	: 'green',
+				'action': function(){
+										window.location.href = "http://www.dotech.ir//SubmitVote/"+FId+"/LVoteFix";
+				}
+			},
+			'LNotSubmitVote'	: {
+				'class'	: 'red',
+				'action': function(){
+										window.location.href = "http://www.dotech.ir//ShowSiteGroups/"+FId+"/Empty/"+FName;
+				}	
+			}
+		}
+    });
+}
+//===================================================
+/*if( ConfirmBox("title","message")){
+	alert("ghfhfgh");
+}
+else {
+	alert("kesagfat");	
+}*/
+</script><div id="header">
+    <div id="logo"><a href="http://www.dotech.ir/index.php"><img src="./CGI چیست و چگونه کار می_کند_files/logo.png" alt="dotech.ir" border="0"></a></div>
+    <div id="menuWard"><div id="oe_overlay" class="oe_overlay"></div>
+<div style="width:719px;margin:0 auto;padding-right:12px;border:0px solid #00F;">
+    <ul id="oe_menu" class="oe_menu">
+    			<li class="titleMy" style="width:115px">
+            	<a href="http://www.dotech.ir/#">
+                	<span>
+                    	<img src="./CGI چیست و چگونه کار می_کند_files/home.png" border="0" align="top" alt="صفحه اصلی" width="20" height="15" style="margin-left:3px;margin-top:35px">
+						صفحه اصلی                    </span>
+                </a>
+             	<div style="left:-494px"> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+		<tr valign="top">
+			<td width="50%">
+			<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td align="right"><a href="http://www.dotech.ir/index.php"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb;">خانه</font></a></td>
+					</tr>
+					<tr>
+						<td align="right" height="30"><a href="http://www.dotech.ir/SampleShow/%D9%86%D9%85%D9%88%D9%86%D9%87-%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%A7%D8%AC%D8%B1%D8%A7-%D8%B4%D8%AF%D9%87/"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb">نمونه کارهای اجرا شده</font> </a></td>
+					</tr>
+					<tr>
+						<td align="right" height="30"><a href="http://www.dotech.ir/WhoisDomain/%D8%AA%D8%B3%D8%AA-%D8%A2%D8%B2%D8%A7%D8%AF-%D8%A8%D9%88%D8%AF%D9%86-%D8%AF%D8%A7%D9%85%D9%86%D9%87/"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb">تست آزاد بودن دامنه</font> </a></td>
+					</tr>
+					<tr>
+						<td align="right" height="30"><a href="http://www.dotech.ir/ArchiveNews/%D8%A2%D8%B1%D8%B4%DB%8C%D9%88-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA/"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb">آرشیو اخبار و مقالات</font> </a></td>
+					</tr>
+					<tr>
+						<td align="right" height="30"><a href="http://www.dotech.ir/SiteMap/%D9%86%D9%82%D8%B4%D9%87-%D8%B3%D8%A7%DB%8C%D8%AA/"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb">نقشه سایت</font></a></td>
+					</tr>
+					<tr>
+						<td align="right" height="30"><a href="http://www.dotech.blogfa.com/" target="_blank"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb">وبلاگ</font></a></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+			<td>
+			<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td align="left" valign="middle"><img alt="flower" border="0" height="240" src="./CGI چیست و چگونه کار می_کند_files/1.jpg" width="233"></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>             	</div>
+        	</li>
+					<li class="titleMy" style="width:90px">
+            	<a href="http://www.dotech.ir/#">
+                	<span>
+                    	<img src="./CGI چیست و چگونه کار می_کند_files/product.png" border="0" align="top" alt="محصولات" width="17" height="15" style="margin-left:3px;margin-top:35px">
+						محصولات                    </span>
+                </a>
+             	<div style="left:-404px"> 
+                <table align="right" width="50%" cellpadding="5" cellspacing="0" border="0">
+	<tbody><tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/1/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D9%88%D8%A8%D8%B3%D8%A7%DB%8C%D8%AA-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D8%AD%D8%AA%D9%88%D8%A7">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/cms.png" border="0" width="43" height="31" align="middle" alt="طراحی وبسایت مدیریت محتوا">
+                <font style="font-family:iransansweb;">طراحی وبسایت مدیریت محتوا</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/5/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D9%81%D8%B1%D9%88%D8%B4%DA%AF%D8%A7%D9%87-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA%DB%8C">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/shop.png" border="0" width="43" height="31" align="middle" alt="طراحی فروشگاه اینترنتی">
+                <font style="font-family:iransansweb;">طراحی فروشگاه اینترنتی</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/3/%D8%B3%DB%8C%D8%B3%D8%AA%D9%85-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/news.png" border="0" width="43" height="31" align="middle" alt="سیستم مدیریت اخبار">
+                <font style="font-family:iransansweb;">سیستم مدیریت اخبار</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/7/%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D8%AD%D8%AA%D9%88%D8%A7%DB%8C-%DA%86%D9%86%D8%AF-%D8%B1%D8%B3%D8%A7%D9%86%D9%87-%D8%A7%DB%8C">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/multimedia.png" border="0" width="43" height="31" align="middle" alt="مدیریت محتوای چند رسانه ای">
+                <font style="font-family:iransansweb;">مدیریت محتوای چند رسانه ای</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/6/%D8%B3%DB%8C%D8%B3%D8%AA%D9%85-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%DA%AF%D8%A7%D9%84%D8%B1%DB%8C-%D8%B9%DA%A9%D8%B3">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/aks.png" border="0" width="43" height="31" align="middle" alt="سیستم مدیریت گالری عکس">
+                <font style="font-family:iransansweb;">سیستم مدیریت گالری عکس</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/9/%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D9%88%D8%B3%D8%B3%D8%A7%D8%AA-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/madrese.png" border="0" width="43" height="31" align="middle" alt="مدیریت موسسات آموزشی">
+                <font style="font-family:iransansweb;">مدیریت موسسات آموزشی</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/10/%D9%88%D8%A8%D8%B3%D8%A7%DB%8C%D8%AA-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%88-%D8%A2%D8%B2%D9%85%D9%88%D9%86-%D9%85%D8%AC%D8%A7%D8%B2%DB%8C">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/amoozesh.png" border="0" width="43" height="31" align="middle" alt="وبسایت آموزش و آزمون مجازی">
+                <font style="font-family:iransansweb;">وبسایت آموزش و آزمون مجازی</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/8/%D8%B3%DB%8C%D8%B3%D8%AA%D9%85-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D8%AC%D9%84%D9%87">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/majale.png" border="0" width="43" height="31" align="middle" alt="سیستم مدیریت مجله">
+                <font style="font-family:iransansweb;">سیستم مدیریت مجله</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/4/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D8%A2%DA%AF%D9%87%DB%8C">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/agahi.png" border="0" width="43" height="31" align="middle" alt="طراحی سایت مدیریت آگهی">
+                <font style="font-family:iransansweb;">طراحی سایت مدیریت آگهی</font>
+        	</a>
+      	</td>
+ 	</tr>
+    	<tr>
+		<td align="right">
+     		<a href="http://www.dotech.ir/ProductDetail/2/%D8%B3%D8%A7%D9%85%D8%A7%D9%86%D9%87%E2%80%8C%D9%87%D8%A7%DB%8C-%D8%B3%D9%81%D8%A7%D8%B1%D8%B4%DB%8C">
+           		<img src="./CGI چیست و چگونه کار می_کند_files/costum.png" border="0" width="43" height="31" align="middle" alt="سامانه‌های سفارشی">
+                <font style="font-family:iransansweb;">سامانه‌های سفارشی</font>
+        	</a>
+      	</td>
+ 	</tr>
+    </tbody></table>
+<table align="left" width="50%" cellpadding="0" cellspacing="0" border="0" style="height:400px">
+	<tbody><tr><td align="left" valign="middle"><img src="./CGI چیست و چگونه کار می_کند_files/2.jpg" border="0" width="238" height="254" alt="flower"></td></tr>
+</tbody></table>             	</div>
+        	</li>
+					<li class="titleMy" style="width:125px">
+            	<a href="http://www.dotech.ir/#">
+                	<span>
+                    	<img src="./CGI چیست و چگونه کار می_کند_files/quessine.png" border="0" align="top" alt="سوالات متداول" width="19" height="15" style="margin-left:3px;margin-top:35px">
+						سوالات متداول                    </span>
+                </a>
+             	<div style="left:-279px"> 
+                <table align="right" width="50%" cellpadding="5" cellspacing="0" border="0">
+	<tbody><tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/1/%DA%86%D8%B1%D8%A7-%D8%A8%D8%A7%DB%8C%D8%AF-%D8%B3%D8%A7%DB%8C%D8%AA-%D8%AF%D8%A7%D8%B4%D8%AA%D9%87-%D8%A8%D8%A7%D8%B4%DB%8C%D9%85"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">چرا باید سایت داشته باشیم؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/4/%D8%AF%D8%A7%D9%85%D9%86%D9%87-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">دامنه چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/3/%D8%B3%D8%B1%D9%88%D8%B1-%DA%86%DB%8C%D8%B3%D8%AA%D9%87%D8%A7%D8%B3%D8%AA-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">سرور چیست؟هاست چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/6/%D8%B1%D8%AA%D8%A8%D9%87-%DB%8C%D8%A7-%D8%B1%D9%86%DA%A9-(Rank)-%DB%8C%DA%A9-%D8%B3%D8%A7%DB%8C%D8%AA-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">رتبه یا رنک (Rank) یک سایت چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/14/%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%B4%D9%85%D8%A7%D8%B1%D9%87-%D9%BE%D9%88%D8%B1%D8%AA%E2%80%8C%D9%87%D8%A7"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">انواع شماره پورت‌ها</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/5/%D8%A8%D9%87%DB%8C%D9%86%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-(SEO)-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">بهینه سازی سایت (SEO) چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/11/%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D9%BE%D8%A7%DA%A9-%D8%B3%D8%A6%D9%88-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">خدمات پاک سئو چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/2/%D8%AA%D9%81%D8%A7%D9%88%D8%AA-%D8%B3%D8%A7%DB%8C%D8%AA-%D8%A7%D8%B3%D8%AA%D8%A7%D8%AA%DB%8C%DA%A9-%D8%A8%D8%A7-%D8%AF%D8%A7%DB%8C%D9%86%D8%A7%D9%85%DB%8C%DA%A9-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">تفاوت سایت استاتیک با داینامیک چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/10/PHP-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">PHP چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/9/%D9%BE%D8%A7%DB%8C%DA%AF%D8%A7%D9%87-%D8%AF%D8%A7%D8%AF%D9%87-%DB%8C%D8%A7-%D8%AF%DB%8C%D8%AA%D8%A7%D8%A8%DB%8C%D8%B3-(Data-Base)-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">پایگاه داده یا دیتابیس (Data Base) چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/7/HTML-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">HTML چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/8/%D8%AC%D8%A7%D9%88%D8%A7-%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-(Javascript)-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">جاوا اسکریپت (Javascript) چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/12/CRM-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">CRM چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQDeteail/13/Cross-Browser-%DA%86%DB%8C%D8%B3%D8%AA"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">Cross Browser چیست؟</font></a>
+        </td>
+    </tr>
+    	<tr>
+    	<td align="right" height="20">
+        	<a href="http://www.dotech.ir/FAQShow/%D8%B3%D9%88%D8%A7%D9%84%D8%A7%D8%AA-%D9%85%D8%AA%D8%AF%D8%A7%D9%88%D9%84/"><img src="./CGI چیست و چگونه کار می_کند_files/arow_right_green.png" border="0" align="middle" style="margin-bottom:5px;" width="9" height="14" alt="bullet"> 
+            <font style="font-family:iransansweb">ادامه سوالات ...</font></a>
+        </td>
+    </tr>
+</tbody></table>
+<table align="left" width="50%" cellpadding="5" cellspacing="0" border="0">
+	<tbody><tr><td align="left" valign="middle"><img src="./CGI چیست و چگونه کار می_کند_files/3.jpg" border="0" width="175" height="262" alt="flower"></td></tr>
+</tbody></table>             	</div>
+        	</li>
+					<li class="titleMy" style="width:90px">
+            	<a href="http://www.dotech.ir/#">
+                	<span>
+                    	<img src="./CGI چیست و چگونه کار می_کند_files/services.png" border="0" align="top" alt="خـدمـــات" width="17" height="16" style="margin-left:3px;margin-top:35px">
+						خـدمـــات                    </span>
+                </a>
+             	<div style="left:-189px"> 
+                <table align="right" border="0" cellpadding="0" cellspacing="0" width="50%">
+	<tbody>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/ShowPage/19/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-%D9%88-%D9%BE%D9%88%D8%B1%D8%AA%D8%A7%D9%84"><font style="font-family:iransansweb">طراحی سایت و طراحی پورتال</font></a></td>
+		</tr>
+        <tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/ShowPage/19/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-%D9%88-%D9%BE%D9%88%D8%B1%D8%AA%D8%A7%D9%84"><font style="font-family:iransansweb">طراحی فروشگاه اینترنتی</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/index.php"><font style="font-family:iransansweb">طراحی نرم افزار تحت ویندوز (Windows App)</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/index.php"><font style="font-family:iransansweb">برنامه نویسی IOS</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/index.php"><font style="font-family:iransansweb">ثبت هاست و دامنه</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/ShowPage/21/%D8%A8%D9%87%DB%8C%D9%86%D9%87-%D8%B3%D8%A7%D8%B2%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA"><font style="font-family:iransansweb">بهینه سازی سایت (SEO)</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/ShowPage/22/%D9%85%D8%B4%D8%A7%D9%88%D8%B1%D9%87-%D9%88-%D8%A2%D9%85%D9%88%D8%B2%D8%B4"><font style="font-family:iransansweb">مشاوره و آموزش</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/index.php"><font style="font-family:iransansweb">طراحی مالتی مدیا و فلش</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/index.php"><font style="font-family:iransansweb">خدمات طراحی و چاپ</font></a></td>
+		</tr>
+		<tr>
+			<td align="right" height="30"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-bottom:5px;" width="9"> <a href="http://www.dotech.ir/index.php"><font style="font-family:iransansweb">خدمات عکاسی</font></a></td>
+		</tr>
+	</tbody>
+</table>
+
+<table align="left" border="0" cellpadding="5" cellspacing="0" width="50%">
+	<tbody>
+		<tr style="height:60px">
+			<td align="left" valign="middle"><img alt="flower" border="0" height="281" src="./CGI چیست و چگونه کار می_کند_files/4.jpg" width="246"></td>
+		</tr>
+	</tbody>
+</table>             	</div>
+        	</li>
+					<li class="titleMy" style="width:100px">
+            	<a href="http://www.dotech.ir/#">
+                	<span>
+                    	<img src="./CGI چیست و چگونه کار می_کند_files/aboutus.png" border="0" align="top" alt="درباره ما" width="18" height="15" style="margin-left:3px;margin-top:35px">
+						درباره ما                    </span>
+                </a>
+             	<div style="left:-89px"> 
+                <table align="center" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+		<tr valign="top">
+			<td class="iransansweb" style="text-align:justify;color:#666"><img alt="flower" height="221" src="./CGI چیست و چگونه کار می_کند_files/5.jpg" style="float:left" width="333">
+			<p>فعالیت موسسین شرکت طراحی سایت دنیای ایده های تابان فناوری (داتک) در زمینه تکنولوژی اطلاعات و گرافیک به دهه 70 شمسی باز می‌گردد. انجام پروژه‌های متعدد و گوناگون برای موسسات و شرکت‌های معتبر در طول این سال‌ها، کارنامه‌ای درخشان برای این مجموعه به ارمغان آورده است.</p>
+
+			<p>از سال 1385 با جذب نیروهای متخصص، جوان و فعال، توسعه و بروز رسانی راه‌کارهای متنوع و کارآمد تحت وب در اولویت برنامه‌های راهبردی این شرکت قرار گرفت، به گونه‌ای که طراحی سیستم‌های تحت وب یکی از ارکان اساسی شرکت داتک محسوب می‌گردد.</p>
+
+			<p style="padding:0;margin:0">نتیجه سال‌ها تجربه موثر و موفق مدیران، در کنار تخصص و تعهد نیروهای جوان، توانایی این مجموعه را در انجام پروژه‌های متعدد و متنوع در زمینه طراحی سیستم‌های تحت وب بالا برده و با حفظ کیفیت، رضایت‌مندی مشتریان را نیز در پی داشته است.</p>
+
+			<p style="float:left;padding:0;margin-top:-15px"><a href="http://www.dotech.ir/ShowPage/20/%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87-%D9%85%D8%A7"><img align="middle" alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right_green.png" style="margin-bottom:5px;" width="9"> <font style="font-family:iransansweb">بیشتر بدانید ...</font></a></p>
+			</td>
+		</tr>
+	</tbody>
+</table>             	</div>
+        	</li>
+					<li class="titleMy" style="width:90px">
+            	<a href="http://www.dotech.ir/#">
+                	<span>
+                    	<img src="./CGI چیست و چگونه کار می_کند_files/contactus.png" border="0" align="top" alt="ارتباط با ما" width="17" height="17" style="margin-left:3px;margin-top:35px">
+						ارتباط با ما                    </span>
+                </a>
+             	<div> 
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tbody>
+		<tr valign="top">
+			<td>
+			<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td align="right" height="30" style="text-align:justify"><img alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" style="margin-top:5px" width="9"> <font style="font-family:iransansweb;text-align:justify">آدرس : تهران - انتهای خیابان شهید بهشتی، نبش خیابان ولی عصر - خیابان عبادی - کوچه نعیمی غربی - پلاک 27 - واحد 3 و 6</font></td>
+					</tr>
+					<tr>
+						<td align="right" height="30" style="padding-top:7px"><img alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" width="9"> <font style="font-family:iransansweb">تلفکس : </font>
+						<p dir="ltr" style="border:0px solid #F00;width:480px;text-align:right;margin-top:4px;float:left;">88714830&nbsp;•&nbsp;88715359</p>
+						</td>
+					</tr>
+					<tr>
+						<td align="right" height="30"><img alt="bullet" border="0" height="14" src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" width="9"> <font style="font-family:iransansweb">ایمیل : </font> <a href="mailto:info@dotech.ir">info@dotech.ir</a></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tbody>
+					<tr>
+						<td align="center" valign="middle"><img alt="flower" height="450" src="./CGI چیست و چگونه کار می_کند_files/dot-map.jpg" width="450"></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>             	</div>
+        	</li>
+			</ul>
+</div>
+<script type="text/javascript" language="javascript">
+	$(function() {
+		var $oe_menu		= $('#oe_menu');
+		var $oe_menu_items	= $oe_menu.children('li');
+		var $oe_overlay		= $('#oe_overlay');
+
+		$oe_menu_items.bind('mouseenter',function(){
+			var $this = $(this);
+			$('#sliderFrame').css('opacity','0.2');
+			$('#Box').css('opacity','0.2');
+			$('#mcts1').css('opacity','0.2');
+			$this.addClass('slided selected');
+			$this.children('div').css('z-index','9999').stop(true,true).slideDown(200,function(){
+				$oe_menu_items.not('.slided').children('div').hide();
+				$this.removeClass('slided');	
+			});
+		}).bind('mouseleave',function(){
+			var $this = $(this);
+			$('#sliderFrame').css('opacity','1.0');
+			$('#Box').css('opacity','1.0');
+			$('#mcts1').css('opacity','1.0');
+			$this.removeClass('selected').children('div').css('z-index','1');
+			
+		});
+
+		$oe_menu.bind('mouseenter',function(){
+			var $this = $(this);
+			$oe_overlay.stop(true,true).fadeTo(200, 0.6);
+			$this.addClass('hovered');
+			$('#oe_overlay').css('display','display');
+			$('#oe_overlay').css('width','100%');
+			$('#oe_overlay').css('height','100%');
+		}).bind('mouseleave',function(){
+			var $this = $(this);
+			$this.removeClass('hovered');
+			$oe_overlay.stop(true,true).fadeTo(200, 0);
+			$oe_menu_items.children('div').hide();
+			$('#oe_overlay').css('display','none');
+			$('#oe_overlay').css('width','0px');
+			$('#oe_overlay').css('height','0px');
+		})
+	});
+</script></div>
+    <div id="topWard"><div id="searchWard"><script language="javascript" type="text/javascript">
+function CheckFormSearch(Form1)
+{
+	var flag=true;
+	var a1 = Form1.TWord.value;
+	if(a1 == "" || a1 == "جستجو ...")
+	{
+		MessageBox("پیغام سیستم","عبارت مورد نظر را جهت جستجو وارد کنید .","3");
+		flag=false;
+	}
+	return flag;
+}
+$(function(){
+	//onfocus
+	$('.TextFTopSearch').click(function(){
+		var getName = $('.TextFTopSearch').val();		
+		if(getName == 'جستجو ...'){
+			$(this).val('');
+		}	
+	});
+	$('.TextFTopSearch').keypress(function(){
+		var getName = $('.TextFTopSearch').val();		
+		if(getName=='جستجو ...'){
+			$(this).val('');
+		}	
+	});
+	//onblur
+	$('.TextFTopSearch').blur(function(){
+		var getName = $('.TextFTopSearch').val();
+			if(getName==''){
+				$(this).val('جستجو ...');
+			}
+			else{
+				$('.TextFTopSearch').val(getName);
+			}	
+	});
+	
+});
+</script>
+<form action="http://www.dotech.ir/ResultSimple/%D8%AC%D8%B3%D8%AA%D8%AC%D9%88/" method="post" onsubmit="return CheckFormSearch(this);" dir="rtl">
+<div style="float:right;text-align:right"><input type="text" class="TextFTopSearch" name="TWord" value="جستجو ..."></div>
+<div style="float:left;margin:4px 0px 3px 5px"><input type="image" src="./CGI چیست و چگونه کار می_کند_files/search.png" alt="جستجو"></div>
+</form></div>
+<div id="iconWard">
+    <ul id="iconWardUl">
+        <li id="liHome"><a href="http://www.dotech.ir/index.php"></a></li>
+        <li id="liContactUs"><a href="http://www.dotech.ir/ContactUs/%D8%A7%D8%B1%D8%AA%D8%A8%D8%A7%D8%B7-%D8%A8%D8%A7-%D9%85%D8%A7/"></a></li>
+        <li id="liMap"><a href="http://www.dotech.ir/SiteMap/%D9%86%D9%82%D8%B4%D9%87-%D8%B3%D8%A7%DB%8C%D8%AA/"></a></li>
+  	</ul>
+</div></div>
+    <div id="forWhoisDomainInTop"><script language="javascript" type="text/javascript">
+function CheckTopFormWhois(Form1)
+{
+	var flag=true;
+	var a1 = Form1.domain.value;
+	if(a1 == "" || a1 == "yourdomain ...")
+	{
+		MessageBox("پیغام سیستم","عبارت مورد نظر را جهت جستجو وارد کنید .","3");
+		flag=false;
+	}
+	return flag;
+}
+$(function(){
+	//onfocus
+	$('.TextFTopDomain').click(function(){
+		var getName = $('.TextFTopDomain').val();		
+		if(getName == 'yourdomain ...'){
+			$(this).val('');
+		}	
+	});
+	$('.TextFTopDomain').keypress(function(){
+		var getName = $('.TextFTopDomain').val();		
+		if(getName=='yourdomain ...'){
+			$(this).val('');
+		}	
+	});
+	//onblur
+	$('.TextFTopDomain').blur(function(){
+		var getName = $('.TextFTopDomain').val();
+			if(getName==''){
+				$(this).val('yourdomain ...');
+			}
+			else{
+				$('.TextFTopDomain').val(getName);
+			}	
+	});
+	
+});
+</script>
+<form id="whoisform" name="whoisform" style="margin: 0px;" action="http://www.dotech.ir/WhoisDomain/%D8%AA%D8%B3%D8%AA-%D8%A2%D8%B2%D8%A7%D8%AF-%D8%A8%D9%88%D8%AF%D9%86-%D8%AF%D8%A7%D9%85%D9%86%D9%87/" method="post" onsubmit="return CheckTopFormWhois(this);">
+	<div id="whoisTopForm-SubmitDIV"><input type="submit" value="تست آزاد بودن دامنه" name="lookup" id="whoisTopForm-Submit"></div>
+    <div id="whoisTopForm-SelectBoxDIV">
+    	<select id="whoisTopForm-SelectBox" name="tld">
+            <option value="com" selected="selected">com</option>
+            <option value="net">net</option>
+            <option value="org">org</option>
+            <option value="us">us</option>
+            <option value="name">name</option>
+            <option value="info">info</option>
+            <option value="biz">biz</option>
+            <option value="ws">ws</option>
+            <option value="cc">cc</option>
+            <option value="tv">tv</option>
+            <option value="ir">ir</option>
+        </select>
+    </div>
+    <div class="whoisTopForm-Dot">.</div>
+    <div id="whoisTopForm-TextFeildDIV"><input type="text" name="domain" class="TextFTopDomain" value="yourdomain ..." id="whoisTopForm-TextFeild" dir="ltr"></div>
+    <div class="whoisTopForm-Dot">.</div>
+    <div id="whoisTopForm-WWW"><img src="./CGI چیست و چگونه کار می_کند_files/topform_www.png" alt="whois" width="30" height="30" border="0"></div>
+    <input type="hidden" name="clean" value="1">
+</form></div>
+</div>
+<div id="wraperPage_Middle_One">
+	<div id="contentMiddle_SecendPage">        <div id="mapPage"><a href="http://www.dotech.ir/index.php">صفحه اصلی</a><a href="http://www.dotech.ir/ArchiveNews/%D8%A2%D8%B1%D8%B4%DB%8C%D9%88-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA/"><img src="./CGI چیست و چگونه کار می_کند_files/divider.png" align="middle" border="0" style="margin:0px 5px 6px 5px" alt="bullet">آرشیو اخبار و مقالات طراحی سایت</a><img src="./CGI چیست و چگونه کار می_کند_files/divider.png" align="middle" border="0" style="margin:0px 5px 6px 5px" alt="bullet">CGI چیست و چگونه کار می‌کند</div>
+            <div class="pagesTitle_CenterWard" style="width:950px"><h1>CGI چیست و چگونه کار می‌کند</h1></div>
+        <div class="pagesContent_CenterWard" style="width:950px"><div class="internalPages">
+	<div class="newsDetail">
+        <img src="./CGI چیست و چگونه کار می_کند_files/dotech-logo-description.jpg" class="BorderImgGeneral" style="margin-left:10px" align="right" border="0" alt="CGI چیست و چگونه کار می‌کند" title="CGI چیست و چگونه کار می‌کند">
+        <div class="TitleNews">CGI چیست و چگونه کار می‌کند</div>
+        <p style="text-align: justify;"><strong>CGI </strong>مخفف <strong>Common Gateway Interface</strong> است. CGI یک بخشی از وب سرور (Web Server) است که این قابلیت را فراهم میکند تا برنامه ای در سمت سرور اجرا شود و خروجی آن برنامه برای کاربر متصل شده به سرور از طریق صفحه ی وب به نمایش در آید. CGI یکی از اولین روش ها برای تولید صفحات وب پویا (Dynamic) به حساب می‌آید که دارای قدمت زیادی ست. به عنوان مثال در موتور های جستجو کاربر تنها یک صفحه در مقابل خود میبیند که شامل یک کادر برای وارد کردن کلید واژه و یک دکمه‌ی جستجو ست. وقتی کاربر دکمه ی جستجو را میزند، CGI یه اسکریپت را (فرضا" به زبان Perl) که در پوشه‌ی خاصی (cgi_bin) روی سرور قرار گرفته اجرا می کنه. با اجرای این اسکریپت کلید واژه ی کاربر به عنوان ورودی استخراج شده و در پایگاه داده‌ای این کلید واژه جست و جو می‌شود تا نتایج جست و جو به دست آید. در نهایت در خروجی اسکریپت یه فایل HTML درست شده که نتایج جستجو را شامل می‌شود و CGI این HTML را به عنوان پاسخ برای کاربر ارسال میکند. چون پویش در یک پایگاه داده به طور مستقیم از راه HTML ممکن نیست، مجبور شدیم از کد Perl برای این کار کمک بگیریم و CGI فقط نقش یه واسطه را بازی میکند.</p>            </div>
+    <div id="likeNewsPage"><div class="likeSampleTitle">&nbsp;<img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" align="middle" style="margin-bottom:10px" alt="arow"> اخبار و مقالات مرتبط</div>
+<div id="likeSample">
+	<div class="likeNewsTitle">
+        <img src="./CGI چیست و چگونه کار می_کند_files/bullet-orange.png" alt="bullet" class="bulletLikeNews">
+        <a href="http://www.dotech.ir/ShowNews/391/%DA%AF%D9%88%DA%AF%D9%84-%D8%B3%D8%B1%D9%85%D8%A7%DB%8C%D9%87%E2%80%8C%DA%AF%D8%B0%D8%A7%D8%B1%DB%8C%E2%80%8C%D9%87%D8%A7-%D8%AF%D8%B1-%D8%A8%D8%AE%D8%B4-%D8%A7%D9%86%D8%B1%DA%98%DB%8C%E2%80%8C%D9%87%D8%A7%DB%8C-%D9%BE%D8%A7%DA%A9-%D8%B1%D8%A7-%D8%A8%DB%8C%D8%B4%D8%AA%D8%B1-%D9%85%DB%8C%E2%80%8C%DA%A9%D9%86%D8%AF">گوگل سرمایه‌گذاری‌ها در بخش انرژی‌های پاک را بیشتر می‌کند</a>
+    </div>
+	<div class="likeNewsTitle">
+        <img src="./CGI چیست و چگونه کار می_کند_files/bullet-orange.png" alt="bullet" class="bulletLikeNews">
+        <a href="http://www.dotech.ir/ShowNews/376/Kenbak-1%D8%9B-%D8%A8%D8%A7-%D8%A7%D9%88%D9%84%DB%8C%D9%86-%D8%B1%D8%A7%DB%8C%D8%A7%D9%86%D9%87-%D8%B4%D8%AE%D8%B5%DB%8C-%D8%AF%D9%86%DB%8C%D8%A7%DB%8C-%D9%81%D9%86%D8%A7%D9%88%D8%B1%DB%8C-%D8%A2%D8%B4%D9%86%D8%A7-%D8%B4%D9%88%DB%8C%D8%AF">Kenbak-1؛ با اولین رایانه شخصی دنیای فناوری آشنا شوید</a>
+    </div>
+	<div class="likeNewsTitle">
+        <img src="./CGI چیست و چگونه کار می_کند_files/bullet-orange.png" alt="bullet" class="bulletLikeNews">
+        <a href="http://www.dotech.ir/ShowNews/20/CRM-%DA%86%DB%8C%D8%B3%D8%AA">CRM چیست</a>
+    </div>
+	<div class="likeNewsTitle">
+        <img src="./CGI چیست و چگونه کار می_کند_files/bullet-orange.png" alt="bullet" class="bulletLikeNews">
+        <a href="http://www.dotech.ir/ShowNews/344/Eve-%D8%A7%D8%A8%D8%B2%D8%A7%D8%B1%DB%8C-%D8%A8%D8%B1%D8%A7%DB%8C-%DA%A9%D8%AF%D9%86%D9%88%DB%8C%D8%B3%DB%8C-%D8%A8%D8%AF%D9%88%D9%86-%D8%AF%D8%A7%D8%B4%D8%AA%D9%86-%D8%AF%D8%A7%D9%86%D8%B4-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%86%D9%88%DB%8C%D8%B3%DB%8C">Eve ابزاری برای کدنویسی بدون داشتن دانش برنامه نویسی</a>
+    </div>
+	<div class="likeNewsTitle">
+        <img src="./CGI چیست و چگونه کار می_کند_files/bullet-orange.png" alt="bullet" class="bulletLikeNews">
+        <a href="http://www.dotech.ir/ShowNews/58/%D8%A7%D8%B3%DA%A9%D8%B1%DB%8C%D9%BE%D8%AA-(Script)-%DA%86%DB%8C%D8%B3%D8%AA">اسکریپت (Script) چیست</a>
+    </div>
+</div><br></div>
+        <div id="indexTags">
+		<div class="likeSampleTitle">&nbsp;<img src="./CGI چیست و چگونه کار می_کند_files/arow_right.png" align="middle" style="margin-bottom:10px" alt="arow"> برچسب‌ها</div>
+        <ul class="ulTagInternalPgae">
+                    	<li><a href="http://www.dotech.ir/TagNews/CGI/">CGI</a></li>
+                        	<li><a href="http://www.dotech.ir/TagNews/CGI+%DA%86%DB%8C%D8%B3%D8%AA/">CGI چیست</a></li>
+                        	<li><a href="http://www.dotech.ir/TagNews/%D8%B3%D8%B1%D9%88%D8%B1+%D9%84%DB%8C%D9%86%D9%88%DA%A9%D8%B3/">سرور لینوکس</a></li>
+                    </ul>
+    </div>
+        
+</div></div>
+    </div>
+</div>
+<!-- <div id="forSharePgae"></div> --><div id="wraperPage_Middle_Tow_SecendPage">
+	<div id="contentMiddle_Tow_SecendPage"><script type="text/javascript">
+  $(document).ready(function() {
+
+    new $.Zebra_Tooltips($('.productTooltip'), {
+        'background_color': '#8dc63f',
+        'color':            '#FFF'
+    });
+
+});
+</script>
+<div id="titleProductBoxIndex">راهکار‌های مدیریتی داتک</div>
+<div style="height:auto;display:inline-block;padding:10px 0px 20px 0px;border:0px solid #F00;margin:0 auto;">
+	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/1/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D9%88%D8%A8%D8%B3%D8%A7%DB%8C%D8%AA-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D8%AD%D8%AA%D9%88%D8%A7" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/cms.png" alt="طراحی وبسایت مدیریت محتوا" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/5/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D9%81%D8%B1%D9%88%D8%B4%DA%AF%D8%A7%D9%87-%D8%A7%DB%8C%D9%86%D8%AA%D8%B1%D9%86%D8%AA%DB%8C" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/shop.png" alt="طراحی فروشگاه اینترنتی" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/3/%D8%B3%DB%8C%D8%B3%D8%AA%D9%85-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/news.png" alt="سیستم مدیریت اخبار" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/7/%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D8%AD%D8%AA%D9%88%D8%A7%DB%8C-%DA%86%D9%86%D8%AF-%D8%B1%D8%B3%D8%A7%D9%86%D9%87-%D8%A7%DB%8C" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/multimedia.png" alt="مدیریت محتوای چند رسانه ای" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/6/%D8%B3%DB%8C%D8%B3%D8%AA%D9%85-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%DA%AF%D8%A7%D9%84%D8%B1%DB%8C-%D8%B9%DA%A9%D8%B3" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/aks.png" alt="سیستم مدیریت گالری عکس" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/9/%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D9%88%D8%B3%D8%B3%D8%A7%D8%AA-%D8%A2%D9%85%D9%88%D8%B2%D8%B4%DB%8C" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/madrese.png" alt="مدیریت موسسات آموزشی" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/10/%D9%88%D8%A8%D8%B3%D8%A7%DB%8C%D8%AA-%D8%A2%D9%85%D9%88%D8%B2%D8%B4-%D9%88-%D8%A2%D8%B2%D9%85%D9%88%D9%86-%D9%85%D8%AC%D8%A7%D8%B2%DB%8C" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/amoozesh.png" alt="وبسایت آموزش و آزمون مجازی" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/8/%D8%B3%DB%8C%D8%B3%D8%AA%D9%85-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D9%85%D8%AC%D9%84%D9%87" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/majale.png" alt="سیستم مدیریت مجله" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/4/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-%D9%85%D8%AF%DB%8C%D8%B1%DB%8C%D8%AA-%D8%A2%DA%AF%D9%87%DB%8C" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/agahi.png" alt="طراحی سایت مدیریت آگهی" border="0">
+            </a>
+        </div>
+    	
+        <div class="productBoxSecendPage item">
+            <a href="http://www.dotech.ir/ProductDetail/2/%D8%B3%D8%A7%D9%85%D8%A7%D9%86%D9%87%E2%80%8C%D9%87%D8%A7%DB%8C-%D8%B3%D9%81%D8%A7%D8%B1%D8%B4%DB%8C" class="productTooltip" title="">
+                <img src="./CGI چیست و چگونه کار می_کند_files/costum.png" alt="سامانه‌های سفارشی" border="0">
+            </a>
+        </div>
+    </div></div>
+</div>
+<div id="indexFooter">
+	<div id="MenuBottom"><ul>
+      		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/index.php">خانه</a> • </li>
+              		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/ShowPage/20/%D8%AF%D8%B1%D8%A8%D8%A7%D8%B1%D9%87%E2%80%8C%DB%8C-%D8%B4%D8%B1%DA%A9%D8%AA-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-%D8%AF%D8%A7%D8%AA%DA%A9/">درباره‌ی شرکت طراحی سایت داتک</a> • </li>
+              		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/ContactUs/%D8%A7%D8%B1%D8%AA%D8%A8%D8%A7%D8%B7-%D8%A8%D8%A7-%D9%85%D8%A7/">ارتباط با ما</a> • </li>
+              		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/ArchiveNews/%D8%A2%D8%B1%D8%B4%DB%8C%D9%88-%D8%A7%D8%AE%D8%A8%D8%A7%D8%B1-%D9%88-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA/">آرشیو اخبار و مقالات طراحی سایت</a> • </li>
+              		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/ShowPage/19/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%B3%D8%A7%DB%8C%D8%AA-%D9%88-%D9%BE%D9%88%D8%B1%D8%AA%D8%A7%D9%84">سفارش طراحی سایت</a> • </li>
+              		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/WhoisDomain/%D8%AA%D8%B3%D8%AA-%D8%A2%D8%B2%D8%A7%D8%AF-%D8%A8%D9%88%D8%AF%D9%86-%D8%AF%D8%A7%D9%85%D9%86%D9%87/">تست آزاد بودن دامنه</a> • </li>
+              		<li class="MenuBottomLi"><a target="_self" href="http://www.dotech.ir/SampleShow/%D9%86%D9%85%D9%88%D9%86%D9%87-%DA%A9%D8%A7%D8%B1%D9%87%D8%A7%DB%8C-%D8%A7%D8%AC%D8%B1%D8%A7-%D8%B4%D8%AF%D9%87/">نمونه کارهای طراحی سایت</a>  </li>
+        </ul>
+</div>
+    <div id="footerTech"><ul>
+      		<li class="footerTechLi">
+            	<a target="_blank" href="https://www.microsoft.com/sql%E2%80%8E" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/sql-server.png" border="0" width="43" height="34" alt="طراحی سایت خبری SQLserver" class="greyScale" style="display: inline;"><canvas width="43" height="34" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.oracle.com/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/oracel.png" border="0" width="49" height="6" alt="طراحی وب سایت Oracel" class="greyScale" style="display: inline;"><canvas width="49" height="6" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.mysql.com/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/mysql.png" border="0" width="33" height="33" alt="طراحی سایت داینامیک Mysql" class="greyScale" style="display: inline;"><canvas width="33" height="33" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.adobe.com/products/photoshop.html" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/ps.png" border="0" width="26" height="26" alt="طراحی فروشگاه اینترنتی Photoshop" class="greyScale" style="display: inline;"><canvas width="26" height="26" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.adobe.com/products/flash.html" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/flash.png" border="0" width="21" height="27" alt="سئو FLASH" class="greyScale" style="display: inline;"><canvas width="21" height="27" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.w3.org/XML" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/xml.png" border="0" width="47" height="17" alt="بهینه سازی سایت XML" class="greyScale" style="display: inline;"><canvas width="47" height="17" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.lessframework.com/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/css-less.png" border="0" width="42" height="16" alt="تولید محتوا CSS LESS framework" class="greyScale" style="display: inline;"><canvas width="42" height="16" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.html5.com/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/html5.png" border="0" width="22" height="32" alt="طراحی سایت HTML5" class="greyScale" style="display: inline;"><canvas width="22" height="32" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.w3.org/html/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/html4.png" border="0" width="23" height="26" alt="طراحی سایت HTML4" class="greyScale" style="display: inline;"><canvas width="23" height="26" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.dotech.ir/#" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/css3.png" border="0" width="23" height="32" alt="طراحی فروشگاه اینترنتی CSS-CSS3" class="greyScale" style="display: inline;"><canvas width="23" height="32" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.w3schools.com/ajax/default.ASP" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/ajax.png" border="0" width="45" height="22" alt="طراحی سایت AJAX" class="greyScale" style="display: inline;"><canvas width="45" height="22" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.jquery.com/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/jquery.png" border="0" width="52" height="14" alt="سئو Jquery" class="greyScale" style="display: inline;"><canvas width="52" height="14" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.javascriptsource.com/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/javascript.png" border="0" width="42" height="37" alt="طراحی فروشگاه اینترنتی Javascript" class="greyScale" style="display: inline;"><canvas width="42" height="37" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="https://www.python.org/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/python.png" border="0" width="32" height="33" alt="طراحی سایت Python" class="greyScale" style="display: inline;"><canvas width="32" height="33" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+              		<li class="footerTechLi">
+            	<a target="_blank" href="http://www.php.net/" rel="nofollow">
+                	<div class="gsWrapper" style="position: relative; display: inline-block;"><img src="./CGI چیست و چگونه کار می_کند_files/php.png" border="0" width="45" height="23" alt="طراحی سایت PHP" class="greyScale" style="display: inline;"><canvas width="45" height="23" class="gsCanvas" style="left: 0px; position: absolute; top: 0px; margin: 0px;"></canvas></div> 
+                </a>
+				            </li>
+        </ul>
+<script language="javascript" type="text/javascript">
+  $(function() {
+	// fade in the grayscaled images to avoid visual jump
+	$('.greyScale').hide().fadeIn(1000);
+  });
+  // user window.load to ensure images have been loaded
+  $(window).load(function () {
+	$('.greyScale').greyScale({
+	  // call the plugin with non-defult fadeTime (default: 400ms)
+	  fadeTime: 500,
+	  reverse: false
+	});
+  });
+</script>
+</div>
+</div>
+<div id="copyRight"><a href="https://plus.google.com/109957105674598343600?rel=author">G+</a>©&nbsp;<span>تمامی حقوق مادی و معنوی برای شرکت <a href="http://www.dotech.ir/" title="طراحی سایت">طراحی سایت</a> داتک (دنیای ایده‌های تابان فناوری) محفوظ است. طراحی و پیاده سازی توسط خودمان!</span></div>
+<div id="goUp" style="display: none;">
+	<a href="http://www.dotech.ir/#top"><span></span></a>
+</div>
+<script type="text/javascript">
+ap_showWaitMessage('waitDiv', 0);
+</script>
+
+
+</body></html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0063)http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi- -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fa-ir" lang="fa-ir"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--<base href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-">--><base href=".">
+  
+  <meta name="robots" content="index, follow">
+  <meta name="keywords" content="سایت شخصی  محمد مهدی حاجی اسمعیلی , آموزش شبکه , خدمات راه اندازی و پیاده سازی شبکه , آموزش MCSE , مقالات شبکه به صورت PDF , دانلود مقالات IT و شبکه , پیاده سازی و آموزش عملی شبکه , وبلاگ شخصی محمد مهدی حاجی اسمعیلی , درباره ی محمد مهدی حاجی اسمعیلی">
+  <meta name="title" content="CGI چیست ؟!">
+  <meta name="author" content="محمد مهدی حاجی اسمعیلی">
+  <meta name="description" content="سایت شخصی محمد مهدی حاجی اسمعیلی
+مقالات تخصصی و طنزآمیز در مورد شبکه و MCSE، آموزش و پیاده سازی زیرساختهای مختلف شبکه و معرفی و بررسی تکنولوژیهای مرتبط با با آنها، مقالات علوم کامپیوتر بهمراه طنز !
+Mohammad Mahdi Haji Esmaeili&#39;s Personal Website for Learning MCSE">
+  <meta name="generator" content="CyberLone.com -- CopyRight © 2009-2010">
+  <title>CGI چیست ؟!</title>
+  <link href="http://www.cyberlone.com/component/jcomments/feed/com_content/50" rel="alternate" type="application/rss+xml" title="CGI چیست ؟!">
+  <link href="http://www.cyberlone.com/templates/sinaglass/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link rel="stylesheet" href="./CGI چیست ؟!_files/style.css" type="text/css">
+  <link rel="stylesheet" href="./CGI چیست ؟!_files/style_rtl.css" type="text/css">
+  <script type="text/javascript" src="./CGI چیست ؟!_files/jcomments-v2.1.js"></script>
+  <script type="text/javascript" src="./CGI چیست ؟!_files/ajax.js"></script>
+  <script type="text/javascript" src="./CGI چیست ؟!_files/mootools.js"></script>
+  <script type="text/javascript" src="./CGI چیست ؟!_files/caption.js"></script>
+
+<link rel="stylesheet" href="./CGI چیست ؟!_files/system.css" type="text/css">
+<link rel="stylesheet" href="./CGI چیست ؟!_files/general.css" type="text/css">
+	<link href="./CGI چیست ؟!_files/template_rtl.css" rel="stylesheet" type="text/css">
+	<link href="./CGI چیست ؟!_files/body_rtl.css" rel="stylesheet" type="text/css">
+
+</head>
+<body><table align="center" cellpadding="0" cellspacing="0" id="site_panel">
+  <tbody><tr> 
+    <td id="ptl"></td>
+    <td id="ptc" colspan="2"></td>
+    <td id="ptr"></td>
+  </tr>
+  <tr> 
+    <td id="pl"></td>
+    <td id="pc-main" colspan="2"><table id="main_tb" cellpadding="0" cellspacing="0">
+        <tbody><tr> 
+          <td><table id="logo_panel" cellpadding="0" cellspacing="0">
+              <tbody><tr> 
+                <td id="logo"><img src="./CGI چیست ؟!_files/mlogo.jpg" alt="" width="100%" height="134" id="mlogo"></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        <tr> 
+          <td><table id="topmenu_panel" cellpadding="0" cellspacing="0">
+              <tbody><tr> 
+                <td id="tml"></td>
+                <td valign="middle" id="tmc"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr> 
+                      <td id="pillmenu"><ul id="mainlevel-nav"><li><a href="http://www.cyberlone.com/main-page" class="mainlevel-nav">صفحه اصلی</a></li><li><a href="http://www.cyberlone.com/services" target="_blank" class="mainlevel-nav">خدمات</a></li><li><a href="http://www.cyberlone.com/download-center" target="_blank" class="mainlevel-nav">مرکز  دانلود</a></li><li><a href="http://www.cyberlone.com/multimedia-blog" target="_blank" class="mainlevel-nav">مولتی مدیا</a></li><li><a href="http://www.cyberlone.com/articles-blog" target="_blank" class="mainlevel-nav" id="active_menu-nav">مقالات</a></li><li><a href="http://www.cyberlone.com/ebooks-blog" target="_blank" class="mainlevel-nav">کتابهای الکترونیکی</a></li><li><a href="http://www.cyberlone.com/weblog-blog" target="_blank" class="mainlevel-nav">وبلاگ شخصی محمد مهدی حاجی اسمعیلی</a></li></ul></td>
+                      <td width="150"><form action="http://www.cyberlone.com/articles-blog/it-articles/index.php" method="post">
+	<div class="search">
+		<input name="searchword" id="mod_search_searchword" maxlength="20" alt="جستجو" class="inputbox" type="text" size="20" value="جستجو..." onblur="if(this.value==&#39;&#39;) this.value=&#39;جستجو...&#39;;" onfocus="if(this.value==&#39;جستجو...&#39;) this.value=&#39;&#39;;">	</div>
+	<input type="hidden" name="task" value="search">
+	<input type="hidden" name="option" value="com_search">
+	<input type="hidden" name="Itemid" value="55">
+</form><ul id="mainlevel-nav"><li><a href="http://www.cyberlone.com/articles-index" class="mainlevel-nav">مقالات بصورت فهرست</a></li></ul></td>
+                    </tr>
+                  </tbody></table></td>
+                <td id="tmr"></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+        <tr> 
+          <td><table id="cont_panel" cellpadding="0" cellspacing="0">
+              <tbody><tr> 
+                                <td id="jom"><table id="jom_panel" cellpadding="0" cellspacing="0">
+                    <tbody><tr> 
+                      <td id="navg" colspan="2"><table id="navg_panel" cellpadding="0" cellspacing="0">
+                          <tbody><tr> 
+                            <td id="nf"></td>
+                            <td id="nc"><table width="100%" height="30" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr> 
+                                  <td><span class="breadcrumbs pathway">
+<a href="http://www.cyberlone.com/" class="pathway">صفحه اصلی</a> <img src="./CGI چیست ؟!_files/arrow_rtl.png" alt=""> <a href="http://www.cyberlone.com/articles-blog" class="pathway">مقالات</a> <img src="./CGI چیست ؟!_files/arrow_rtl.png" alt=""> <a href="http://www.cyberlone.com/articles-blog/it-articles" class="pathway">IT و فناوری اطلاعات</a> <img src="./CGI چیست ؟!_files/arrow_rtl.png" alt=""> CGI چیست ؟!</span>
+</td>
+                                </tr>
+                              </tbody></table></td>
+                            <td id="nr"></td>
+                          </tr>
+                        </tbody></table></td>
+                    </tr>
+                                        <tr> 
+                                            <td width="50%" valign="top"><table cellpadding="0" cellspacing="0" id="box_panel">
+                          <tbody><tr> 
+                            <td id="btl"></td>
+                            <td id="btc"></td>
+                            <td id="btr"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bl"></td>
+                            <td id="bc"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr> 
+                                  <td id="user">		<div class="moduletable">
+					<h3>مطالب محبوب</h3>
+					<ul class="mostread">
+	<li class="mostread">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/connecting-pcs-via-internet-without-public-ip" class="mostread">
+			اتصال دو کامپیوتر از طریق اینترنت بدون داشتن Public IP</a>
+	</li>
+	<li class="mostread">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/pserver" class="mostread">
+			پروکسی سرور چیست، چگونه کار میکند و چه قابلیتهایی دارد ؟! نگاهی بر عملکرد سرورهای پراکسی از نگاه مهندسی شبکه</a>
+	</li>
+	<li class="mostread">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/distributed-file-system-dfs" class="mostread">
+			راههای مختلف دسترسی به فایلهای اشتراک گذاشته شده در شبکه -- تکنولوژی DFS</a>
+	</li>
+	<li class="mostread">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/ics" class="mostread">
+			به اشتراک گذاری اینترنت بین چند کامپیوتر بکمک ICS</a>
+	</li>
+	<li class="mostread">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/vlan" class="mostread">
+			VLAN یا Virtual LAN چیست ؟!</a>
+	</li>
+</ul>		</div>
+	</td>
+                                </tr>
+                              </tbody></table></td>
+                            <td id="br"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bbl"></td>
+                            <td id="bbc"></td>
+                            <td id="bbr"></td>
+                          </tr>
+                        </tbody></table></td>
+                                                                  <td width="50%" valign="top"><table cellpadding="0" cellspacing="0" id="box_panel">
+                          <tbody><tr> 
+                            <td id="btl"></td>
+                            <td id="btc"></td>
+                            <td id="btr"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bl"></td>
+                            <td id="bc"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr> 
+                                  <td id="user">		<div class="moduletable">
+					<h3>آخرین مطالب</h3>
+					<ul class="latestnews">
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/services" class="latestnews">
+			خدمات ما</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/weblog-blog/painsblog/rachel-corrie" class="latestnews">
+			راشل کوری</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/articles-blog/other-articles/excuses-again" class="latestnews">
+			بهانه های تازه تازه تازه !</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/articles-blog/it-articles/diginotar-notification" class="latestnews">
+			هشدار امنیتی</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/p2p-unstructured-overlays" class="latestnews">
+			چگونگی ارتباط گره های شبکه های P2P در Unstructured Overlay ها</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/articles-blog/it-articles/bee-colony-optimiztion" class="latestnews">
+			بهینه سازی کلونی زنبورها</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/multimedia-blog/images/videogamecomics" class="latestnews">
+			کمیکهای بازیهای کامپیوتری</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/weblog-blog/painsblog/parting-ways" class="latestnews">
+			خداحافظی ها</a>
+	</li>
+	<li class="latestnews">
+		<a href="http://www.cyberlone.com/articles-blog/network-related-articles/vlan" class="latestnews">
+			VLAN یا Virtual LAN چیست ؟!</a>
+	</li>
+</ul>		</div>
+	</td>
+                                </tr>
+                              </tbody></table></td>
+                            <td id="br"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bbl"></td>
+                            <td id="bbc"></td>
+                            <td id="bbr"></td>
+                          </tr>
+                        </tbody></table></td>
+                                          </tr>
+                                        <tr> 
+                      <td valign="top" colspan="2"><table id="box_panel" cellpadding="0" cellspacing="0">
+                          <tbody><tr> 
+                            <td id="btl"></td>
+                            <td id="btc"></td>
+                            <td id="btr"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bl"></td>
+                            <td id="bc"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr> 
+                                  <td><table class="contentpaneopen">
+<tbody><tr>
+		<td class="contentheading" width="100%">
+				<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-" class="contentpagetitle">
+			CGI چیست ؟!</a>
+			</td>
+				
+				<td align="right" width="100%" class="buttonheading">
+		<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-?tmpl=component&amp;print=1&amp;layout=default&amp;page=" title="چاپ" onclick="window.open(this.href,&#39;win2&#39;,&#39;status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no&#39;); return false;" rel="nofollow"><img src="./CGI چیست ؟!_files/printButton.png" alt="چاپ"></a>		</td>
+		
+				<td align="right" width="100%" class="buttonheading">
+		<a href="http://www.cyberlone.com/component/mailto/?tmpl=component&amp;link=06922f3bad3c1669397ca284d4015eb7950cc7b4" title="نامه الکترونیک" onclick="window.open(this.href,&#39;win2&#39;,&#39;width=400,height=350,menubar=yes,resizable=yes&#39;); return false;"><img src="./CGI چیست ؟!_files/emailButton.png" alt="نامه الکترونیک"></a>		</td>
+					</tr>
+</tbody></table>
+
+<form method="post" action="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-"><span class="content_rating">امتیاز کاربر:<img src="./CGI چیست ؟!_files/rating_star.png" alt=""><img src="./CGI چیست ؟!_files/rating_star.png" alt=""><img src="./CGI چیست ؟!_files/rating_star.png" alt=""><img src="./CGI چیست ؟!_files/rating_star_blank.png" alt=""><img src="./CGI چیست ؟!_files/rating_star_blank.png" alt="">&nbsp;/&nbsp;5</span>
+<br>
+<span class="content_vote">بد<input type="radio" alt="vote 1 star" name="user_rating" value="1"><input type="radio" alt="vote 2 star" name="user_rating" value="2"><input type="radio" alt="vote 3 star" name="user_rating" value="3"><input type="radio" alt="vote 4 star" name="user_rating" value="4"><input type="radio" alt="vote 5 star" name="user_rating" value="5" checked="checked">خوب&nbsp;<input class="button" type="submit" name="submit_vote" value="امتیاز"><input type="hidden" name="task" value="vote"><input type="hidden" name="option" value="com_content"><input type="hidden" name="cid" value="50"><input type="hidden" name="url" value="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-"></span></form><table class="contentpaneopen">
+<tbody><tr>
+	<td>
+				<span>
+							<a href="http://www.cyberlone.com/articles-blog">						مقالات							</a>											 - 					</span>
+						<span>
+							<a href="http://www.cyberlone.com/articles-blog/it-articles">						IT و فناوری اطلاعات							</a>					</span>
+			</td>
+</tr>
+<tr>
+	<td valign="top">
+		<span class="small">
+			نوشته شده توسط محمد مهدی حاجی اسمعیلی		</span>
+		&nbsp;&nbsp;
+	</td>
+</tr>
+
+<tr>
+	<td valign="top" class="createdate">
+		دوشنبه ۲۲ تیر ۱۳۸۸ ساعت ۲۱:۳۱	</td>
+</tr>
+
+
+<tr>
+<td valign="top">
+CGI یک برنامه (که از دیدگاه دیگری هم بهش میشه گفت یک پروتکل) هستش برای ایجاد ارتباط متقابل بین یک سرویس دهنده (Web Server همیشگی داستان !) و یک Client (همون مشتری و یا کاربر)...<br><br>بعنوان مثال شما میخواین که در سایت XYZ.com ثبت نام کنید.وقتی که روی دکمه ی به اصطلاح Accept این سایت میزنین اطلاعات شما به سرور فرستاده میشن...در اونجا برنامه ایی توسط یک برنامه نویس نوشته شده که این برنامه میتونه کارهای مختلفی رو با اطلاعات شما انجام بده (مثلا میتونه اطلاعات رو بگیره , ویرایش کنه و سپس در درون یک بانک اطلاعاتی ذخیره کنه) , این برنامه بدون حضور CGI نمیتونه اجرا بشه...<br>
+
+<br>پس CGI چیه ؟! CGI یک صورت (Interface) و یک تکنولوژی هستش که جزو تکنولوژی های طرف سرور (Server-Sided) میباشد و به برنامه های یک برنامه نویس وب اجازه میده تا بتونن بر روی سرور اصلی (که به یک بانک اطلاعاتی خصوصی برای اون Domain متصل هستش) اطلاعات فرستاده شده رو دستکاری کنه...<br><br>مثال بالا برای سایت Suicide Girls بودش...وقتی که روی دکمه ی Accept در قسمت ثبت نام کلیلک کنید , یک ارسال به سرور اصلی فرستاده میشود و پیامی را بهمراه اطلاعات شما به سرور میفرستد...<br><br>در اینجاست که CGI به برنامه ی نوشته شده توسط برنامه نویس اجازه میدهد که اجرا شده و اطلاعات فرستاده شده را ویرایش کرده و سپس اعمال مورد نظر را روی آنها اعمال کند...<br><br>برنامه هایی رو که CGI میتونه اجراشون کنه رو میشه با زبانهای برنامه نویسی مختلفی نوشت...حتما با سایت IMDB آشنایی دارین ! مثلا برنامه های مخصوص این سایت و بانک اطلاعاتی بزرگش توسط زبان برنامه نویسی Perl نوشته شدن...<br><br>از دیگر زبانهای برنامه نویسی میشه به Python , PHP و زبان C (این زبان همیشه استوار و دوست داشتنی !!!) اشاره کردش ! هر چند که بیشتر با Perl , Python و PHP برای اینکار استفاده میشه تا C...<br><br>بعنوان مثال برنامه های مخصوص سایت ما با زبان PHP نوشته شدن و به کمک CGI درون Host مون (BlueHost) اجرا میشن و اطلاعات ما رو در بانک اطلاعاتی ثبت و یا حذف میکنن...<br><br>یه اشاره : CGI زبان برنامه نویسی نیستش ! بلکه باعث اجرا شدن برنامه هایی میشه که با زبانهای برنامه نویسی ایی که در بالا بهشون اشاره شد نوشته شدن...<br><br>پس در انتها CGI چی بود ؟! یک Interface (توی ذهنتون یک سیستم عامل تصور کنین که اجازه میده برنامه های دلبخواه ما اجرا بشن !)که به برنامه اجرايی اجازه ميدهد اجرا شده و خروجی خود را به مشتری (Client) متقاضی برگرداند.<br><br>امید است روشن کننده بوده باشد...</td>
+</tr>
+
+</tbody></table>
+<span class="article_separator">&nbsp;</span>
+<script type="text/javascript">
+<!--
+var jcomments=new JComments(50, 'com_content','/index.php?option=com_jcomments&amp;tmpl=component');
+jcomments.setList('comments-list');
+//-->
+</script>
+<div id="jc">
+<div id="comments"><h4>نظرات<a class="rss" href="http://www.cyberlone.com/component/jcomments/feed/com_content/50" title="خوراک آر اس اس برای نظرات این مطلب" target="_blank">&nbsp;</a><a class="refresh" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" title="به روز رسانی نظرات" onclick="jcomments.showPage(50,&#39;com_content&#39;,0);return false;">&nbsp;</a></h4>
+<div id="comments-list" class="comments-list">
+        <div class="even" id="comment-item-305"><div class="rbox"><div class="rbox_tr"><div class="rbox_tl"><div class="rbox_t">&nbsp;</div></div></div><div class="rbox_m">
+<div class="comment-box usertype-guest">
+<span class="comments-vote">
+	<span id="comment-vote-holder-305">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-good" title="نظر خوب!" onclick="jcomments.voteComment(305, 1);return false;"></a><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-poor" title="نظر ضعیف!" onclick="jcomments.voteComment(305, -1);return false;"></a>
+<span class="vote-none">0</span>
+	</span>
+</span>
+<a class="comment-anchor" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#comment-305" id="comment-305">#5</a>
+<span class="comment-author">zooby</span>
+<span class="comment-date">۱۳۸۹-۰۸-۲۱ ۱۰:۵۹</span>
+<div class="comment-body" id="comment-body-305">تا حدودی واضح بود.  <img src="./CGI چیست ؟!_files/wink.gif" border="0" alt=";-)">   مرسی</div>
+<span class="comments-buttons">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" onclick="jcomments.quoteComment(305); return false;">نقل قول</a>
+</span>
+</div><div class="clear"></div>
+</div><div class="rbox_br"><div class="rbox_bl"><div class="rbox_b">&nbsp;</div></div></div></div>
+</div>
+        <div class="odd" id="comment-item-182"><div class="rbox"><div class="rbox_tr"><div class="rbox_tl"><div class="rbox_t">&nbsp;</div></div></div><div class="rbox_m">
+<div class="comment-box usertype-guest">
+<span class="comments-vote">
+	<span id="comment-vote-holder-182">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-good" title="نظر خوب!" onclick="jcomments.voteComment(182, 1);return false;"></a><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-poor" title="نظر ضعیف!" onclick="jcomments.voteComment(182, -1);return false;"></a>
+<span class="vote-none">0</span>
+	</span>
+</span>
+<a class="comment-anchor" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#comment-182" id="comment-182">#4</a>
+<span class="comment-author">babak_alpha</span>
+<span class="comment-date">۱۳۸۹-۰۵-۳۱ ۱۲:۱۲</span>
+<div class="comment-body" id="comment-body-182">عالی بود.ممنون</div>
+<span class="comments-buttons">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" onclick="jcomments.quoteComment(182); return false;">نقل قول</a>
+</span>
+</div><div class="clear"></div>
+</div><div class="rbox_br"><div class="rbox_bl"><div class="rbox_b">&nbsp;</div></div></div></div>
+</div>
+        <div class="even" id="comment-item-38"><div class="rbox"><div class="rbox_tr"><div class="rbox_tl"><div class="rbox_t">&nbsp;</div></div></div><div class="rbox_m">
+<div class="comment-box usertype-guest">
+<span class="comments-vote">
+	<span id="comment-vote-holder-38">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-good" title="نظر خوب!" onclick="jcomments.voteComment(38, 1);return false;"></a><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-poor" title="نظر ضعیف!" onclick="jcomments.voteComment(38, -1);return false;"></a>
+<span class="vote-none">0</span>
+	</span>
+</span>
+<a class="comment-anchor" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#comment-38" id="comment-38">#3</a>
+<span class="comment-author">Mohammad</span>
+<span class="comment-date">۱۳۸۸-۰۷-۲۹ ۰۹:۲۰</span>
+<div class="comment-body" id="comment-body-38"> <img src="./CGI چیست ؟!_files/laugh.gif" border="0" alt=":D"> </div>
+<span class="comments-buttons">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" onclick="jcomments.quoteComment(38); return false;">نقل قول</a>
+</span>
+</div><div class="clear"></div>
+</div><div class="rbox_br"><div class="rbox_bl"><div class="rbox_b">&nbsp;</div></div></div></div>
+</div>
+        <div class="odd" id="comment-item-37"><div class="rbox"><div class="rbox_tr"><div class="rbox_tl"><div class="rbox_t">&nbsp;</div></div></div><div class="rbox_m">
+<div class="comment-box usertype-guest">
+<span class="comments-vote">
+	<span id="comment-vote-holder-37">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-good" title="نظر خوب!" onclick="jcomments.voteComment(37, 1);return false;"></a><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-poor" title="نظر ضعیف!" onclick="jcomments.voteComment(37, -1);return false;"></a>
+<span class="vote-poor">-3</span>
+	</span>
+</span>
+<a class="comment-anchor" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#comment-37" id="comment-37">#2</a>
+<span class="comment-author">Guest</span>
+<span class="comment-date">۱۳۸۸-۰۷-۲۸ ۱۲:۳۹</span>
+<div class="comment-body" id="comment-body-37">الاغ جان چرا به زبان خودمانی نوشتی مثل آدم می نوشتی استفاده می کردیم می مردی  <img src="./CGI چیست ؟!_files/sad.gif" border="0" alt=":sad:"> </div>
+<span class="comments-buttons">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" onclick="jcomments.quoteComment(37); return false;">نقل قول</a>
+</span>
+</div><div class="clear"></div>
+</div><div class="rbox_br"><div class="rbox_bl"><div class="rbox_b">&nbsp;</div></div></div></div>
+</div>
+        <div class="even" id="comment-item-11"><div class="rbox"><div class="rbox_tr"><div class="rbox_tl"><div class="rbox_t">&nbsp;</div></div></div><div class="rbox_m">
+<div class="comment-box usertype-guest">
+<span class="comments-vote">
+	<span id="comment-vote-holder-11">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-good" title="نظر خوب!" onclick="jcomments.voteComment(11, 1);return false;"></a><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" class="vote-poor" title="نظر ضعیف!" onclick="jcomments.voteComment(11, -1);return false;"></a>
+<span class="vote-none">0</span>
+	</span>
+</span>
+<a class="comment-anchor" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#comment-11" id="comment-11">#1</a>
+<span class="comment-author">اصغر نوذري</span>
+<span class="comment-date">۱۳۸۸-۰۵-۱۹ ۱۸:۱۵</span>
+<div class="comment-body" id="comment-body-11">من دارم سعي مي كنم كه به تاريخچه كوتاهي  از بازيهاي كامپيوتري در حد يك واحد درسي دانشگاهي دست پيدا كنم خوشحال مي شوم اگر كتابي يا مقاله اي در اين باره هست مرا راهنمايي كنيد<br>با تشكر فراوان از شما دوست عزيزم</div>
+<span class="comments-buttons">
+<a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" onclick="jcomments.quoteComment(11); return false;">نقل قول</a>
+</span>
+</div><div class="clear"></div>
+</div><div class="rbox_br"><div class="rbox_bl"><div class="rbox_b">&nbsp;</div></div></div></div>
+</div>
+</div>
+<div id="comments-list-footer"><a class="refresh" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" title="به روز رسانی نظرات" onclick="jcomments.showPage(50,&#39;com_content&#39;,0);return false;">به روز رسانی نظرات</a><br><a class="rss" href="http://www.cyberlone.com/component/jcomments/feed/com_content/50" target="_blank">خوراک آر اس اس برای نظرات این مطلب</a></div>
+</div>
+<h4>ارسال نظر</h4>
+<a id="addcomments" href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#addcomments"></a>
+<form id="comments-form" name="comments-form" action="javascript:void(null);">
+<table id="comments-form-table">
+<tbody><tr>
+<td>
+    <label for="comments-form-name">نام (مورد نیاز)</label>
+</td>
+<td>
+    <input id="comments-form-name" type="text" name="name" value="" maxlength="20" size="22" tabindex="1">
+</td>    
+</tr>
+<tr>
+<td>
+	<label for="comments-form-email">آدرس ایمیل (مورد نیاز است، نمایش داده نمیشود)</label>
+</td>    
+<td>
+    <input id="comments-form-email" type="text" name="email" value="" size="22" tabindex="2">	
+</td>    
+</tr>
+<tr>
+<td>
+    <label for="comments-form-homepage">وبسایت</label>	
+</td>    
+<td>
+	<input id="comments-form-homepage" type="text" name="homepage" value="" size="22" tabindex="3">
+</td>    
+</tr>
+</tbody></table>
+<table>
+<tbody><tr>
+<td>
+	<div class="smiles"><img src="./CGI چیست ؟!_files/laugh.gif" alt=":D" class="smile"><img src="./CGI چیست ؟!_files/lol.gif" alt=":lol:" class="smile"><img src="./CGI چیست ؟!_files/smile.gif" alt=":-)" class="smile"><img src="./CGI چیست ؟!_files/wink.gif" alt=";-)" class="smile"><img src="./CGI چیست ؟!_files/cool.gif" alt="8)" class="smile"><img src="./CGI چیست ؟!_files/normal.gif" alt=":-|" class="smile"><img src="./CGI چیست ؟!_files/whistling.gif" alt=":-*" class="smile"><img src="./CGI چیست ؟!_files/redface.gif" alt=":oops:" class="smile"><img src="./CGI چیست ؟!_files/sad.gif" alt=":sad:" class="smile"><img src="./CGI چیست ؟!_files/cry.gif" alt=":cry:" class="smile"><img src="./CGI چیست ؟!_files/surprised.gif" alt=":o" class="smile"><img src="./CGI چیست ؟!_files/confused.gif" alt=":-?" class="smile"><img src="./CGI چیست ؟!_files/sick.gif" alt=":-x" class="smile"><img src="./CGI چیست ؟!_files/shocked.gif" alt=":eek:" class="smile"><img src="./CGI چیست ؟!_files/sleeping.gif" alt=":zzz" class="smile"><img src="./CGI چیست ؟!_files/tongue.gif" alt=":P" class="smile"><img src="./CGI چیست ؟!_files/rolleyes.gif" alt=":roll:" class="smile"><img src="./CGI چیست ؟!_files/unsure.gif" alt=":sigh:" class="smile"></div><textarea id="comments-form-comment" name="comment" cols="65" rows="8" tabindex="5"></textarea><div class="grippie"><span class="counter"> <span>1000</span>  حروف باقیمانده</span></div>
+</td>
+</tr>
+
+<tr>
+<td>
+	<input class="checkbox" id="comments-form-subscribe" type="checkbox" name="subscribe" value="1" tabindex="5">
+	<label for="comments-form-subscribe">درصورت ارسال نظر جدید به من اطلاع بده!</label><br>
+</td>
+</tr>
+</tbody></table>
+<table>
+
+<tbody><tr>
+<td>
+	<img class="captcha" onclick="jcomments.clear(&#39;captcha&#39;);" id="comments-form-captcha-image" name="captcha-image" src="./CGI چیست ؟!_files/index.php" width="121" height="60" alt="کد امنیتی"><br>
+</td>
+</tr>
+<tr>
+<td>    
+	<span class="captcha" onclick="jcomments.clear(&#39;captcha&#39;);">بروزرسانی</span><br>
+</td>
+</tr>
+<tr>
+<td>    
+	<input class="captcha" id="comments-form-captcha" type="text" name="captcha-refid" value="" size="5" tabindex="6"><br>
+</td>
+</tr>
+</tbody></table>
+<div id="comments-form-buttons">
+	<div class="btn" id="comments-form-send"><div><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" tabindex="7" onclick="jcomments.saveComment();return false;" title="ارسال کنید (Ctrl+Enter)">ارسال کنید</a></div></div>
+	<div class="btn" id="comments-form-cancel" style="display:none;"><div><a href="http://www.cyberlone.com/articles-blog/it-articles/what-is-cgi-#" tabindex="8" onclick="return false;" title="ابطال">ابطال</a></div></div>
+	<div style="clear:both;"></div>
+</div>
+	<input type="hidden" name="object_id" value="50">
+	<input type="hidden" name="object_group" value="com_content">
+</form>
+<script type="text/javascript">
+<!--
+function JCommentsInitializeForm()
+{
+	var jcEditor = new JCommentsEditor('comments-form-comment', true);
+	jcEditor.initSmiles('http://www.cyberlone.com/components/com_jcomments/images/smiles');
+	jcEditor.addSmile(':D','laugh.gif');
+	jcEditor.addSmile(':lol:','lol.gif');
+	jcEditor.addSmile(':-)','smile.gif');
+	jcEditor.addSmile(';-)','wink.gif');
+	jcEditor.addSmile('8)','cool.gif');
+	jcEditor.addSmile(':-|','normal.gif');
+	jcEditor.addSmile(':-*','whistling.gif');
+	jcEditor.addSmile(':oops:','redface.gif');
+	jcEditor.addSmile(':sad:','sad.gif');
+	jcEditor.addSmile(':cry:','cry.gif');
+	jcEditor.addSmile(':o','surprised.gif');
+	jcEditor.addSmile(':-?','confused.gif');
+	jcEditor.addSmile(':-x','sick.gif');
+	jcEditor.addSmile(':eek:','shocked.gif');
+	jcEditor.addSmile(':zzz','sleeping.gif');
+	jcEditor.addSmile(':P','tongue.gif');
+	jcEditor.addSmile(':roll:','rolleyes.gif');
+	jcEditor.addSmile(':sigh:','unsure.gif');
+	jcEditor.addCounter(1000, '', ' حروف باقیمانده', 'counter');
+	jcomments.setForm(new JCommentsForm('comments-form', jcEditor));
+}
+
+if (window.addEventListener) {window.addEventListener('load',JCommentsInitializeForm,false);}
+else if (document.addEventListener){document.addEventListener('load',JCommentsInitializeForm,false);}
+else if (window.attachEvent){window.attachEvent('onload',JCommentsInitializeForm);}
+else {if (typeof window.onload=='function'){var oldload=window.onload;window.onload=function(){oldload();JCommentsInitializeForm();}} else window.onload=JCommentsInitializeForm;} 
+//-->
+</script>
+<div id="comments-footer" align="center"><a href="http://www.joomlatune.com/" title="JComments" target="_blank">JComments</a></div>
+<script type="text/javascript">
+<!--
+jcomments.setAntiCache(1,0,0);
+//-->
+</script> 
+</div></td>
+                                </tr>
+                              </tbody></table></td>
+                            <td id="br"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bbl"></td>
+                            <td id="bbc"></td>
+                            <td id="bbr"></td>
+                          </tr>
+                        </tbody></table></td>
+                    </tr>
+                    <tr> 
+                      <td colspan="2" valign="top"><table id="box_panel" cellpadding="0" cellspacing="0">
+                          <tbody><tr> 
+                            <td id="btl"></td>
+                            <td id="btc"></td>
+                            <td id="btr"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bl"></td>
+                            <td id="bc"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                <tbody><tr> 
+                                  <td id="user">		<div class="moduletable">
+					<h3>مقالات سر راهی !</h3>
+					<table class="contentpaneopen">
+<tbody><tr>
+	<td class="contentheading" width="100%">
+			قانون 80/20 در DHCP  چیست ؟!		</td>
+</tr>
+</tbody></table>
+
+
+
+<table class="contentpaneopen">
+	<tbody><tr>
+		<td valign="top"><p>حتما موقع تنظیم DHCP Server متوجه شدین که باید برای کلاینهایی که درخواست IP میکنند یک Lease تعیین کنید...خب معلومه ! شما که نمیخواین این کلاینتا تا ابد اون آدرسی که بهشون اختصاص داده شده رو داشته باشن و بهشون هم نگن "بالا چشات ابروئه !".</p>
+<p>این رو هم بهتره بدونیم که بعد از اینکه 50% زمان دریافت Lease و یا همون اجاره ی IP بگذره، کلاینت یک درخواست به صورت Unicast برای تمدید مدت زمان IPش به همون DHCP Server یی که بهش IP رو داده ارسال میکنه و سپس این سرور اقدام به تمدید مدت زمان اجاره ی IP مربوط به اون کلاینت میکنه...</p>
+<p>&nbsp;</p>
+<p><a href="http://www.cyberlone.com/articles-blog/network-related-articles/the-8020-rule-in-dhcp" title="قانون 80/20 در DHCP  چیست ؟!">قانون 80/20 در DHCP&nbsp; چیست ؟!</a></p></td>
+	</tr>
+	<tr>
+        <td valign="top">
+
+       		</td>
+     </tr>
+</tbody></table>
+		</div>
+			<div class="moduletable">
+					<h3>تبلیغات تصویری</h3>
+					<div align="center"><div class="bannergroup">
+
+<div class="banneritem"><a href="http://www.cyberlone.com/component/banners/click/14" target="_blank"><img src="./CGI چیست ؟!_files/Advertise2.jpg" alt="آگهی"></a><div class="clr"></div>
+	</div>
+<div class="banneritem"><a href="http://www.cyberlone.com/component/banners/click/12" target="_blank"><img src="http://www.cyberlone.com/images/banners/ad.gif" alt="آگهی" style="display: none !important;"></a><div class="clr"></div>
+	</div>
+
+	<div class="bannerfooter">
+		 <hr>	</div>
+</div></div>		</div>
+	</td>
+                                </tr>
+                              </tbody></table></td>
+                            <td id="br"></td>
+                          </tr>
+                          <tr> 
+                            <td id="bbl"></td>
+                            <td id="bbc"></td>
+                            <td id="bbr"></td>
+                          </tr>
+                        </tbody></table></td>
+                    </tr>
+                   </tbody></table></td>
+                              </tr>
+            </tbody></table></td>
+        </tr>
+        <tr> 
+          <td><table id="footer_panel" cellpadding="0" cellspacing="0">
+              <tbody><tr> 
+                <td id="fl"></td>
+                <td id="fc"><table id="footer_tb" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr> 
+                      <td width="25%"><p>Website Designed by <br> <a href="mailto:neltherion@Gmail.com"><strong>Mohammad M. Haji-Esmaeili</strong></a> 
+  </p></td>
+                      <td>		<div class="moduletable">
+					<div><a href="http://www.cyberlone.com/contact-me" title="تماس با محمد مهدی حاجی اسمعیلی از سایت CyberLone">محمد مهدی حاجی اسمعیلی</a><a href="http://www.cyberlone.com/contact-me" title="تماس با محمد مهدی حاجی اسمعیلی از سایت CyberLone"> -- </a><a href="http://www.cyberlone.com/contact-me" title="تماس با محمد مهدی حاجی اسمعیلی از سایت CyberLone">Mohammad Mahdi Haji Esmaeili</a></div>
+<p><a href="http://www.cyberlone.com/contact-me" title="تماس با محمد مهدی حاجی اسمعیلی از سایت CyberLone"> </a></p>
+<div><strong><a href="http://www.cyberlone.com/contact-me" title="تماس با محمد مهدی حاجی اسمعیلی از سایت CyberLone">Cyberlone</a></strong></div>
+<div><strong>Copyright © 2009-2010 <br></strong></div>		</div>
+	</td>
+                      <td width="25%">		<div class="moduletable">
+					<a href="http://www.cyberlone.com/component/jcomments/feed/com_content/50">
+	<img src="./CGI چیست ؟!_files/livemarks.png" alt="feed-image"> <span>دریافت مطالب فوق (RSS)</span></a>		</div>
+			<div class="moduletable">
+					<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./CGI چیست ؟!_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7800413-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+} catch(err) {}
+</script>
+		</div>
+	</td>
+                    </tr>
+                  </tbody></table></td>
+                <td id="fr"></td>
+              </tr>
+            </tbody></table></td>
+        </tr>
+      </tbody></table></td>
+    <td id="pr" width="17"></td>
+  </tr>
+  <tr> 
+    <td id="pbl"></td>
+    <td id="pbc" colspan="2"></td>
+    <td id="pbr"></td>
+  </tr>
+</tbody></table>
+</body></html>

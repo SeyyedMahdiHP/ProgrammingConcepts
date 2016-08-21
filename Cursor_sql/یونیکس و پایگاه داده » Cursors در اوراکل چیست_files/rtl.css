@@ -1,0 +1,68 @@
+body {
+	font-family:tahoma;
+}
+.content {style.css (line 227)
+background:transparent url(images/bg_narrowcol_top.gif) no-repeat scroll left top;
+float:left;
+width:500px;
+}
+#container, #header, #menu, #menu ul li, #menu ul li a, #pagetitle, h1, #syndication, .pagewrapper, .page, .wrapper, .narrowcolumnwrapper, .narrowcolumn, .content, .post, .entry, sidebar {
+	text-align:right;
+	direction:rtl;
+}
+input, textarea { 
+	font-family:tahoma; 
+}
+a { 
+	text-decoration:none; 
+}
+a:hover { 
+	text-decoration:underline; 
+}
+/* Post */
+.post img { 
+	max-width:100%; 
+}
+.browse {
+	text-align:center; 
+	direction:ltr;
+}
+/* sidebar */
+.sidebar ul ul li, .obar ul ul li { 
+	padding:0; 
+}
+/* Header */
+#searchbox {
+	float:left;
+}
+#syndication {
+	float:right;
+}
+#pagetitle h1 {
+	float:right;
+}
+#menu ul {
+	float:right;
+	padding: 0 10px 0 0;
+}
+#syndication a.feed { 
+	padding:0;
+	background:none;
+}
+/* footer */
+#footer {
+	color:#FFF;
+	margin:10px; 
+	direction:rtl
+}
+#footer a{
+	color:#FFF;
+	border-bottom:1px dotted;
+}
+#footer a:hover{
+	border-bottom:none;
+	text-decoration:none;
+}
+* .sidebar {
+	float:left;
+}

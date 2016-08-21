@@ -1,0 +1,657 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://falearn.ir/?p=4002 -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>یونیکس و پایگاه داده » Cursors در اوراکل چیست</title>
+
+		
+	<meta name="generator" content="WordPress 4.5.3"> <!-- leave this for stats please -->
+
+	<link rel="stylesheet" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/style.css" type="text/css" media="screen">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://falearn.ir/?feed=rss2">
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://falearn.ir/?feed=rss">
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://falearn.ir/?feed=atom">
+	<link rel="pingback" href="http://falearn.ir/xmlrpc.php">
+
+		<link rel="archives" title="جولای 2016" href="http://falearn.ir/?m=201607">
+	<link rel="archives" title="ژوئن 2016" href="http://falearn.ir/?m=201606">
+	<link rel="archives" title="آوریل 2016" href="http://falearn.ir/?m=201604">
+	<link rel="archives" title="مارس 2016" href="http://falearn.ir/?m=201603">
+	<link rel="archives" title="فوریه 2016" href="http://falearn.ir/?m=201602">
+	<link rel="archives" title="ژانویه 2016" href="http://falearn.ir/?m=201601">
+	<link rel="archives" title="دسامبر 2015" href="http://falearn.ir/?m=201512">
+	<link rel="archives" title="اکتبر 2015" href="http://falearn.ir/?m=201510">
+	<link rel="archives" title="جولای 2015" href="http://falearn.ir/?m=201507">
+	<link rel="archives" title="ژوئن 2015" href="http://falearn.ir/?m=201506">
+	<link rel="archives" title="می 2015" href="http://falearn.ir/?m=201505">
+	<link rel="archives" title="آوریل 2015" href="http://falearn.ir/?m=201504">
+	<link rel="archives" title="مارس 2015" href="http://falearn.ir/?m=201503">
+	<link rel="archives" title="ژانویه 2015" href="http://falearn.ir/?m=201501">
+	<link rel="archives" title="دسامبر 2014" href="http://falearn.ir/?m=201412">
+	<link rel="archives" title="نوامبر 2014" href="http://falearn.ir/?m=201411">
+	<link rel="archives" title="اکتبر 2014" href="http://falearn.ir/?m=201410">
+	<link rel="archives" title="سپتامبر 2014" href="http://falearn.ir/?m=201409">
+	<link rel="archives" title="آگوست 2014" href="http://falearn.ir/?m=201408">
+	<link rel="archives" title="جولای 2014" href="http://falearn.ir/?m=201407">
+	<link rel="archives" title="ژوئن 2014" href="http://falearn.ir/?m=201406">
+	<link rel="archives" title="می 2014" href="http://falearn.ir/?m=201405">
+	<link rel="archives" title="آوریل 2014" href="http://falearn.ir/?m=201404">
+	<link rel="archives" title="مارس 2014" href="http://falearn.ir/?m=201403">
+	<link rel="archives" title="فوریه 2014" href="http://falearn.ir/?m=201402">
+	<link rel="archives" title="ژانویه 2014" href="http://falearn.ir/?m=201401">
+	<link rel="archives" title="دسامبر 2013" href="http://falearn.ir/?m=201312">
+	<link rel="archives" title="نوامبر 2013" href="http://falearn.ir/?m=201311">
+	<link rel="archives" title="اکتبر 2013" href="http://falearn.ir/?m=201310">
+	<link rel="archives" title="سپتامبر 2013" href="http://falearn.ir/?m=201309">
+	<link rel="archives" title="آگوست 2013" href="http://falearn.ir/?m=201308">
+	<link rel="archives" title="جولای 2013" href="http://falearn.ir/?m=201307">
+	<link rel="archives" title="ژوئن 2013" href="http://falearn.ir/?m=201306">
+	<link rel="archives" title="می 2013" href="http://falearn.ir/?m=201305">
+	<link rel="archives" title="آوریل 2013" href="http://falearn.ir/?m=201304">
+	<link rel="archives" title="مارس 2013" href="http://falearn.ir/?m=201303">
+	<link rel="archives" title="فوریه 2013" href="http://falearn.ir/?m=201302">
+	<link rel="archives" title="ژانویه 2013" href="http://falearn.ir/?m=201301">
+	<link rel="archives" title="دسامبر 2012" href="http://falearn.ir/?m=201212">
+	<link rel="archives" title="نوامبر 2012" href="http://falearn.ir/?m=201211">
+	<link rel="archives" title="اکتبر 2012" href="http://falearn.ir/?m=201210">
+	<link rel="archives" title="سپتامبر 2012" href="http://falearn.ir/?m=201209">
+	<link rel="archives" title="آگوست 2012" href="http://falearn.ir/?m=201208">
+		<link rel="alternate" type="application/rss+xml" title="یونیکس و پایگاه داده » Cursors در اوراکل چیست خوراک دیدگاه‌ها" href="http://falearn.ir/?feed=rss2&amp;p=4002">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/falearn.ir\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.5.3"}};
+			!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/wp-emoji-release.min.js" type="text/javascript"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="yarppWidgetCss-css" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/widget.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_stylesheet-css" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="dashicons-css" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/dashicons.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="cptch_desktop_style-css" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/desktop_style.css" type="text/css" media="all">
+<script type="text/javascript" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/jquery.js"></script>
+<script type="text/javascript" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/i-like-this.js"></script>
+<link rel="https://api.w.org/" href="http://falearn.ir/?rest_route=/">
+<link rel="prev" title="دستور ip برای مدیریت اینترفیس های شبکه" href="http://falearn.ir/?p=3997">
+<link rel="next" title="نوع داده ای رکورد در اوراکل" href="http://falearn.ir/?p=4009">
+<link rel="stylesheet" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/rtl.css" type="text/css" media="screen"><meta name="generator" content="WordPress 4.5.3">
+<link rel="canonical" href="http://falearn.ir/?p=4002">
+<link rel="shortlink" href="http://wp.me/p-12y">
+<link rel="alternate" type="application/json+oembed" href="http://falearn.ir/?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=http%3A%2F%2Ffalearn.ir%2F%3Fp%3D4002">
+<link rel="alternate" type="text/xml+oembed" href="http://falearn.ir/?rest_route=%2Foembed%2F1.0%2Fembed&amp;url=http%3A%2F%2Ffalearn.ir%2F%3Fp%3D4002&amp;format=xml">
+<script language="Javascript">
+<!-- Begin
+document.oncontextmenu = function(){return false}
+// End -->
+</script>
+<link rel="stylesheet" type="text/css" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/i-like-this.css" media="screen">
+<script type="text/javascript">var blogUrl = 'http://falearn.ir'</script>
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		</head>
+<body><div id="container">
+
+<div id="header">
+
+	<div id="menu">
+		<ul>
+        	<li><a href="http://falearn.ir/?p=4002" title="درباره‌ما">درباره‌ما</a></li>
+			<li><a href="http://falearn.ir/" title="یونیکس و پایگاه داده">خانه</a></li>
+		</ul>
+	</div>
+
+	<div id="pagetitle">
+		<h1><a href="http://falearn.ir/" title="یونیکس و پایگاه داده">یونیکس و پایگاه داده</a></h1>
+	</div>
+
+	<div id="syndication">
+		<a href="http://falearn.ir/?feed=rss2" title="Syndicate this site using RSS" class="feed"><abbr title="Really Simple Syndication">آر‌اس‌اس</abbr> مطالب</a> | <a href="http://falearn.ir/?feed=comments-rss2" title="Syndicate comments using RSS">آر‌اس‌اس نظرات</a>
+	</div>
+	<div id="searchbox">
+		<form method="get" id="searchform" action="http://falearn.ir/">
+<div>
+	<input type="text" value="" name="s" id="s">
+	<input type="submit" id="searchsubmit" value="جست‌و‌جو">
+</div>
+</form>	</div>
+
+</div>
+
+<div class="pagewrapper"><div class="page">
+
+<!-- Start Obar -->
+
+	<div class="obar">
+<ul>
+
+<li id="recent-comments-3" class="widget widget_recent_comments"><h2 class="widgettitle">آخرین دیدگاه ها</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://falearn.ir/" rel="external nofollow" class="url">نامی امیر</a></span> در <a href="http://falearn.ir/?p=4882#comment-8853">تفاوت ELT با ETL در مفاهیم انبار داده</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://iranservicemachine.com/" rel="external nofollow" class="url">لوازم یدکی بیل مکانیکی</a></span> در <a href="http://falearn.ir/?p=4882#comment-8852">تفاوت ELT با ETL در مفاهیم انبار داده</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://falearn.ir/" rel="external nofollow" class="url">نامی امیر</a></span> در <a href="http://falearn.ir/?p=4773#comment-8851">پیدا کردن میزان مصرف فرایند از حافظه</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://unixmen.ir/" rel="external nofollow" class="url">یاشار اسمعیل دخت</a></span> در <a href="http://falearn.ir/?p=4773#comment-8850">پیدا کردن میزان مصرف فرایند از حافظه</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://unixmen.ir/" rel="external nofollow" class="url">یاشار اسمعیل دخت</a></span> در <a href="http://falearn.ir/?p=4773#comment-8849">پیدا کردن میزان مصرف فرایند از حافظه</a></li></ul></li>
+		<li id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widgettitle">نوشته های تازه</h2>
+		<ul>
+					<li>
+				<a href="http://falearn.ir/?p=5120">سایت datauniversity.ir</a>
+						</li>
+					<li>
+				<a href="http://falearn.ir/?p=5091">ایجاد جداول در MySQL</a>
+						</li>
+					<li>
+				<a href="http://falearn.ir/?p=5080">ایجاد پایگاه داده در MySQL</a>
+						</li>
+					<li>
+				<a href="http://falearn.ir/?p=5075">تغییر خط اعلان در MYSQL</a>
+						</li>
+					<li>
+				<a href="http://falearn.ir/?p=5055">siadar برای مشاهده آمارهای سیستمی در لینوکس</a>
+						</li>
+				</ul>
+		</li>
+		<li id="advancedrandomposts-3" class="widget widget_advancedrandomposts"><h2 class="widgettitle">پست های تصادفی</h2>
+<ul class="advanced-random-posts"><li><a href="http://falearn.ir/?p=1825" title="Superblock چیست">Superblock چیست</a></li>
+<li><a href="http://falearn.ir/?p=2929" title="پیکربندی Virtual Host در Apache - تنظیم Name-Based VH">پیکربندی Virtual Host در Apache - تنظیم Name-Based VH</a></li>
+<li><a href="http://falearn.ir/?p=1767" title="یک شل اسکریپت ساده برای پیدا کردن IP های آزاد درون LAN">یک شل اسکریپت ساده برای پیدا کردن IP های آزاد درون LAN</a></li>
+<li><a href="http://falearn.ir/?p=1219" title="پیکربندی NTP در CentOS 6.x">پیکربندی NTP در CentOS 6.x</a></li>
+<li><a href="http://falearn.ir/?p=2726" title="تبدیل فایل های rpm به فایل های deb در ابونتو">تبدیل فایل های rpm به فایل های deb در ابونتو</a></li>
+<li><a href="http://falearn.ir/?p=3579" title="Container Database و Pluggable Database ویژگی های جدید Oracle 12c">Container Database و Pluggable Database ویژگی های جدید Oracle 12c</a></li>
+<li><a href="http://falearn.ir/?p=3571" title="BasicFile در مقابل SecureFile در اوراکل">BasicFile در مقابل SecureFile در اوراکل</a></li>
+<li><a href="http://falearn.ir/?p=1536" title="راهنمای ایجاد / حذف کاربران در Linux/FreeBSD(با مثال-دستور های متفاوت)">راهنمای ایجاد / حذف کاربران در Linux/FreeBSD(با مثال-دستور های متفاوت)</a></li>
+<li><a href="http://falearn.ir/?p=3277" title="سوالات متدوال NFS">سوالات متدوال NFS</a></li>
+<li><a href="http://falearn.ir/?p=5080" title="ایجاد پایگاه داده در MySQL">ایجاد پایگاه داده در MySQL</a></li>
+</ul></li>
+<li id="linkcat-419" class="widget widget_links"><h2 class="widgettitle">آموزش زبان</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.languagedownload.ir/" title="آموزش زبان انگلیسی">آموزش زبان</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">لینک ها</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://qtips.ir/">آموزش فارسی QT</a></li>
+<li><a href="http://oraclegroup.ir/index.php">انجمن اوراکل ایران</a></li>
+<li><a href="http://www.sito.ir/" title="فروشگاه محصولات گنو/لینوکس (اپن سورس)">مرکز گنو/لینوکس سی‌تو</a></li>
+<li><a href="http://www.linuxeman.mihanblog.com/">وبلاگ تخصصی لینوکس</a></li>
+
+	</ul>
+</li>
+
+<li id="text-2" class="widget widget_text"><h2 class="widgettitle">رایانامه مدیر سایت</h2>
+			<div class="textwidget">امیر احمدی نامی
+<address>
+   <a href="http://falearn.ir/amir_ahmadinami@outlook.com">ahmadinamiamir at outlook dot com</a>
+</address></div>
+		</li>
+<li id="text-3" class="widget widget_text"><h2 class="widgettitle">کمک به هم نوع خودمون</h2>
+			<div class="textwidget"><p>موسسه خیریه محک<br>
+<a href="http://www.mahak-charity.org/main/fa" target="_blank"><br>
+<img src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/200x140-m.jpg"><br>
+</a><br>
+موسسه خیریه زنجیره امید<br>
+<a href="http://www.zanjirehomid.com/" target="_blank"><br>
+<img src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/header-logo.png"><br>
+</a><br>
+موسسه خیریه جمعیت امام علی(ع)<br>
+<a href="http://www.sosapoverty.org/" target="_blank"><br>
+<img src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/banners1.jpg"><br>
+</a><br>
+موسسه خانه خورشید<br>
+<a href="http://www.khanehkhorshid.ir//" target="_blank"><br>
+<img src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/logo1.png"><br>
+</a></p>
+</div>
+		</li>
+
+</ul>
+	</div>
+
+<!-- End Obar -->
+	<div class="wrapper"><!-- This wrapper class appears only on Page and Single Post pages. -->
+	<div class="narrowcolumnwrapper"><div class="narrowcolumn">
+
+		<div class="content">
+
+			
+			<div class="post" id="post-4002">
+
+				<h2><a href="http://falearn.ir/?p=4002" rel="bookmark" title="Cursors در اوراکل چیست">Cursors در اوراکل چیست</a></h2>
+
+				<div class="postinfo">
+ارسال شده در <span class="postdate">27th, ژوئن 2014</span> توسط نامی امیر 				</div>
+
+				<div class="entry">
+
+					<p style="text-align: justify;">cursor یا مکان نما یک ناحیه کاری موقتی ایجاد شده در حافظه سیستم است که برای پردازش بر روی دستور های SQL استفاده می شود. به طور مثال اطلاعاتی درباره دستور SELECT اجرا شده و سطر های داده ای که توسط دستور SELECT بدست آمده اند. یعنی یک ناحیه کاری موقتی ایجاد شده برای ذخیره سازی داده های بدست آمده از پایگاه داده را Cursor می گویند. Cursor می تواند بیش از یک سطر را در خود نگه دارد، اما در هر لحظه تنها می توان بر روی یک سطر پردازش انجام داد. مجموعه سطر های نگه داری شده در Cursor را&nbsp;active set می نامند.<span id="more-4002"></span></p>
+<p style="text-align: justify;">دو نوع مکان نمای صریح (Explicit) و غیر صریح یا ضمنی (Implicit) وجود دارند. مکان نمای غیر صریح زمانی که یک دستور SQL اجرا می شود، به طور خودکار ایجاد خواد شد. دستور های DML مانند INSERT, UPDATE و DELETE زمانی که اجرا شوند، به طور خودکار مکان نمای غیر صریح ایجاد خواهد شد. برنامه نویس امکان مدیریت مکان نمای غیر صریح و اطلاعات درون آنرا ندارد. همچنین زمانی که دستور SELECT تنها یک سطر را بازیابی می کند، مکان نمای غیر صریح ایجاد خواهد شد. با اجرای هر کدام از دستورا DML و SELECT با بازیابی یک سطر، به طور خودکار یک مکان نما به آنها اختصاص داده می شود که برای دستور INSERT شامل داده هایی است که باید در جدول درج شود، برای دستور های UPDATE و DELETE سطر(هایی) را که باید تحت تاثیر دستور قرار گیرند را مشخص می کند و برای SELECT ای که تنها یک سطر را واکشی می کند، شامل داده های همان سطر است.</p>
+<p style="text-align: justify;">Cursor های اخیرا ایجاد شده در دارای خواصی مانند ROWCOUNT% یا FOUND% است که می توان به Cursor در برنامه یا <a href="http://falearn.ir/?p=3377" target="_blank">بلاک</a> <a href="http://falearn.ir/?cat=241" target="_blank">PL/SQL</a> به Cursor مراجعه کرد. خواص یا Attribute های یک مکان نما شامل موارد زیر است</p>
+<ul>
+<li><strong style="text-align: justify;">صفت FOUND%</strong><span style="text-align: justify;"> : اگر یکی از دستور های INSERT, DELETE یا UPDATE بر روی یک یا چند سطر اثر گذاشته باشند یا یک دستور SELECT یک یا چند سطر را بازگرداند، مقدار TRUE را برگشت می دهد، در غیر این صورت مقدار FALSE برگشت داده می شود.</span></li>
+<li style="text-align: justify;"><strong>صفت NOTFOUND%</strong> : عکس صفت FOUND% است.</li>
+<li style="text-align: justify;"><strong>صفت ISOPEN%</strong> : همیشه برای مکان نمای غیر صریح مقدار FALSE با بر می گرداند. به این خاطر که اوراکل همیشه پس از اتمام اجرای دستور SQL مکان نمای غیر صریح را به طور خودکار Close می کند.</li>
+<li style="text-align: justify;"><strong>صفت ROWCOUNT%</strong>&nbsp;: تعداد سطرهایی را که تحت تاثیر دستور های DELETE, INSERT و یا UPDATE قرار گرفته اند یا توسط دستور SELECT بازگشت داده شده اند.</li>
+</ul>
+<p style="text-align: justify;">شکل کلی آنها به صورت زیر است :</p>
+<blockquote>
+<p style="text-align: left;">cursor_name%ATTRIBUTE</p>
+</blockquote>
+<p style="text-align: justify;">به عنوان مثال قطعه بلاک PL/SQL زیر را در نظر بگیرید. در قطعه بلاک زیر حقوق (salaries) تمامی کارمندان درون جدول emplyee به روز (updated) می شود. اگر حقوق هیچ یک از کارمندان به روز نشود به این معنی است که هیچ سطری تحت تاثیر دستور UPDATE قرار نگرفته است، از این رو پیغام&nbsp;<span style="color: #666666;">None of the salaries where updated نشان داده می شود. در غیر اینصورت می تواند پیغامی مانند&nbsp;Salaries for 1000 employees are updated نشان داده شود که این یعنی 1000 سطر از جدول employee به روز شده است (یعنی مقدار بازگشتی FOUND% برابر TRUE بوده است). مقدار 1000 سطر را از SQL%ROWCOUNT به دست آمده است که تعدادسطر های تحت تاثیر را نشان می دهد.</span></p>
+<p style="text-align: center;"><a href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/oracle_cursor.png"><img class="aligncenter size-full wp-image-4004" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/oracle_cursor.png" alt="oracle_cursor" width="530" height="176" srcset="http://falearn.ir/wp-content/uploads/2014/06/oracle_cursor.png 530w, http://falearn.ir/wp-content/uploads/2014/06/oracle_cursor-300x99.png 300w" sizes="(max-width: 530px) 100vw, 530px"></a></p>
+<p style="text-align: justify;">Cursor های صریح توسط برنامه نویس ایجاد می شوند و بر خلاف مکان نمای غیر صریح، قابلیت کنترل و مدیریت را بر روی فضای کاری موقتی به برنامه نویس می دهند. مکان نمای صریح توسط دستور CURSOR cursor_name و در قسمت&nbsp;declaration از بلاک PL/SQL و زمانی که دستور SELECT را اجرا می کنید که بیش از یک سطر را بر می گرداند&nbsp;ایجاد می شود. شکل کلی آن به صورت زیر است:</p>
+<blockquote>
+<p style="text-align: left;"><span style="color: #ff6600;"><strong>;</strong></span><span style="color: #ff0000;"><strong>CURSOR cursor_name</strong></span> <span style="color: #0000ff;"><strong>IS</strong></span> <span style="color: #008000;"><strong>SELECT STATEMENT</strong></span></p>
+</blockquote>
+<p style="text-align: justify;">با اینکه چندین سطر در مکان نمای صریح نگه داری می شود، اما در هر لحظه تنها یکی از سطر ها می تواند پردازش شود که آنرا current row می نامند. وقتی سطری را واکشی می کنید، موقعیت سطر جاری یکی به جلو حرکت می کند. هر دوی مکان نماهای صریحو غیر صریح عملکرد مشابه ای را دارند، اما در روش چگونگی دستیابی به آنها از یکدیگر متفاوت هستند. کار با مکان نمای صریح چهار گام زیر را دربر می گیرد:</p>
+<ul>
+<li style="text-align: justify;">اعلان و تعریف مکان نما برای مقداردهی&nbsp;اولیه (initializing) کردن در حافظه.</li>
+<li style="text-align: justify;">بازکردن (Opening) مکان نما برای تخصیص حافظه.</li>
+<li style="text-align: justify;">بدست آوردن داده و قرار گرفتن در مکان نما.</li>
+<li style="text-align: justify;">بستن یا Close کردن مکان نما برای آزاد سازی حافظه. (توجه کنید مکان نمای غیر صریح به طور خودکار بسته خواهد شد)</li>
+</ul>
+<p style="text-align: justify;">دستور زیر نخستین گام یعنی تعریف مکان نما را نشان می دهد. یک مکان نما به نام c_customers که شامل چندین سطر واکشی شده از اجرای SELECT است را ایجاد می کند.</p>
+<blockquote>
+<p style="text-align: left;">CURSOR c_customers IS</p>
+<p style="text-align: left;">;&nbsp;SELECT id, name, address FROM customers</p>
+</blockquote>
+<p style="text-align: justify;">با دستورOPEN cursor_name &nbsp;مکان نمار را باز می کنم تا حافظه به آن تخصیص داده شود و آنرا برای واکشی سطر های بازگشتی از دستور SELECT و قرار گرفتن درون آن، آماده می کند.&nbsp; از این پس می توانیم در بلاک PL/SQL از اطلاعات (سطر های) ذخیره شده در مکان نما استفاده کنیم. دستور زیر مکان نمای ایجاد شده در بالا را باز می کند.</p>
+<blockquote>
+<p style="text-align: left;">;OPEN c_customers</p>
+</blockquote>
+<p style="text-align: justify;">با دستور زیر داده ها و اطلاعات درون مکان نمای باز شده بالا را واکشی می کنیم و درون متغیر هایی قرار می دهیم. به طور مثال ما با SELECT بالا سه ستون را واکشی کردیم و داده های آنها را هر لحظه در سه متغیر به نام های c_id و c_name و&nbsp;c_addr قرار دادیم.</p>
+<blockquote>
+<p style="text-align: left;">;FETCH c_customers INTO c_id, c_name, c_addr</p>
+</blockquote>
+<p style="text-align: right;">ساختار کلی واکشی از مکان نما و قرار دادن درون متغیر ها به صورت زیر است.</p>
+<blockquote>
+<p style="text-align: left;">;FETCH cursor_name INTO variable_list</p>
+</blockquote>
+<p style="text-align: right;">و در آخرین گام و پس از واکشی با دستور زیر مکان نما با دستور CLOSE cursor_name بسته خواهد شد.</p>
+<blockquote>
+<p style="text-align: left;">;CLOSE c_customers</p>
+</blockquote>
+<p style="text-align: justify;">شکل زیر یک مثال کلی را نشان می دهد. این بلاک سه متغیر را ابتدا تعریف می کند. این سه متغیر همان هایی هستند که داده ها باید از درون مکان نما به آنها واکشی شوند. توسط یه حلقه LOOP&nbsp;و تا زمانی که دیگر هیچ سطر دیگری واکشی نشود (که از طریق c_customers%notfound محاسبه می شود) داده های درون مکان نما و در هر لحظه یک سطر به درون متغیر ها ریخته شده و سپس توسط&nbsp;dbms_output.put_line چاپ می شوند.</p>
+<p style="text-align: center;"><a href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/oracle_cursor1.png"><img class="aligncenter size-full wp-image-4005" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/oracle_cursor1.png" alt="oracle_cursor1" width="450" height="247" srcset="http://falearn.ir/wp-content/uploads/2014/06/oracle_cursor1.png 450w, http://falearn.ir/wp-content/uploads/2014/06/oracle_cursor1-300x164.png 300w" sizes="(max-width: 450px) 100vw, 450px"></a></p>
+<p style="text-align: right;">و می تواند خروجی مانند زیر داشته باشد.</p>
+<p style="text-align: center;"><a href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/oracle_cursor2.png"><img class="aligncenter size-full wp-image-4006" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/oracle_cursor2.png" alt="oracle_cursor2" width="346" height="149" srcset="http://falearn.ir/wp-content/uploads/2014/06/oracle_cursor2.png 346w, http://falearn.ir/wp-content/uploads/2014/06/oracle_cursor2-300x129.png 300w" sizes="(max-width: 346px) 100vw, 346px"></a></p>
+<p style="text-align: right;">می توانید دو لینک زیر را نیز مطالعه کنید.</p>
+<ul>
+<li><a rel="nofollow" href="http://plsql-tutorial.com/plsql-cursors.htm" target="_blank">What are Cursors</a></li>
+<li><a rel="nofollow" href="http://plsql-tutorial.com/plsql-explicit-cursors.htm" target="_blank">Explicit Cursors</a></li>
+</ul>
+<div id="iLikeThis-4002" class="iLikeThis"><span class="counter">1 <a onclick="likeThis(4002);">پسندیدم</a></span></div><div class="yarpp-related">
+<p>پست های مشابه</p><ol>
+<li><a href="http://falearn.ir/?p=2053" rel="bookmark" title="SCN در اوراکل چیست">SCN در اوراکل چیست </a> <small>SCN یا System Change Number عددی همواره افزایشی که دقیقا...</small></li>
+<li><a href="http://falearn.ir/?p=2706" rel="bookmark" title="Password File در اوراکل چیست">Password File در اوراکل چیست </a> <small>چرا وقتی می خواهیم یک پایگاه داده را startup کنیم...</small></li>
+<li><a href="http://falearn.ir/?p=2688" rel="bookmark" title="تعریف ستون مجازی در جدول های اوراکل">تعریف ستون مجازی در جدول های اوراکل </a> <small>پس از انتشار اوراکل 11g امکان ایجاد ستون های مجازی...</small></li>
+<li><a href="http://falearn.ir/?p=3596" rel="bookmark" title="Transportable Tablespaces در اوراکل چیست">Transportable Tablespaces در اوراکل چیست </a> <small>Tablespace های قابل حمل که از اوراکل 8i معرفی شدند،...</small></li>
+<li><a href="http://falearn.ir/?p=3565" rel="bookmark" title="پارامتر COMPATIBLE در اوراکل چیست">پارامتر COMPATIBLE در اوراکل چیست </a> <small>پارامتر COMPATIBLE ویژگی هایی از پایگاه داده را فعال یا...</small></li>
+<li><a href="http://falearn.ir/?p=2697" rel="bookmark" title="جدول های فقط خواندنی در اوراکل">جدول های فقط خواندنی در اوراکل </a> <small>از اوراکل 11g به بعد امکان قرار دادن جدول ها...</small></li>
+<li><a href="http://falearn.ir/?p=2328" rel="bookmark" title="Fast Recovery Area چیست و تنظیم آن در اوراکل">Fast Recovery Area چیست و تنظیم آن در اوراکل </a> <small>Fast Recovery Area یا FRA محلی برای ذخیره فایل های...</small></li>
+<li><a href="http://falearn.ir/?p=3674" rel="bookmark" title="ویژگی ها و خصوصیات پایگاه داده در اوراکل">ویژگی ها و خصوصیات پایگاه داده در اوراکل </a> <small>هر پایگاه داده ای را که نصب می کنید خصوصیات...</small></li>
+<li><a href="http://falearn.ir/?p=1363" rel="bookmark" title="بدست آوردن اطلاعاتی از جلسه جاری در اوراکل">بدست آوردن اطلاعاتی از جلسه جاری در اوراکل </a> <small>تابع Sys_Context برای بدست آوردن اطلاعانی از پایگاه داده اوراکل...</small></li>
+<li><a href="http://falearn.ir/?p=2362" rel="bookmark" title="Recycle bin در اوراکل">Recycle bin در اوراکل </a> <small>Recycle bin در واقع یک Data Dictionary Table از اشیای...</small></li>
+</ol>
+</div>
+					
+					<p class="postinfo">
+دسته‌ها: <a href="http://falearn.ir/?cat=241" rel="category">PL/SQL</a>, <a href="http://falearn.ir/?cat=80" rel="category">پایگاه داده</a>					</p>
+
+					<!-- 
+					<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://falearn.ir/?p=4002"
+    dc:identifier="http://falearn.ir/?p=4002"
+    dc:title="Cursors در اوراکل چیست"
+    trackback:ping="http://falearn.ir/wp-trackback.php?p=4002" />
+</rdf:RDF>					 -->
+				</div>
+			</div>
+
+
+
+			<div class="browse">« <a href="http://falearn.ir/?p=3997" rel="prev">دستور ip برای مدیریت اینترفیس های شبکه</a>  <a href="http://falearn.ir/?p=4009" rel="next">نوع داده ای رکورد در اوراکل</a> »</div>
+
+
+
+		</div><!-- End content -->
+
+	</div></div><!-- End narrowcolumnwrapper and narrowcolumn classes -->
+
+
+<!-- Start Comments Template -->
+
+	<div class="narrowcolumnwrapper"><div class="narrowcolumn">
+
+		<div class="content">
+
+			<div class="post">
+
+
+<!-- You can start editing here. -->
+
+	<h3 id="comments">2 پاسخ به “Cursors در اوراکل چیست”</h3>
+
+<ol class="commentlist">
+
+	<li class="alt" id="comment-7766">
+
+<div class="commentmetadata">
+<strong>السان</strong>, در <a href="http://falearn.ir/?p=4002#comment-7766" title="">6th, اکتبر 2014 در 7:51 ب.ظ</a> نوشته: 		</div>
+
+<p>سلام خسته نباشید</p>
+<p>راستش من فرق oracle universal installer را با خود اوراکل نمیدونم</p>
+<p>میخاستم اوراکل نصب کنم اینو بهم دادند ولی الان هرچی میزنم هیچی نصب نمیشه</p>
+<p>فقط oracle sql plus نصب شده که نام کاربری و پسورد میخاد که اونم هرچی میزنم جواب نمیده</p>
+<p>ممنون میشم اگر براتون امکان داره راهنماییم کنید</p>
+<p>با تشکر</p>
+	</li>
+
+
+
+	<li class="" id="comment-7787">
+
+<div class="commentmetadata">
+<strong><a href="http://falearn.ir/" rel="external nofollow" class="url">نامی امیر</a></strong>, در <a href="http://falearn.ir/?p=4002#comment-7787" title="">8th, اکتبر 2014 در 6:06 ق.ظ</a> نوشته: 		</div>
+
+<p>OUI همون نرم افزاری هستش که با اون اوراکل رو نصب می کنید. اگه این <a href="http://falearn.ir/?p=1896" target="_blank" rel="nofollow">لینک</a> رو خونده باشید با اجرای دستور ./runInstaller پنجره و محیط OUI باز میشه و از طزیق اون تنظیمات لازم برای تصب رو انجام می دید که محیط OUI برای ویندوز و لینوکس یکسان هستش<br>
+شمااز چه سیستم عاملی استفاده می کنید<br>
+به هر حال می تونید از <a href="http://p30download.com/fa/entry/43820/" target="_blank" rel="nofollow">اینجا</a> برای ویندوز دانلود کنید</p>
+	</li>
+
+
+	</ol>
+
+
+
+
+		<h3 id="respond">نوشتن پاسخ</h3>
+
+
+<form action="http://falearn.ir/wp-comments-post.php" method="post" id="commentform">
+
+<p><input type="text" name="author" id="author" value="" size="40" tabindex="1">
+<label for="author"><small>نام (لازم)</small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="40" tabindex="2">
+<label for="email"><small>پست‌الکترونیکی (نمایش داده نمی‌شود) (لازم)</small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="40" tabindex="3">
+<label for="url"><small>وب‌سایت</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> شما می‌توانید از این تگ‌ها استفاده کنید&#58; &lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </small></p>-->
+
+<p><textarea name="comment" id="comment" cols="60" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="ارسال نظر">
+<input type="hidden" name="comment_post_ID" value="4002">
+</p>
+
+<p class="cptch_block"><br><script class="cptch_to_remove">
+				(function( timeout ) {
+					setTimeout(
+						function() {
+							var notice = document.getElementById("cptch_time_limit_notice_59");
+							if ( notice )
+								notice.style.display = "block";
+						},
+						timeout
+					);
+				})(120000);
+			</script>
+			<span id="cptch_time_limit_notice_59" class="cptch_time_limit_notice cptch_to_remove" style="display: block;">Time limit is exhausted. Please reload CAPTCHA.</span><span class="cptch_wrap">
+				<label class="cptch_label" for="cptch_input">
+					<span class="cptch_span"><input id="cptch_input_59" class="cptch_input " type="text" autocomplete="off" name="cptch_number" value="" maxlength="2" size="2" aria-required="true" required="required" style="margin-bottom:0;display:inline;font-size: 12px;width: 40px;"></span>
+					<span class="cptch_span">&nbsp;−&nbsp;</span>
+					<span class="cptch_span">1</span>
+					<span class="cptch_span">&nbsp;=&nbsp;</span>
+					<span class="cptch_span">چهار</span>
+					<input type="hidden" name="cptch_result" value="UuQ=">
+					<input type="hidden" name="cptch_time" value="1471726264">
+					<input type="hidden" value="Version: 4.2.2">
+				</label><span class="cptch_reload_button_wrap hide-if-no-js">
+					<noscript>
+						&lt;style type="text/css"&gt;
+							.hide-if-no-js {
+								display: none !important;
+							}
+						&lt;/style&gt;
+					</noscript>
+					<span class="cptch_reload_button dashicons dashicons-update"></span>
+				</span></span></p>
+</form>
+
+
+
+			</div>
+
+		</div><!-- End content for comments template -->
+
+	</div></div><!-- End narrowcolumnwrapper and narrowcolumn classes for comments template -->
+	</div><!-- End wrapper class -->
+
+
+<!-- Start Sidebar -->
+
+	<div class="sidebar">
+<ul>
+
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">دسته بندی مطالب</h2>
+<label class="screen-reader-text" for="cat">دسته بندی مطالب</label><select name="cat" id="cat" class="postform">
+	<option value="-1">گزینش دسته</option>
+	<option class="level-0" value="80">پایگاه داده</option>
+	<option class="level-1" value="81">&nbsp;&nbsp;&nbsp;MySQL</option>
+	<option class="level-1" value="82">&nbsp;&nbsp;&nbsp;Oracle</option>
+	<option class="level-2" value="241">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PL/SQL</option>
+	<option class="level-2" value="363">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;پشتیبان گیری و ریکاوری</option>
+	<option class="level-0" value="322">پرسش و پاسخ (FAQ)</option>
+	<option class="level-0" value="380">توزیع شدگی</option>
+	<option class="level-1" value="382">&nbsp;&nbsp;&nbsp;توازن بار</option>
+	<option class="level-0" value="3">سیستم عامل</option>
+	<option class="level-1" value="67">&nbsp;&nbsp;&nbsp;BSD</option>
+	<option class="level-2" value="169">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FreeBSD</option>
+	<option class="level-3" value="235">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;آشنایی با csh</option>
+	<option class="level-2" value="68">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;دستور های BSD</option>
+	<option class="level-2" value="70">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;شبکه BSD</option>
+	<option class="level-2" value="69">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;مفاهیم BSD</option>
+	<option class="level-1" value="103">&nbsp;&nbsp;&nbsp;سولاریس</option>
+	<option class="level-2" value="221">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;دستور های سولاریس</option>
+	<option class="level-2" value="104">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;شبکه در سولاریس</option>
+	<option class="level-2" value="110">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;مفاهیم سولاریس</option>
+	<option class="level-1" value="329">&nbsp;&nbsp;&nbsp;سیستم فایل ها</option>
+	<option class="level-1" value="8">&nbsp;&nbsp;&nbsp;لینوکس</option>
+	<option class="level-2" value="395">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CentOS 7</option>
+	<option class="level-2" value="284">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gnome Desktop</option>
+	<option class="level-2" value="317">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KDE Desktop</option>
+	<option class="level-2" value="58">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;menu1</option>
+	<option class="level-2" value="300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openSUSE</option>
+	<option class="level-2" value="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ترفندهای لینوکسی</option>
+	<option class="level-2" value="9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;خط فرمان لینوکس</option>
+	<option class="level-2" value="10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;شبکه در لینوکس</option>
+	<option class="level-2" value="292">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;فدورا 20</option>
+	<option class="level-1" value="183">&nbsp;&nbsp;&nbsp;مکینتاش</option>
+	<option class="level-2" value="184">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ترفند ها</option>
+	<option class="level-2" value="185">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;خط فرمان</option>
+	<option class="level-1" value="301">&nbsp;&nbsp;&nbsp;نصب سیستم عامل ها</option>
+	<option class="level-1" value="326">&nbsp;&nbsp;&nbsp;ویرایشگر</option>
+	<option class="level-1" value="4">&nbsp;&nbsp;&nbsp;ویندوز</option>
+	<option class="level-2" value="7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ترفندهای ویندوزی</option>
+	<option class="level-2" value="6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;خط فرمان ویندوزی</option>
+	<option class="level-2" value="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;شبکه در ویندوز</option>
+	<option class="level-0" value="349">فایروال</option>
+	<option class="level-1" value="432">&nbsp;&nbsp;&nbsp;firewalld</option>
+	<option class="level-1" value="350">&nbsp;&nbsp;&nbsp;میکروتیک</option>
+	<option class="level-0" value="365">کلاستر</option>
+	<option class="level-1" value="366">&nbsp;&nbsp;&nbsp;لینوکس</option>
+	<option class="level-0" value="139">مجازی سازی</option>
+	<option class="level-1" value="146">&nbsp;&nbsp;&nbsp;VMware Workstation</option>
+	<option class="level-1" value="140">&nbsp;&nbsp;&nbsp;مجازی سازی در لینوکس</option>
+	<option class="level-0" value="438">مفاهیم کامپیوتر</option>
+	<option class="level-1" value="341">&nbsp;&nbsp;&nbsp;امنیت</option>
+	<option class="level-2" value="348">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;سیستم عامل و سرویس ها</option>
+	<option class="level-1" value="243">&nbsp;&nbsp;&nbsp;مفاهیم پایگاه داده</option>
+	<option class="level-1" value="249">&nbsp;&nbsp;&nbsp;مفاهیم سیستم عامل</option>
+	<option class="level-2" value="441">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;هسته سیستم عامل</option>
+	<option class="level-0" value="256">نرم افزار های کاربردی شبکه</option>
+	<option class="level-1" value="396">&nbsp;&nbsp;&nbsp;Nagios</option>
+	<option class="level-1" value="433">&nbsp;&nbsp;&nbsp;nmap</option>
+	<option class="level-1" value="257">&nbsp;&nbsp;&nbsp;اسکویید</option>
+</select>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+	var dropdown = document.getElementById( "cat" );
+	function onCatChange() {
+		if ( dropdown.options[ dropdown.selectedIndex ].value > 0 ) {
+			location.href = "http://falearn.ir/?cat=" + dropdown.options[ dropdown.selectedIndex ].value;
+		}
+	}
+	dropdown.onchange = onCatChange;
+})();
+/* ]]> */
+</script>
+
+</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">بایگانی نوشته ها</h2>
+		<label class="screen-reader-text" for="archives-dropdown-2">بایگانی نوشته ها</label>
+		<select id="archives-dropdown-2" name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+			
+			<option value="">گزینش ماه</option>
+				<option value="http://falearn.ir/?m=201607"> جولای 2016 &nbsp;(1)</option>
+	<option value="http://falearn.ir/?m=201606"> ژوئن 2016 &nbsp;(3)</option>
+	<option value="http://falearn.ir/?m=201604"> آوریل 2016 &nbsp;(1)</option>
+	<option value="http://falearn.ir/?m=201603"> مارس 2016 &nbsp;(7)</option>
+	<option value="http://falearn.ir/?m=201602"> فوریه 2016 &nbsp;(2)</option>
+	<option value="http://falearn.ir/?m=201601"> ژانویه 2016 &nbsp;(4)</option>
+	<option value="http://falearn.ir/?m=201512"> دسامبر 2015 &nbsp;(2)</option>
+	<option value="http://falearn.ir/?m=201510"> اکتبر 2015 &nbsp;(1)</option>
+	<option value="http://falearn.ir/?m=201507"> جولای 2015 &nbsp;(5)</option>
+	<option value="http://falearn.ir/?m=201506"> ژوئن 2015 &nbsp;(2)</option>
+	<option value="http://falearn.ir/?m=201505"> می 2015 &nbsp;(8)</option>
+	<option value="http://falearn.ir/?m=201504"> آوریل 2015 &nbsp;(1)</option>
+	<option value="http://falearn.ir/?m=201503"> مارس 2015 &nbsp;(9)</option>
+	<option value="http://falearn.ir/?m=201501"> ژانویه 2015 &nbsp;(1)</option>
+	<option value="http://falearn.ir/?m=201412"> دسامبر 2014 &nbsp;(5)</option>
+	<option value="http://falearn.ir/?m=201411"> نوامبر 2014 &nbsp;(3)</option>
+	<option value="http://falearn.ir/?m=201410"> اکتبر 2014 &nbsp;(4)</option>
+	<option value="http://falearn.ir/?m=201409"> سپتامبر 2014 &nbsp;(8)</option>
+	<option value="http://falearn.ir/?m=201408"> آگوست 2014 &nbsp;(8)</option>
+	<option value="http://falearn.ir/?m=201407"> جولای 2014 &nbsp;(10)</option>
+	<option value="http://falearn.ir/?m=201406"> ژوئن 2014 &nbsp;(10)</option>
+	<option value="http://falearn.ir/?m=201405"> می 2014 &nbsp;(7)</option>
+	<option value="http://falearn.ir/?m=201404"> آوریل 2014 &nbsp;(36)</option>
+	<option value="http://falearn.ir/?m=201403"> مارس 2014 &nbsp;(22)</option>
+	<option value="http://falearn.ir/?m=201402"> فوریه 2014 &nbsp;(19)</option>
+	<option value="http://falearn.ir/?m=201401"> ژانویه 2014 &nbsp;(11)</option>
+	<option value="http://falearn.ir/?m=201312"> دسامبر 2013 &nbsp;(20)</option>
+	<option value="http://falearn.ir/?m=201311"> نوامبر 2013 &nbsp;(7)</option>
+	<option value="http://falearn.ir/?m=201310"> اکتبر 2013 &nbsp;(12)</option>
+	<option value="http://falearn.ir/?m=201309"> سپتامبر 2013 &nbsp;(17)</option>
+	<option value="http://falearn.ir/?m=201308"> آگوست 2013 &nbsp;(17)</option>
+	<option value="http://falearn.ir/?m=201307"> جولای 2013 &nbsp;(14)</option>
+	<option value="http://falearn.ir/?m=201306"> ژوئن 2013 &nbsp;(3)</option>
+	<option value="http://falearn.ir/?m=201305"> می 2013 &nbsp;(17)</option>
+	<option value="http://falearn.ir/?m=201304"> آوریل 2013 &nbsp;(6)</option>
+	<option value="http://falearn.ir/?m=201303"> مارس 2013 &nbsp;(7)</option>
+	<option value="http://falearn.ir/?m=201302"> فوریه 2013 &nbsp;(8)</option>
+	<option value="http://falearn.ir/?m=201301"> ژانویه 2013 &nbsp;(8)</option>
+	<option value="http://falearn.ir/?m=201212"> دسامبر 2012 &nbsp;(27)</option>
+	<option value="http://falearn.ir/?m=201211"> نوامبر 2012 &nbsp;(19)</option>
+	<option value="http://falearn.ir/?m=201210"> اکتبر 2012 &nbsp;(4)</option>
+	<option value="http://falearn.ir/?m=201209"> سپتامبر 2012 &nbsp;(23)</option>
+	<option value="http://falearn.ir/?m=201208"> آگوست 2012 &nbsp;(38)</option>
+
+		</select>
+		</li>
+<li id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">بر چسب ها</h2>
+<div class="tagcloud"><a href="http://falearn.ir/?tag=apache2" class="tag-link-117 tag-link-position-1" title="7 موضوع" style="font-size: 8pt;">apache2</a>
+<a href="http://falearn.ir/?tag=bash" class="tag-link-30 tag-link-position-2" title="34 موضوع" style="font-size: 15.168pt;">bash</a>
+<a href="http://falearn.ir/?tag=bsd" class="tag-link-421 tag-link-position-3" title="11 موضوع" style="font-size: 10.016pt;">BSD</a>
+<a href="http://falearn.ir/?tag=bsd-admin" class="tag-link-65 tag-link-position-4" title="11 موضوع" style="font-size: 10.016pt;">BSD admin</a>
+<a href="http://falearn.ir/?tag=bsd-cmd" class="tag-link-63 tag-link-position-5" title="37 موضوع" style="font-size: 15.616pt;">BSD cmd</a>
+<a href="http://falearn.ir/?tag=centos" class="tag-link-73 tag-link-position-6" title="21 موضوع" style="font-size: 12.928pt;">CentOS</a>
+<a href="http://falearn.ir/?tag=freebsd" class="tag-link-167 tag-link-position-7" title="13 موضوع" style="font-size: 10.8pt;">freebsd</a>
+<a href="http://falearn.ir/?tag=freebsd-admin" class="tag-link-180 tag-link-position-8" title="8 موضوع" style="font-size: 8.56pt;">freebsd admin</a>
+<a href="http://falearn.ir/?tag=iptables" class="tag-link-123 tag-link-position-9" title="10 موضوع" style="font-size: 9.568pt;">iptables</a>
+<a href="http://falearn.ir/?tag=linux" class="tag-link-88 tag-link-position-10" title="122 موضوع" style="font-size: 21.328pt;">linux</a>
+<a href="http://falearn.ir/?tag=linux-admin" class="tag-link-29 tag-link-position-11" title="141 موضوع" style="font-size: 22pt;">linux admin</a>
+<a href="http://falearn.ir/?tag=linux-cmd" class="tag-link-20 tag-link-position-12" title="136 موضوع" style="font-size: 21.888pt;">linux cmd</a>
+<a href="http://falearn.ir/?tag=linux-essential-files" class="tag-link-57 tag-link-position-13" title="19 موضوع" style="font-size: 12.48pt;">linux essential files</a>
+<a href="http://falearn.ir/?tag=linux-file-system" class="tag-link-61 tag-link-position-14" title="24 موضوع" style="font-size: 13.6pt;">linux file system</a>
+<a href="http://falearn.ir/?tag=linux-learn" class="tag-link-26 tag-link-position-15" title="38 موضوع" style="font-size: 15.728pt;">linux learn</a>
+<a href="http://falearn.ir/?tag=linux-monitoring-tools" class="tag-link-157 tag-link-position-16" title="16 موضوع" style="font-size: 11.696pt;">linux monitoring tools</a>
+<a href="http://falearn.ir/?tag=linux-network" class="tag-link-21 tag-link-position-17" title="12 موضوع" style="font-size: 10.352pt;">linux network</a>
+<a href="http://falearn.ir/?tag=linux-networking" class="tag-link-113 tag-link-position-18" title="39 موضوع" style="font-size: 15.84pt;">linux networking</a>
+<a href="http://falearn.ir/?tag=linux-nfs" class="tag-link-16 tag-link-position-19" title="10 موضوع" style="font-size: 9.568pt;">linux nfs</a>
+<a href="http://falearn.ir/?tag=linux-process" class="tag-link-62 tag-link-position-20" title="15 موضوع" style="font-size: 11.36pt;">linux process</a>
+<a href="http://falearn.ir/?tag=linux-security" class="tag-link-37 tag-link-position-21" title="17 موضوع" style="font-size: 12.032pt;">linux security</a>
+<a href="http://falearn.ir/?tag=linux-services" class="tag-link-23 tag-link-position-22" title="9 موضوع" style="font-size: 9.12pt;">linux services</a>
+<a href="http://falearn.ir/?tag=linux-software" class="tag-link-18 tag-link-position-23" title="14 موضوع" style="font-size: 11.136pt;">linux software</a>
+<a href="http://falearn.ir/?tag=linux-system-cmd" class="tag-link-142 tag-link-position-24" title="9 موضوع" style="font-size: 9.12pt;">linux system cmd</a>
+<a href="http://falearn.ir/?tag=linux-system-file" class="tag-link-99 tag-link-position-25" title="14 موضوع" style="font-size: 11.136pt;">linux system file</a>
+<a href="http://falearn.ir/?tag=mysql" class="tag-link-76 tag-link-position-26" title="15 موضوع" style="font-size: 11.36pt;">mysql</a>
+<a href="http://falearn.ir/?tag=mysql-admin" class="tag-link-79 tag-link-position-27" title="9 موضوع" style="font-size: 9.12pt;">mysql admin</a>
+<a href="http://falearn.ir/?tag=operating-system-concepts" class="tag-link-435 tag-link-position-28" title="8 موضوع" style="font-size: 8.56pt;">operating system concepts</a>
+<a href="http://falearn.ir/?tag=oracle-2" class="tag-link-148 tag-link-position-29" title="59 موضوع" style="font-size: 17.856pt;">oracle</a>
+<a href="http://falearn.ir/?tag=oracle-admin" class="tag-link-149 tag-link-position-30" title="57 موضوع" style="font-size: 17.632pt;">oracle admin</a>
+<a href="http://falearn.ir/?tag=oracle-backup" class="tag-link-170 tag-link-position-31" title="12 موضوع" style="font-size: 10.352pt;">oracle backup</a>
+<a href="http://falearn.ir/?tag=oracle-concept" class="tag-link-213 tag-link-position-32" title="17 موضوع" style="font-size: 12.032pt;">oracle concept</a>
+<a href="http://falearn.ir/?tag=oracle-configuration" class="tag-link-147 tag-link-position-33" title="9 موضوع" style="font-size: 9.12pt;">oracle configuration</a>
+<a href="http://falearn.ir/?tag=oracle-errors" class="tag-link-212 tag-link-position-34" title="9 موضوع" style="font-size: 9.12pt;">oracle errors</a>
+<a href="http://falearn.ir/?tag=oracle-mgmt" class="tag-link-174 tag-link-position-35" title="11 موضوع" style="font-size: 10.016pt;">oracle mgmt</a>
+<a href="http://falearn.ir/?tag=oracle-rman" class="tag-link-172 tag-link-position-36" title="13 موضوع" style="font-size: 10.8pt;">oracle rman</a>
+<a href="http://falearn.ir/?tag=oracle-structure" class="tag-link-178 tag-link-position-37" title="15 موضوع" style="font-size: 11.36pt;">oracle structure</a>
+<a href="http://falearn.ir/?tag=redhat" class="tag-link-77 tag-link-position-38" title="15 موضوع" style="font-size: 11.36pt;">redhat</a>
+<a href="http://falearn.ir/?tag=solaris" class="tag-link-127 tag-link-position-39" title="14 موضوع" style="font-size: 11.136pt;">solaris</a>
+<a href="http://falearn.ir/?tag=solaris-10" class="tag-link-105 tag-link-position-40" title="7 موضوع" style="font-size: 8pt;">solaris 10</a>
+<a href="http://falearn.ir/?tag=solaris-cmd" class="tag-link-156 tag-link-position-41" title="18 موضوع" style="font-size: 12.256pt;">solaris cmd</a>
+<a href="http://falearn.ir/?tag=unix-cmd" class="tag-link-119 tag-link-position-42" title="25 موضوع" style="font-size: 13.712pt;">unix cmd</a>
+<a href="http://falearn.ir/?tag=unix-file-system" class="tag-link-71 tag-link-position-43" title="21 موضوع" style="font-size: 12.928pt;">unix file system</a>
+<a href="http://falearn.ir/?tag=unix-shell-script" class="tag-link-72 tag-link-position-44" title="15 موضوع" style="font-size: 11.36pt;">unix shell script</a>
+<a href="http://falearn.ir/?tag=windows-admin" class="tag-link-31 tag-link-position-45" title="8 موضوع" style="font-size: 8.56pt;">windows admin</a></div>
+</li>
+<li id="rss-4" class="widget widget_rss"><h2 class="widgettitle"><a class="rsswidget" href="http://asklinux.ir/feed/qa.rss"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://asklinux.ir/qa">پرسش و پاسخ های لینوکسی</a></h2>
+<ul><li><a class="rsswidget" href="http://asklinux.ir/8822/%D9%85%D8%B4%DA%A9%D9%84-%D8%AF%D8%B1-%D9%86%D8%B5%D8%A8-%D9%86%D8%B1%D9%85-%D8%A7%D9%81%D8%B2%D8%A7%D8%B1">مشکل در نصب نرم افزار</a></li><li><a class="rsswidget" href="http://asklinux.ir/8819/%D8%A7%D8%B1%D9%88%D8%B1-%D8%A7%D9%BE%D8%AF%DB%8C%D8%AA?show=8821#a8821">پاسخ داده شده: ارور اپدیت ****</a></li><li><a class="rsswidget" href="http://asklinux.ir/8820/%D8%AA%D8%BA%DB%8C%DB%8C%D8%B1-%D9%84%DB%8C%D9%86%D9%88%DA%A9%D8%B3">تغییر لینوکس</a></li><li><a class="rsswidget" href="http://asklinux.ir/8815/%D8%A7%D9%86%D8%AA%D9%82%D8%A7%D9%84-%D8%AA%D9%85%D8%A7%D9%85%DB%8C-%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87-%D9%87%D8%A7-%D8%A7%D8%B2-%D8%A7%D9%88%D8%A8%D9%88%D9%86%D8%AA%D9%88-16-%D8%A8%D9%87-15-10?show=8817#a8817">پاسخ داده شده: انتقال تمامی برنامه ها از اوبونتو 16 به 15.10</a></li><li><a class="rsswidget" href="http://asklinux.ir/8811/%D9%85%D8%B4%DA%A9%D9%84-%D8%A8%D8%A7-%D8%A8%D9%88%D8%AA-%D9%84%DB%8C%D9%86%D9%88%DA%A9%D8%B3-%D8%B2-%D8%B1%D9%88%DB%8C-%D9%81%D9%84%D8%B4?show=8813#a8813">پاسخ داده شده: مشکل با بوت لینوکس ز روی فلش</a></li></ul></li>
+<li id="rss-6" class="widget widget_rss"><h2 class="widgettitle"><a class="rsswidget" href="http://planet.sito.ir/feed/"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/rss.png" alt="RSS"></a> <a class="rsswidget" href="http://planet.sito.ir/">سیاره گنو لینوکس</a></h2>
+<ul><li><a class="rsswidget" href="http://planet.sito.ir/%D9%86%D9%88%DB%8C%D8%B3%D9%86%D8%AF%D9%87-%D8%AC%D8%AF%DB%8C%D8%AF-%D8%AF%D8%B1-%D8%A8%D9%84%D8%A7%DA%AF/">نویسنده جدید در بلاگ</a></li><li><a class="rsswidget" href="http://planet.sito.ir/%D8%AD%D8%B0%D9%81-%D8%AF%D8%A7%DB%8C%D8%B1%DA%A9%D8%AA%D9%88%D8%B1%DB%8C-%D9%87%D8%A7%DB%8C%DB%8C-%DA%A9%D9%87-%D8%AE%D8%A7%D9%84%DB%8C-%D9%86%DB%8C%D8%B3%D8%AA%D9%86%D8%AF/">حذف دایرکتوری هایی که خالی نیستند</a></li><li><a class="rsswidget" href="http://planet.sito.ir/%D8%AD%D8%B0%D9%81-%D9%81%D8%A7%DB%8C%D9%84-%D9%87%D8%A7-%D8%A8%D8%A7-%D9%BE%D8%B3%D9%88%D9%86%D8%AF-%D8%AE%D8%A7%D8%B5-%D8%AF%D8%B1-%D9%87%D9%85%D9%87-%D8%AF%D8%A7%DB%8C%D8%B1%DA%A9%D8%AA%D9%88%D8%B1/">حذف فایل ها با پسوند خاص در همه دایرکتوری ها</a></li><li><a class="rsswidget" href="http://planet.sito.ir/%D8%B4%D8%AE%D8%B5%DB%8C%E2%80%8C%D8%B3%D8%A7%D8%B2%DB%8C-%DA%AF%D9%86%D9%88%D9%85-%D8%A8%D8%A7-tweak-tool/">شخصی‌سازی گنوم با Tweak Tool</a></li><li><a class="rsswidget" href="http://planet.sito.ir/%D8%AC%D8%A7%D8%AF%DB%8C-%D8%AA%DB%8C-%D9%88%DB%8C-%DB%B0%DB%B1%DB%B9-%D9%87%DA%A9-%D8%AF%D9%88%D8%B3%D8%AA%D8%A7%D9%86%D9%87-%D8%B3%D9%86%DA%AF-%DA%A9%D8%A7%D8%BA%D8%B0-%D9%82%DB%8C%DA%86/">جادی تی وی ۰۱۹ – هک دوستانه سنگ کاغذ قیچی کلاینت ساید از طریق شنود و بازسازی ارتباطات</a></li></ul></li>
+
+	<li><h2>اطلاعات</h2>
+		<ul>
+						<li><a href="http://falearn.ir/wp-login.php">ورود</a></li>
+			<li><a href="http://validator.w3.org/check/referer" title="This page validates as XHTML 1.0 Transitional">معتبر <abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a></li>
+			<li><a href="http://gmpg.org/xfn/"><abbr title="XHTML Friends Network">XFN</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="راه اندازی شده با نیروی وردپرس">وردپرس</a></li>
+            <li><a href="http://wordpress.org/" title="با پشتیبانی وردپرس فارسی">وردپرس فارسی</a></li>
+
+					</ul>
+	</li>
+
+</ul>
+	</div>
+
+<!-- End Sidebar -->
+</div></div><!-- End pagewrapper and page classes -->
+
+</div><!-- End container id -->
+
+<link rel="stylesheet" id="yarppRelatedCss-css" href="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/related.css" type="text/css" media="all">
+<script type="text/javascript" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/wp-embed.min.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var cptch_vars = {"nonce":"0c585f34eb","ajaxurl":"http:\/\/falearn.ir\/wp-admin\/admin-ajax.php","enlarge":"0"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./یونیکس و پایگاه داده » Cursors در اوراکل چیست_files/front_end_script.js"></script>
+<!--stats_footer_test-->
+
+</body></html>
