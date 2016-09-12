@@ -1,0 +1,31 @@
+﻿دستور یا statement واحدی از کد هست که شامل کلمه های کلیدی است و اجرا می گردد و کاری را به انجام می رساند.
+
+دستورهای ساده :
+دستورهایی که تنها در یک سطر منطقی پیاده سازی میشوند، مانند:
+دستور import
+دستور assingment یا همون = 
+فراخوانی تابع مثلا func()
+,...
+expression_stmt
+                 | assert_stmt
+                 | assignment_stmt
+                 | augmented_assignment_stmt
+                 | pass_stmt
+                 | del_stmt
+                 | print_stmt
+                 | return_stmt
+                 | yield_stmt
+                 | raise_stmt
+                 | break_stmt
+                 | continue_stmt
+                 | import_stmt
+                 | global_stmt
+                 | exec_stmt
+مثلا a= 2 *5 نمونه از یک دستور انتساب است
+
+
+دستورهای مرکب:
+میتوانند یک بخشی مانند دستور def
+و یا چند بخشی مانند دستور if باشند که هربخش شال یک سرایند که با : خاتمه میابد و یک بدنه هست:
+def func():
+pass
