@@ -1,4 +1,3 @@
-
 abcdef
 
 exact match :
@@ -32,8 +31,8 @@ q3:iran national code: ***-******-*  # for eg: 123-456789-0
 q3.1: is 111-111111-1 is a real national code?
 
 phase match:
-
-
-
-
-
+.{8}5022\D.{8}2910\D.{8}4583\D.{8}7745
+CARD1 = 5022
+CARD2 = 2910
+CARD3 = 4583
+CARD4 = 7745
